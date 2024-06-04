@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbsuwd8byrsrk"]
+
+[ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://icon.svg" id="1_j3o4b"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Enemy" type="Sprite2D" parent="."]
+position = Vector2(115, 340)
+texture = ExtResource("1_j3o4b")
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(1042, 340)
+texture = ExtResource("1_j3o4b")
+
+[node name="CardManager" type="Node2D" parent="."]
