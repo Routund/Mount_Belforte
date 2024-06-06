@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://uk07hjo5epu4"]
+
+[ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://icon.svg" id="1_j3o4b"]
+[ext_resource type="Script" path="res://battle_manager.gd" id="2_s0u54"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Enemy" type="Sprite2D" parent="."]
+position = Vector2(76, 345)
+texture = ExtResource("1_j3o4b")
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(1083, 351)
+texture = ExtResource("1_j3o4b")
+
+[node name="CardManager" type="Node2D" parent="."]
+script = ExtResource("2_s0u54")
+
+[node name="Button" type="Button" parent="CardManager"]
+offset_left = 17.0
+offset_top = 549.0
+offset_right = 151.0
+offset_bottom = 633.0
+text = "Play"
