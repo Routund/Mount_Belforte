@@ -8,15 +8,21 @@ var hand = []
 var queue = []
 var card_funcs = [slash(),heal(),block(),run()]
 
+@onready var HBox = get_node("Hand")
 
+var card_preload = preload("res://card_instance.tscn")
 var is_blocking = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	draw()
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
+	if (len(deck)>0):
+		
+		true
 	pass
 
 # All card functions
@@ -31,8 +37,13 @@ func run():
 	return true
 
 # Pick random card from deck, then add it to hand and remove from deck
+# Then instantiate a new card with that ID
 func draw():
-	var chosen_index=randi_range(0,len(deck))
+	var chosen_index=randi_range(0,len(deck)-1)
 	hand.append((deck[chosen_index]))
 	deck.pop_at(chosen_index)
+	var hand_last = hand[len(hand)-1]
+	var instance = card_preload.instantiate()
+	instance.set("card_id",hand_last)
+	HBox.add_child(instance)
 	

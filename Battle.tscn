@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://uk07hjo5epu4"]
+[gd_scene load_steps=4 format=3 uid="uid://uk07hjo5epu4"]
 
 [ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://icon.svg" id="1_j3o4b"]
 [ext_resource type="Script" path="res://battle_manager.gd" id="2_s0u54"]
+[ext_resource type="Script" path="res://deck.gd" id="3_q0tcb"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -14,11 +15,42 @@ position = Vector2(1083, 351)
 texture = ExtResource("1_j3o4b")
 
 [node name="CardManager" type="Node2D" parent="."]
+position = Vector2(578, 607)
 script = ExtResource("2_s0u54")
 
 [node name="Button" type="Button" parent="CardManager"]
-offset_left = 17.0
-offset_top = 549.0
-offset_right = 151.0
-offset_bottom = 633.0
+offset_left = -575.0
+offset_top = -41.0
+offset_right = -441.0
+offset_bottom = 43.0
 text = "Play"
+
+[node name="Hand" type="HBoxContainer" parent="CardManager"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -295.0
+offset_top = -62.0
+offset_right = 295.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+script = ExtResource("3_q0tcb")
+
+[node name="Queue" type="HBoxContainer" parent="CardManager"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -299.0
+offset_top = -189.0
+offset_right = 291.0
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+script = ExtResource("3_q0tcb")
