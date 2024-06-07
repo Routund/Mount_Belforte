@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://lvdpoi2tki"]
+
+[ext_resource type="Script" path="res://Scripts/CanvasLayer.gd" id="1_6mjbc"]
+
+[node name="Inventory" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_6mjbc")
+
+[node name="Nothing" type="Button" parent="."]
+offset_left = 43.0
+offset_top = 319.0
+offset_right = 206.0
+offset_bottom = 397.0
+
+[node name="Attack" type="Button" parent="."]
+offset_left = 308.0
+offset_top = 318.0
+offset_right = 450.0
+offset_bottom = 401.0
+
+[node name="Heal" type="Button" parent="."]
+offset_left = 863.0
+offset_top = 320.0
+offset_right = 1028.0
+offset_bottom = 395.0
+
+[node name="Run" type="Button" parent="."]
+offset_left = 682.0
+offset_top = 319.0
+offset_right = 816.0
+offset_bottom = 390.0
+
+[node name="Block" type="Button" parent="."]
+offset_left = 504.0
+offset_top = 318.0
+offset_right = 645.0
+offset_bottom = 397.0
+
+[connection signal="pressed" from="Nothing" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="Heal" to="." method="_on_heal_pressed"]
+[connection signal="pressed" from="Run" to="." method="_on_run_pressed"]
+[connection signal="pressed" from="Block" to="." method="_on_block_pressed"]
