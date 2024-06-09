@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 var paused = false
+var deck = 4
 
 func _ready():
 	hide()
@@ -20,32 +21,42 @@ func _process(_delta):
 	else: 
 		$ScrollContainer/VBoxContainer/Nothing.show()
 
-func _on_Nothing_pressed():
-	if Global.nothing == true and Global.nothingd == true:
-		Global.nothingd = false
-	elif Global.nothing == true:
-		Global.nothingd = true
-
 func _on_block_pressed():
 	if Global.blockd == true:
 		Global.blockd = false
-	else:
+		deck -= 1
+	elif deck <= 8:
 		Global.blockd = true
+		deck += 1
 
 func _on_attack_pressed():
 	if Global.attackd == true:
 		Global.attackd = false
-	else:
+		deck -= 1
+	elif deck <= 8:
 		Global.attackd = true
+		deck += 1
 
 func _on_heal_pressed():
 	if Global.heald == true:
 		Global.heald = false
-	else:
+		deck -= 1
+	elif deck <= 8:
 		Global.heald = true
+		deck += 1
 
 func _on_run_pressed():
 	if Global.rund == true:
 		Global.rund = false
-	else:
+		deck -= 1
+	elif deck <= 8:
 		Global.rund = true
+		deck += 1
+
+func _on_nothing_pressed():
+	if Global.nothing == true and Global.nothingd == false and deck <= 8:
+		Global.nothingd = true
+		deck += 1
+	elif Global.nothing == true and Global.nothingd == true:
+		Global.nothingd = false
+		deck -= 1

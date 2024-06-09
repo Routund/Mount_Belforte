@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://upmmvi2bl5bl"]
+[gd_scene load_steps=5 format=3 uid="uid://upmmvi2bl5bl"]
 
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="1_l2n5d"]
 [ext_resource type="PackedScene" uid="uid://y5g78wv73dul" path="res://Scenes/tester_card.tscn" id="2_bjbhx"]
+[ext_resource type="PackedScene" uid="uid://dxw8wvteg4sh4" path="res://Scenes/slime.tscn" id="3_6078i"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_0qgq4"]
+vertices = PackedVector2Array(2401, 563, -2190, 605, -2179, -1569, 2317, -1588)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2189, -1579, -2201, 616, 2412, 573, 2327, -1599)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Node2D" type="Node2D"]
 
@@ -9,3 +16,9 @@
 
 [node name="Nothing card" parent="." instance=ExtResource("2_bjbhx")]
 position = Vector2(681, 7)
+
+[node name="Slime" parent="." instance=ExtResource("3_6078i")]
+position = Vector2(466, 6)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_0qgq4")

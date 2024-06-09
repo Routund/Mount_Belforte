@@ -52,4 +52,4 @@ text = "NOTHING"
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Block" to="." method="_on_block_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Heal" to="." method="_on_heal_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Run" to="." method="_on_run_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Nothing" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Nothing" to="." method="_on_nothing_pressed"]
