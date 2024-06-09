@@ -4,11 +4,15 @@ extends TextureButton
 var queue_pos=0
 var queued = false
 
-signal queue_card(card:int)
-signal dequeue_card(pos:int)
+
+var battle_manager
+
+@onready var text = get_node("Label")
 
 var is_button_pressed = false
 func _ready():
+	text.text=str(card_id)
+	battle_manager=get_parent().get_parent()
 	return
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,15 +21,15 @@ func _process(_delta):
 		is_button_pressed = false
 		var new_parent=self
 		if queued:
-			new_parent = get_parent().get_parent().get_node("Hand")
-			dequeue_card.emit(queue_pos)
+			new_parent = battle_manager.get_node("Hand")
+			battle_manager.dequeue_card(card_id)
 		else:
-			queue_card.emit(card_id)
-			new_parent = get_parent().get_parent().get_node("Queue")
+			new_parent = battle_manager.get_node("Queue")
+			battle_manager.queue_card(card_id)
+		queued=!queued
 		get_parent().remove_child(self)
 		new_parent.add_child(self)
 		
 	elif is_pressed() and not is_button_pressed:
 		# Button is pressed for the first time
 		is_button_pressed = true
-	print(card_id)

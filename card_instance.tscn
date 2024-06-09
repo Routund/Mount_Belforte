@@ -6,3 +6,8 @@
 [node name="CardInstance" type="TextureButton"]
 texture_normal = ExtResource("1_14jwp")
 script = ExtResource("2_u5urt")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
