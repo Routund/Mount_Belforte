@@ -9,5 +9,9 @@ extends Area2D
 
 func _on_body_entered(body):
 	if body.name == "Player":
-		Global.nothing = true
+		if self.name == "card":
+			Global.poison = true
+		if self.name == "card2":
+			Global.water = true
 		queue_free()
+		

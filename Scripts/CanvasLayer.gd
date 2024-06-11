@@ -1,25 +1,20 @@
 extends CanvasLayer
 
-var paused = false
 var deck = 4
 
 func _ready():
 	hide()
 
 func _process(_delta):
-	if Input.is_action_just_pressed("inventory") and paused == false:
-		get_tree().paused = true
-		paused = true
-		show()
-	elif Input.is_action_just_pressed("inventory") and paused == true:
-		get_tree().paused = false
-		paused = false
-		hide()
-	
-	if Global.nothing == false:
-		$ScrollContainer/VBoxContainer/Nothing.hide()
+	if Global.poison == false:
+		$ScrollContainer/VBoxContainer/Poison.hide()
 	else: 
-		$ScrollContainer/VBoxContainer/Nothing.show()
+		$ScrollContainer/VBoxContainer/Poison.show()
+	
+	if Global.water == false:
+		$ScrollContainer/VBoxContainer/Water.hide()
+	else: 
+		$ScrollContainer/VBoxContainer/Water.show()
 
 func _on_block_pressed():
 	if Global.blockd == true:
@@ -53,10 +48,26 @@ func _on_run_pressed():
 		Global.rund = true
 		deck += 1
 
-func _on_nothing_pressed():
-	if Global.nothing == true and Global.nothingd == false and deck <= 8:
+func _on_water_pressed():
+	if Global.water == true and Global.waterd == false and deck <= 8:
 		Global.nothingd = true
 		deck += 1
-	elif Global.nothing == true and Global.nothingd == true:
-		Global.nothingd = false
+	elif Global.water == true and Global.waterd == true:
+		Global.waterd = false
 		deck -= 1
+
+func _on_poison_pressed():
+	if Global.poison == true and Global.poisond == false and deck <= 8:
+		Global.poisond = true
+		deck += 1
+	elif Global.poison == true and Global.poisond == true:
+		Global.poisond = false
+		deck -= 1
+
+
+func _on_go_back_pressed():
+	hide()
+	$"../Resume".show()
+	$"../Settings".show()
+	$"../Inventor".show()
+	$"../Exit".show()
