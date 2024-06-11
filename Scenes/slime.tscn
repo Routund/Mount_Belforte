@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxw8wvteg4sh4"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_q8wg2"]
+[ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="2_7ibms"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ueafj"]
+size = Vector2(31, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unt61"]
+size = Vector2(126, 124)
+
+[node name="Slime" type="CharacterBody2D"]
+script = ExtResource("1_q8wg2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7ibms")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2)
+scale = Vector2(0.6, 1)
+shape = SubResource("RectangleShape2D_ueafj")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_unt61")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

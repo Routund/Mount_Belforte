@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://lvdpoi2tki"]
+
+[ext_resource type="Script" path="res://Scripts/CanvasLayer.gd" id="1_6mjbc"]
+
+[node name="Inventory" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_6mjbc")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_right = 128.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+
+[node name="Attack" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Attack"
+
+[node name="Block" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Block"
+
+[node name="Heal" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Heal"
+
+[node name="Run" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Run"
+
+[node name="Nothing" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "NOTHING"
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Block" to="." method="_on_block_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Heal" to="." method="_on_heal_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Run" to="." method="_on_run_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Nothing" to="." method="_on_nothing_pressed"]
