@@ -12,7 +12,7 @@ func _process(_delta):
 		get_tree().paused = true
 		paused = true
 		show()
-	elif Input.is_action_just_pressed("inventory") and paused == true:
+	elif Input.is_action_just_pressed("inventory") and paused == true and Global.inventory_open == false:
 		get_tree().paused = false
 		paused = false
 		hide()
@@ -25,6 +25,7 @@ func _on_button_pressed():
 
 
 func _on_inventory_pressed():
+	Global.inventory_open = true
 	$Inventory.show()
 	$Resume.hide()
 	$Settings.hide()

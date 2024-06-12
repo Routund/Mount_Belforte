@@ -2,9 +2,8 @@ extends CharacterBody2D
 # Declare member variables here. Examples:
 # var a = 2
 
-var dead = false
 var speed = 600
-@onready var player = get_parent().get_node("Player")
+@onready var player = get_parent().get_node("/root/player")
 
 var movement_speed: float = 400.0
 var _movement_target_position = Vector2.ZERO
@@ -18,21 +17,15 @@ func _ready():
 # Make sure to not await during _ready.
 	call_deferred("actor_setup")
 
-func _process(_delta):
-	if dead == true:
-			queue_free()
-	
 func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
 	await get_tree().physics_frame
 	set_movement_target(_movement_target_position)
-
 func set_movement_target(_movement_target: Vector2):
 	navigation_agent.target_position = player.global_position
 	
 func _physics_process(_delta):
-	if dead == false:
-		navigation_agent.target_position = player.global_position
+	navigation_agent.target_position = player.global_position
 	if navigation_agent.is_navigation_finished():
 		return
 	var current_agent_position: Vector2 = global_position
@@ -46,4 +39,9 @@ func _physics_process(_delta):
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
-		print('battle')
+		var rng = RandomNumberGenerator.new()
+		var get_water = rng.randi_range(1,4)
+		if Global.water == false and get_water == 4:
+			Global.water = true
+		queue_free()
+		

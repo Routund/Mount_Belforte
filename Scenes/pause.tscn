@@ -1,13 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://y1go6d8bx2ue"]
 
-[ext_resource type="Script" path="res://Pause.gd" id="1_j0v45"]
+[ext_resource type="Script" path="res://Scripts/Pause.gd" id="1_f7efj"]
 [ext_resource type="PackedScene" uid="uid://lvdpoi2tki" path="res://Scenes/inventory.tscn" id="2_f0ppc"]
 
 [node name="Pause" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_j0v45")
+script = ExtResource("1_f7efj")
 
 [node name="Inventory" parent="." instance=ExtResource("2_f0ppc")]
+visible = false
 
 [node name="Resume" type="Button" parent="."]
 offset_left = 256.0

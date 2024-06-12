@@ -66,6 +66,7 @@ func _on_poison_pressed():
 
 
 func _on_go_back_pressed():
+	Global.inventory_open = false
 	hide()
 	$"../Resume".show()
 	$"../Settings".show()

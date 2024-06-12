@@ -12,6 +12,6 @@ func _on_body_entered(body):
 		if self.name == "card":
 			Global.poison = true
 		if self.name == "card2":
-			Global.water = true
+			pass
 		queue_free()
 		

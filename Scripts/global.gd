@@ -8,3 +8,5 @@ var attackd = true
 var blockd = true
 var heald = true
 var rund = true
+
+var inventory_open = false
