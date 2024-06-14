@@ -11,3 +11,9 @@ scale = Vector2(0.879999, -1.84)
 texture = ExtResource("2_j5vyl")
 
 [node name="Spawn_point" type="Node2D" parent="."]
+
+[node name="Spawn_time" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Spawn_time" to="." method="_on_spawn_time_timeout"]

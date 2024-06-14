@@ -2,8 +2,9 @@ extends CharacterBody2D
 # Declare member variables here. Examples:
 # var a = 2
 
+var death = false
 var speed = 600
-@onready var player = get_parent().get_node("/root/player")
+@onready var player = get_parent().get_parent().get_node("Player")
 
 var movement_speed: float = 400.0
 var _movement_target_position = Vector2.ZERO
@@ -12,6 +13,7 @@ var _movement_target_position = Vector2.ZERO
 
 
 func _ready():
+	Global.slime += 1
 	navigation_agent.path_desired_distance = 4.0
 	navigation_agent.target_desired_distance = 4.0
 # Make sure to not await during _ready.
@@ -25,7 +27,8 @@ func set_movement_target(_movement_target: Vector2):
 	navigation_agent.target_position = player.global_position
 	
 func _physics_process(_delta):
-	navigation_agent.target_position = player.global_position
+	if death == false:
+		navigation_agent.target_position = player.global_position
 	if navigation_agent.is_navigation_finished():
 		return
 	var current_agent_position: Vector2 = global_position
@@ -39,9 +42,16 @@ func _physics_process(_delta):
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
-		var rng = RandomNumberGenerator.new()
-		var get_water = rng.randi_range(1,4)
-		if Global.water == false and get_water == 4:
+		Global.slime -= 1
+		if death == false:
+			var rng = RandomNumberGenerator.new()
+			var get_water = rng.randi_range(1,4)
+			if Global.water == false and get_water == 4:
+				death = true
+			else:
+				queue_free()
+		elif death == true:
+			Global.slime += 1
 			Global.water = true
-		queue_free()
+			queue_free()
 		

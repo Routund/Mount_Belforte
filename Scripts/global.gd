@@ -10,3 +10,5 @@ var heald = true
 var rund = true
 
 var inventory_open = false
+
+var slime = 1

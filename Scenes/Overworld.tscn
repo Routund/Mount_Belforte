@@ -22,3 +22,4 @@ position = Vector2(227, 247)
 navigation_polygon = SubResource("NavigationPolygon_0qgq4")
 
 [node name="Slime spawner" parent="." instance=ExtResource("3_xn2qj")]
+position = Vector2(329, -387)
