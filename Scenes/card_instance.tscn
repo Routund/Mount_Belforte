@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg7ii38t3bmxx"]
+
+[ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="1_skxpu"]
+[ext_resource type="Script" path="res://Scripts/Card.gd" id="2_hwlra"]
+
+[node name="CardInstance" type="TextureButton"]
+texture_normal = ExtResource("1_skxpu")
+script = ExtResource("2_hwlra")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
