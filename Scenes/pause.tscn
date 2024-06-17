@@ -11,31 +11,51 @@ script = ExtResource("1_f7efj")
 visible = false
 
 [node name="Resume" type="Button" parent="."]
-offset_left = 256.0
-offset_top = 56.0
-offset_right = 326.0
-offset_bottom = 87.0
+anchors_preset = -1
+anchor_left = 0.468
+anchor_top = 0.123
+anchor_right = 0.468
+anchor_bottom = 0.123
+offset_left = -35.136
+offset_top = -15.704
+offset_right = 34.864
+offset_bottom = 15.296
 text = "Resume"
 
 [node name="Settings" type="Button" parent="."]
-offset_left = 256.0
-offset_top = 112.0
-offset_right = 326.0
-offset_bottom = 143.0
+anchors_preset = -1
+anchor_left = 0.475
+anchor_top = 0.209
+anchor_right = 0.475
+anchor_bottom = 0.209
+offset_left = -35.2
+offset_top = -15.432
+offset_right = 34.8
+offset_bottom = 15.568
 text = "Settings"
 
 [node name="Inventor" type="Button" parent="."]
-offset_left = 256.0
-offset_top = 184.0
-offset_right = 339.0
-offset_bottom = 215.0
+anchors_preset = -1
+anchor_left = 0.472
+anchor_top = 0.32
+anchor_right = 0.472
+anchor_bottom = 0.32
+offset_left = -47.744
+offset_top = -15.36
+offset_right = 35.256
+offset_bottom = 15.64
 text = "Inventory"
 
 [node name="Exit" type="Button" parent="."]
-offset_left = 264.0
-offset_top = 248.0
-offset_right = 301.0
-offset_bottom = 279.0
+anchors_preset = -1
+anchor_left = 0.467
+anchor_top = 0.419
+anchor_right = 0.467
+anchor_bottom = 0.419
+offset_left = -17.984
+offset_top = -15.512
+offset_right = 19.016
+offset_bottom = 15.488
 text = "Exit"
 
 [connection signal="pressed" from="Resume" to="." method="_on_button_pressed"]

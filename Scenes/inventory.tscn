@@ -7,15 +7,15 @@ process_mode = 3
 script = ExtResource("1_6mjbc")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -28.0
-offset_right = 96.0
-offset_bottom = 111.0
+anchors_preset = -1
+anchor_left = 0.462
+anchor_top = 0.505
+anchor_right = 0.462
+anchor_bottom = 0.505
+offset_left = -116.224
+offset_top = -31.24
+offset_right = 139.776
+offset_bottom = 107.76
 grow_horizontal = 2
 grow_vertical = 2
 follow_focus = true
@@ -54,11 +54,49 @@ layout_mode = 2
 text = "Bottled Water"
 
 [node name="go_back" type="Button" parent="."]
-offset_left = 424.0
-offset_top = 496.0
-offset_right = 528.0
-offset_bottom = 527.0
-text = "Pause menu"
+anchors_preset = -1
+anchor_left = 0.458
+anchor_top = 0.789
+anchor_right = 0.458
+anchor_bottom = 0.789
+offset_left = -103.616
+offset_top = -15.272
+offset_right = 0.383972
+offset_bottom = 15.728
+text = "Go Back"
+
+[node name="Deck" type="HBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.458
+anchor_right = 0.458
+offset_left = -423.616
+offset_top = 80.0
+offset_right = 352.384
+offset_bottom = 240.0
+
+[node name="Attack" type="Button" parent="Deck"]
+layout_mode = 2
+text = "Attack"
+
+[node name="Block" type="Button" parent="Deck"]
+layout_mode = 2
+text = "Block"
+
+[node name="Heal" type="Button" parent="Deck"]
+layout_mode = 2
+text = "Heal"
+
+[node name="Run" type="Button" parent="Deck"]
+layout_mode = 2
+text = "Run"
+
+[node name="Poison" type="Button" parent="Deck"]
+layout_mode = 2
+text = "Poison"
+
+[node name="Water" type="Button" parent="Deck"]
+layout_mode = 2
+text = "Bottled Water"
 
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Block" to="." method="_on_block_pressed"]
@@ -67,3 +105,9 @@ text = "Pause menu"
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Poison" to="." method="_on_poison_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Water" to="." method="_on_water_pressed"]
 [connection signal="pressed" from="go_back" to="." method="_on_go_back_pressed"]
+[connection signal="pressed" from="Deck/Attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="Deck/Block" to="." method="_on_block_pressed"]
+[connection signal="pressed" from="Deck/Heal" to="." method="_on_heal_pressed"]
+[connection signal="pressed" from="Deck/Run" to="." method="_on_run_pressed"]
+[connection signal="pressed" from="Deck/Poison" to="." method="_on_poison_pressed"]
+[connection signal="pressed" from="Deck/Water" to="." method="_on_water_pressed"]
