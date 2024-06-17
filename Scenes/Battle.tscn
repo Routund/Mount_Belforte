@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://uk07hjo5epu4"]
+[gd_scene load_steps=7 format=3 uid="uid://uk07hjo5epu4"]
 
 [ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="1_ijvkk"]
 [ext_resource type="Script" path="res://Scripts/battle_manager.gd" id="2_nygms"]
 [ext_resource type="Script" path="res://Scripts/ConfirmPlay.gd" id="3_kbwne"]
 [ext_resource type="Script" path="res://Scripts/queue.gd" id="4_pefl7"]
-[ext_resource type="Script" path="res://Scenes/hand.gd" id="5_cltqn"]
+[ext_resource type="Script" path="res://Scripts/hand.gd" id="5_cltqn"]
+[ext_resource type="Script" path="res://Scenes/fakes.gd" id="6_qetmb"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -55,6 +56,27 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = -10
 script = ExtResource("5_cltqn")
+
+[node name="FakeQ" type="HBoxContainer" parent="CanvasLayer/CardManager"]
+offset_top = -228.0
+offset_bottom = -104.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -10
+script = ExtResource("6_qetmb")
+
+[node name="FakeH" type="HBoxContainer" parent="CanvasLayer/CardManager"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -84.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -10
+script = ExtResource("6_qetmb")
 
 [connection signal="confirmPlay" from="CanvasLayer/CardManager/Button" to="CanvasLayer/CardManager" method="_on_button_confirm_play"]
 [connection signal="confirmPlay" from="CanvasLayer/CardManager/Button" to="CanvasLayer/CardManager/Queue" method="_on_button_confirm_play"]
