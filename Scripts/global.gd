@@ -1,8 +1,14 @@
 extends Node
 
-var nothing = false
-var nothingd = false
+var water = false
+var waterd = false
+var poison = false
+var poisond = false
 var attackd = true
 var blockd = true
 var heald = true
 var rund = true
+
+var inventory_open = false
+
+var slime = 1

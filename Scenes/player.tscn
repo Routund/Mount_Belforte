@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_ubegy"]
 [ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="2_swqc7"]
-[ext_resource type="PackedScene" uid="uid://lvdpoi2tki" path="res://Scenes/inventory.tscn" id="3_ql24e"]
+[ext_resource type="PackedScene" uid="uid://y1go6d8bx2ue" path="res://Scenes/pause.tscn" id="3_mn2gf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djaiy"]
 size = Vector2(120, 115)
@@ -20,5 +20,5 @@ shape = SubResource("RectangleShape2D_djaiy")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 
-[node name="Inventory" parent="." instance=ExtResource("3_ql24e")]
+[node name="Pause" parent="." instance=ExtResource("3_mn2gf")]
 visible = false
