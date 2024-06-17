@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://y1go6d8bx2ue"]
+
+[ext_resource type="Script" path="res://Scripts/Pause.gd" id="1_f7efj"]
+[ext_resource type="PackedScene" uid="uid://lvdpoi2tki" path="res://Scenes/inventory.tscn" id="2_f0ppc"]
+
+[node name="Pause" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_f7efj")
+
+[node name="Inventory" parent="." instance=ExtResource("2_f0ppc")]
+visible = false
+
+[node name="Resume" type="Button" parent="."]
+offset_left = 256.0
+offset_top = 56.0
+offset_right = 326.0
+offset_bottom = 87.0
+text = "Resume"
+
+[node name="Settings" type="Button" parent="."]
+offset_left = 256.0
+offset_top = 112.0
+offset_right = 326.0
+offset_bottom = 143.0
+text = "Settings"
+
+[node name="Inventor" type="Button" parent="."]
+offset_left = 256.0
+offset_top = 184.0
+offset_right = 339.0
+offset_bottom = 215.0
+text = "Inventory"
+
+[node name="Exit" type="Button" parent="."]
+offset_left = 264.0
+offset_top = 248.0
+offset_right = 301.0
+offset_bottom = 279.0
+text = "Exit"
+
+[connection signal="pressed" from="Resume" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Inventor" to="." method="_on_inventory_pressed"]

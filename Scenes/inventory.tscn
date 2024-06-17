@@ -12,9 +12,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
-offset_right = 128.0
-offset_bottom = 139.0
+offset_left = -160.0
+offset_top = -28.0
+offset_right = 96.0
+offset_bottom = 111.0
 grow_horizontal = 2
 grow_vertical = 2
 follow_focus = true
@@ -44,12 +45,25 @@ text = "Heal"
 layout_mode = 2
 text = "Run"
 
-[node name="Nothing" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="Poison" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "NOTHING"
+text = "Poison"
+
+[node name="Water" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Bottled Water"
+
+[node name="go_back" type="Button" parent="."]
+offset_left = 424.0
+offset_top = 496.0
+offset_right = 528.0
+offset_bottom = 527.0
+text = "Pause menu"
 
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Block" to="." method="_on_block_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Heal" to="." method="_on_heal_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Run" to="." method="_on_run_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Nothing" to="." method="_on_nothing_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Poison" to="." method="_on_poison_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Water" to="." method="_on_water_pressed"]
+[connection signal="pressed" from="go_back" to="." method="_on_go_back_pressed"]

@@ -4,6 +4,7 @@ var speed = 700
 
 
 func _physics_process(_delta):
+	print(Global.slime)
 	var direction = Vector2()
 	if Input.is_action_pressed("up"):
 		direction += Vector2(0,-1)
