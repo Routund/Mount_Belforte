@@ -31,38 +31,12 @@ offset_bottom = 43.0
 text = "Play"
 script = ExtResource("3_kbwne")
 
-[node name="Queue" type="HBoxContainer" parent="CanvasLayer/CardManager"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -228.0
-offset_bottom = -104.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = -10
-script = ExtResource("4_pefl7")
-
-[node name="Hand" type="HBoxContainer" parent="CanvasLayer/CardManager"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -84.0
-offset_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = -10
-script = ExtResource("5_cltqn")
-
 [node name="FakeQ" type="HBoxContainer" parent="CanvasLayer/CardManager"]
 offset_top = -228.0
 offset_bottom = -104.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = -10
+theme_override_constants/separation = -1
 script = ExtResource("6_qetmb")
 
 [node name="FakeH" type="HBoxContainer" parent="CanvasLayer/CardManager"]
@@ -75,8 +49,34 @@ offset_top = -84.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = -10
+theme_override_constants/separation = -1
 script = ExtResource("6_qetmb")
+
+[node name="Queue" type="HBoxContainer" parent="CanvasLayer/CardManager"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -228.0
+offset_bottom = -104.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -1
+script = ExtResource("4_pefl7")
+
+[node name="Hand" type="HBoxContainer" parent="CanvasLayer/CardManager"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -84.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -1
+script = ExtResource("5_cltqn")
 
 [connection signal="confirmPlay" from="CanvasLayer/CardManager/Button" to="CanvasLayer/CardManager" method="_on_button_confirm_play"]
 [connection signal="confirmPlay" from="CanvasLayer/CardManager/Button" to="CanvasLayer/CardManager/Queue" method="_on_button_confirm_play"]
