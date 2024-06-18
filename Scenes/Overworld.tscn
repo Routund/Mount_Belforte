@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://upmmvi2bl5bl"]
+[gd_scene load_steps=6 format=3 uid="uid://upmmvi2bl5bl"]
 
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="1_l2n5d"]
 [ext_resource type="PackedScene" uid="uid://y5g78wv73dul" path="res://Scenes/tester_card.tscn" id="2_bjbhx"]
 [ext_resource type="PackedScene" uid="uid://boojurd07rf2h" path="res://Scenes/slime_spawner.tscn" id="3_xn2qj"]
+[ext_resource type="PackedScene" uid="uid://cdigm0hn3chus" path="res://Scenes/rock_bat.tscn" id="4_cntlh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0qgq4"]
 vertices = PackedVector2Array(2401, 563, -2190, 605, -2179, -1569, 2317, -1588)
@@ -23,3 +24,6 @@ navigation_polygon = SubResource("NavigationPolygon_0qgq4")
 
 [node name="Slime spawner" parent="." instance=ExtResource("3_xn2qj")]
 position = Vector2(329, -387)
+
+[node name="Rock_bat" parent="." instance=ExtResource("4_cntlh")]
+position = Vector2(1097, -392)
