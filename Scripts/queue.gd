@@ -12,6 +12,7 @@ func _process(delta):
 
 func _on_button_confirm_play():
 	for i in get_children():
+		i.fake.queue_free()
 		i.queue_free()
 
 func animate():

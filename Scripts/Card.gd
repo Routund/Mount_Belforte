@@ -13,6 +13,8 @@ var fakeQ = self
 @onready var text = get_node("Label")
 var fake_preload = preload("res://Scenes/fake_card.tscn")
 var fake = self
+var new_parent=self
+var parentSelf=false
 
 var is_button_pressed = false
 func _ready():
@@ -37,7 +39,6 @@ func _process(_delta):
 
 	if is_button_pressed and not is_pressed():
 		is_button_pressed = false
-		var new_parent=self
 		var new_fake_parent= self
 		if queued:
 			new_parent = hand
@@ -51,8 +52,7 @@ func _process(_delta):
 		animate=true
 		fake.get_parent().remove_child(fake)
 		new_fake_parent.add_child(fake)
-		reparent(new_parent,true)
-		
+		parentSelf=true
 	elif is_pressed() and not is_button_pressed:
 		# Button is pressed for the first time
 		is_button_pressed = true
@@ -60,12 +60,14 @@ func _process(_delta):
 func animate_self():
 	var newTransform = fake.global_position
 	var tween = create_tween()
-	tween.tween_property(self, "global_position", newTransform, 0.1)
+	tween.tween_property(self, "global_position", newTransform, 0.08)
 	tween.connect("finished", on_tween_finished)
 	disabled = true
 
 func on_tween_finished():
 	previous_pos=global_position
 	disabled = false
-	
-	
+	if parentSelf:
+		reparent(new_parent)
+	global_position=fake.global_position
+
