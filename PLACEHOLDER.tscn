@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://byfdm4xp8idnw"]
+
+[ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="1_iaxiw"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_px602"]
+
+[node name="Node2D" type="Sprite2D"]
+modulate = Color(1, 0, 1, 1)
+material = SubResource("CanvasItemMaterial_px602")
+scale = Vector2(0.40625, 0.46875)
+texture = ExtResource("1_iaxiw")
