@@ -9,7 +9,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if is_button_pressed and not is_pressed():
 		is_button_pressed = false
 		confirmPlay.emit()

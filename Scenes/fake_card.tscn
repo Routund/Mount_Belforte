@@ -1,14 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgv2t27uk4qaq"]
+[gd_scene load_steps=2 format=3 uid="uid://bgv2t27uk4qaq"]
 
 [ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="1_qia3o"]
-[ext_resource type="Script" path="res://Scenes/fake_card.gd" id="2_elm1o"]
 
-[node name="CardInstance" type="TextureButton"]
+[node name="CardInstance" type="TextureRect"]
 modulate = Color(1, 1, 1, 0)
-texture_normal = ExtResource("1_qia3o")
-script = ExtResource("2_elm1o")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+texture = ExtResource("1_qia3o")

@@ -35,12 +35,15 @@ func heal():
 func block():
 	is_blocking=true
 func run():
+	get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
 	return true
 
 # All enemy attack functions
 func basic_attack():
-	player_health-=40
-
+	if !is_blocking:
+		player_health-=40
+	else:
+		player_health-=10
 
 # Pick random card from deck, then add it to hand and remove from deck
 # Then instantiate a new card with that ID
@@ -51,7 +54,7 @@ func draw():
 	var hand_last = hand[len(hand)-1]
 	var instance = card_preload.instantiate()
 	instance.set("card_id",hand_last)
-	HBox.add_child(instance)
+	get_node("Control").add_child(instance)
 
 func queue_card(card):
 	hand.pop_at(hand.find(card))
@@ -72,6 +75,7 @@ func _on_button_confirm_play():
 	enemies[enemy_id][3][randi_range(0,len(enemies[enemy_id][3])-1)].call()
 	if(len(deck)>0):
 		draw()
+	is_blocking=false
 	print("Enemy Health: " + str(enemy_health))
 	print("Player Health: " + str(player_health))
 	pass # Replace with function body.

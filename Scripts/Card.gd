@@ -25,6 +25,7 @@ func _ready():
 	fakeQ = battle_manager.get_node("FakeQ")
 	fakeH = battle_manager.get_node("FakeH")
 	fake = fake_preload.instantiate()
+	new_parent=hand
 	fakeH.add_child(fake)
 	previous_pos=global_position-Vector2(0,-100)
 	animate = true
@@ -34,11 +35,16 @@ func _ready():
 func _process(_delta):
 	if animate:
 		animate =false
+		animate_self()
 		hand.animate()
 		queue.animate()
+		parentSelf = true
+		return
 
 	if is_button_pressed and not is_pressed():
 		is_button_pressed = false
+		
+		# Get new parent for self and fake card,tell battle manager about change, then parent fake card
 		var new_fake_parent= self
 		if queued:
 			new_parent = hand

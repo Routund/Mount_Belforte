@@ -5,16 +5,16 @@
 [ext_resource type="Script" path="res://Scripts/ConfirmPlay.gd" id="3_kbwne"]
 [ext_resource type="Script" path="res://Scripts/queue.gd" id="4_pefl7"]
 [ext_resource type="Script" path="res://Scripts/hand.gd" id="5_cltqn"]
-[ext_resource type="Script" path="res://Scenes/fakes.gd" id="6_qetmb"]
+[ext_resource type="Script" path="res://Scripts/fakes.gd" id="6_qetmb"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Enemy" type="Sprite2D" parent="."]
-position = Vector2(76, 345)
+position = Vector2(992, 345)
 texture = ExtResource("1_ijvkk")
 
 [node name="Player" type="Sprite2D" parent="."]
-position = Vector2(1083, 351)
+position = Vector2(160, 345)
 texture = ExtResource("1_ijvkk")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -36,7 +36,7 @@ offset_top = -228.0
 offset_bottom = -104.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = -1
+theme_override_constants/separation = -20
 script = ExtResource("6_qetmb")
 
 [node name="FakeH" type="HBoxContainer" parent="CanvasLayer/CardManager"]
@@ -49,7 +49,7 @@ offset_top = -84.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = -1
+theme_override_constants/separation = -20
 script = ExtResource("6_qetmb")
 
 [node name="Queue" type="HBoxContainer" parent="CanvasLayer/CardManager"]
@@ -62,7 +62,7 @@ offset_top = -228.0
 offset_bottom = -104.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = -1
+theme_override_constants/separation = -20
 script = ExtResource("4_pefl7")
 
 [node name="Hand" type="HBoxContainer" parent="CanvasLayer/CardManager"]
@@ -75,8 +75,14 @@ offset_top = -84.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = -1
+theme_override_constants/separation = -20
 script = ExtResource("5_cltqn")
+
+[node name="Control" type="Control" parent="CanvasLayer/CardManager"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="confirmPlay" from="CanvasLayer/CardManager/Button" to="CanvasLayer/CardManager" method="_on_button_confirm_play"]
 [connection signal="confirmPlay" from="CanvasLayer/CardManager/Button" to="CanvasLayer/CardManager/Queue" method="_on_button_confirm_play"]
