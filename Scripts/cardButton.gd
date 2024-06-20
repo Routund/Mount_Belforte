@@ -1,20 +1,17 @@
-extends Button
+extends TextureButton
 
-signal confirmPlay
-
-var is_button_pressed = false
+var is_button_pressed=false
+signal chosen
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	if is_button_pressed and not is_pressed():
-		is_button_pressed = false
-		confirmPlay.emit()
+		chosen.emit()
+		is_button_pressed=false
 	elif is_pressed() and not is_button_pressed:
-		# Button is pressed for the first time
-		is_button_pressed = true
+		is_button_pressed=true
 	pass
-

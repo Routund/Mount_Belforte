@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgv2t27uk4qaq"]
+
+[ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="1_qia3o"]
+
+[node name="CardInstance" type="TextureRect"]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("1_qia3o")

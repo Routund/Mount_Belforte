@@ -7,15 +7,8 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
-func _on_button_confirm_play():
-	for i in get_children():
-		i.fake.queue_free()
-		i.queue_free()
-
 func animate():
 	for sprite in get_children():
 		sprite.animate_self()
 	pass
+
