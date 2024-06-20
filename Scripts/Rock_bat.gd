@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 var rock = false
 var speed = 600
+var rock_speed = 1000
 @onready var player = get_parent().get_node("Player")
 
 var movement_speed: float = 400.0
@@ -19,11 +20,12 @@ func _ready():
 	call_deferred("actor_setup")
 
 func actor_setup():
-	# Wait for the first physics frame so the NavigationServer can sync.
-	await get_tree().physics_frame
-	set_movement_target(_movement_target_position)
+	if rock == false:
+		await get_tree().physics_frame
+		set_movement_target(_movement_target_position)
 func set_movement_target(_movement_target: Vector2):
-	navigation_agent.target_position = player.global_position
+	if rock == false:
+		navigation_agent.target_position = player.global_position
 	
 func _physics_process(_delta):
 	if rock == false:
@@ -36,16 +38,16 @@ func _physics_process(_delta):
 		new_velocity = new_velocity.normalized()
 		velocity = new_velocity * speed
 	else: 
+		var direction = Vector2()
 		if $down.is_colliding():
-			velocity = speed 
+			direction += Vector2(0,-1)
 		elif $up.is_colliding():
-			velocity = speed
+			direction += Vector2(0,1)
 		elif $left.is_colliding():
-			velocity = speed
+			direction += Vector2(1,0)
 		elif $right.is_colliding():
-			velocity = speed
-		else:
-			pass
+			direction += Vector2(-1,0)
+		velocity = direction * rock_speed
 	move_and_slide()
 
 

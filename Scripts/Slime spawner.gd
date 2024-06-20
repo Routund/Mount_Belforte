@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 var slime = preload("res://Scenes/slime.tscn")
 # Called when the node enters the scene tree for the first time.
