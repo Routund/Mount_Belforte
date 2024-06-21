@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 var rock = false
 var speed = 600
-var rock_speed = 1000
+var rock_speed = 700
 @onready var player = get_parent().get_node("Player")
 
 var movement_speed: float = 400.0
@@ -38,7 +38,7 @@ func _physics_process(_delta):
 		new_velocity = new_velocity.normalized()
 		velocity = new_velocity * speed
 	else: 
-		var direction = Vector2()
+		var direction = Vector2.ZERO
 		if $down.is_colliding():
 			direction += Vector2(0,-1)
 		elif $up.is_colliding():
@@ -47,6 +47,14 @@ func _physics_process(_delta):
 			direction += Vector2(1,0)
 		elif $right.is_colliding():
 			direction += Vector2(-1,0)
+		elif $bottoml.is_colliding():
+			direction += Vector2(1,-1)
+		elif $bottomr.is_colliding():
+			direction += Vector2(-1,-1)
+		elif $topl.is_colliding():
+			direction += Vector2(1,1)
+		elif $topr.is_colliding():
+			direction += Vector2(-1,1)
 		velocity = direction * rock_speed
 	move_and_slide()
 

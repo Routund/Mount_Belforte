@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/Rock_bat.gd" id="1_q14sj"]
 [ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="2_nwj0k"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_we7ai"]
-size = Vector2(128, 128)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1reh7"]
+size = Vector2(80, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ytydg"]
 size = Vector2(160, 160)
@@ -16,7 +16,7 @@ script = ExtResource("1_q14sj")
 texture = ExtResource("2_nwj0k")
 
 [node name="Rock_collision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_we7ai")
+shape = SubResource("RectangleShape2D_1reh7")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -43,5 +43,17 @@ target_position = Vector2(8.68798e-06, 72)
 rotation = 4.71239
 scale = Vector2(20, 1)
 target_position = Vector2(2.31744e-06, 72)
+
+[node name="bottoml" type="RayCast2D" parent="."]
+target_position = Vector2(-64, 64)
+
+[node name="topl" type="RayCast2D" parent="."]
+target_position = Vector2(-64, -64)
+
+[node name="topr" type="RayCast2D" parent="."]
+target_position = Vector2(64, -64)
+
+[node name="bottomr" type="RayCast2D" parent="."]
+target_position = Vector2(64, 64)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

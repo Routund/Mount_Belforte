@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="2_swqc7"]
 [ext_resource type="PackedScene" uid="uid://y1go6d8bx2ue" path="res://Scenes/pause.tscn" id="3_mn2gf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_djaiy"]
-size = Vector2(120, 115)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2oo8"]
+size = Vector2(124, 125)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ubegy")
@@ -14,8 +14,8 @@ script = ExtResource("1_ubegy")
 texture = ExtResource("2_swqc7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_djaiy")
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_o2oo8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
