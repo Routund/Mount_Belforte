@@ -37,26 +37,34 @@ func _physics_process(_delta):
 		var new_velocity: Vector2 = next_path_position - current_agent_position
 		new_velocity = new_velocity.normalized()
 		velocity = new_velocity * speed
-	else: 
+	else:
 		var direction = Vector2.ZERO
-		if $down.is_colliding():
+		if $down.is_colliding() and $down.get_collider().name == "Player":
 			direction += Vector2(0,-1)
-		elif $up.is_colliding():
+		elif $up.is_colliding() and $up.get_collider().name == "Player":
 			direction += Vector2(0,1)
-		elif $left.is_colliding():
+		elif $left.is_colliding() and $left.get_collider().name == "Player":
 			direction += Vector2(1,0)
-		elif $right.is_colliding():
+		elif $right.is_colliding() and $right.get_collider().name == "Player":
 			direction += Vector2(-1,0)
-		elif $bottoml.is_colliding():
+		elif $bottoml.is_colliding() and $bottoml.get_collider().name == "Player":
 			direction += Vector2(1,-1)
-		elif $bottomr.is_colliding():
+		elif $bottomr.is_colliding() and $bottomr.get_collider().name == "Player":
 			direction += Vector2(-1,-1)
-		elif $topl.is_colliding():
+		elif $topl.is_colliding() and $topl.get_collider().name == "Player":
 			direction += Vector2(1,1)
-		elif $topr.is_colliding():
+		elif $topr.is_colliding() and $topr.get_collider().name == "Player":
 			direction += Vector2(-1,1)
+		if Input.is_action_just_pressed("interact"):
+			if rock_speed == 700:
+				rock_speed = -700
+				$Rock_collision.disabled = true
+			else:
+				rock_speed = 700
+				$Rock_collision.disabled = false
 		velocity = direction * rock_speed
 	move_and_slide()
+
 
 
 func _on_area_2d_body_entered(body):

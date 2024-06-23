@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cynbtl2rfc874"]
+
+[ext_resource type="Script" path="res://Scripts/Rock_button.gd" id="1_4gt8p"]
+[ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="2_pawiq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tkf72"]
+radius = 72.0
+
+[node name="Rock_button" type="Area2D"]
+script = ExtResource("1_4gt8p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pawiq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tkf72")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
