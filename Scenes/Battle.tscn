@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://uk07hjo5epu4"]
+[gd_scene load_steps=10 format=3 uid="uid://uk07hjo5epu4"]
 
 [ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="1_ijvkk"]
 [ext_resource type="Script" path="res://Scripts/battle_manager.gd" id="2_nygms"]
+[ext_resource type="Script" path="res://Scripts/EnemyHealthBar.gd" id="3_ibbn5"]
 [ext_resource type="Script" path="res://Scripts/ConfirmPlay.gd" id="3_kbwne"]
+[ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="3_mdeto"]
 [ext_resource type="Script" path="res://Scripts/queue.gd" id="4_pefl7"]
 [ext_resource type="Script" path="res://Scripts/hand.gd" id="5_cltqn"]
 [ext_resource type="Script" path="res://Scripts/fakes.gd" id="6_qetmb"]
@@ -15,10 +17,69 @@ position = Vector2(983, 241.5)
 scale = Vector2(1.828, 2.281)
 texture = ExtResource("1_ijvkk")
 
+[node name="EnemyHealthBar" type="NinePatchRect" parent="Enemy"]
+self_modulate = Color(0.160784, 0, 0.00392157, 1)
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -244.0
+offset_top = -95.0
+offset_right = 116.0
+offset_bottom = -67.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_it2nd")
+region_rect = Rect2(0, 0, 23, 32)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 6
+patch_margin_bottom = 10
+script = ExtResource("3_ibbn5")
+
+[node name="Health" type="NinePatchRect" parent="Enemy/EnemyHealthBar"]
+modulate = Color(0.976471, 0.160784, 0, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -360.0
+offset_bottom = 28.0
+grow_horizontal = 0
+pivot_offset = Vector2(320, 0)
+texture = ExtResource("7_it2nd")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 6
+patch_margin_bottom = 10
+
 [node name="Player" type="Sprite2D" parent="."]
 position = Vector2(148, 241.5)
 scale = Vector2(1.82813, 2.28125)
 texture = ExtResource("1_ijvkk")
+
+[node name="PlayerHealthBar" type="NinePatchRect" parent="Player"]
+self_modulate = Color(0.160784, 0, 0.00392157, 1)
+offset_left = -64.0
+offset_top = -95.0
+offset_right = 296.0
+offset_bottom = -67.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_it2nd")
+region_rect = Rect2(0, 0, 23, 32)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 6
+patch_margin_bottom = 10
+script = ExtResource("3_mdeto")
+
+[node name="Health" type="NinePatchRect" parent="Player/PlayerHealthBar"]
+modulate = Color(0.976471, 0.160784, 0, 1)
+offset_right = 360.0
+offset_bottom = 28.0
+texture = ExtResource("7_it2nd")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 6
+patch_margin_bottom = 10
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -36,8 +97,15 @@ script = ExtResource("3_kbwne")
 
 [node name="FakeQ" type="HBoxContainer" parent="CanvasLayer/CardManager"]
 custom_minimum_size = Vector2(0, 160)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_top = -310.0
 offset_bottom = -124.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = -10
 script = ExtResource("6_qetmb")
 
@@ -88,32 +156,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
-modulate = Color(0.160784, 0, 0.00392157, 1)
-offset_left = 28.0
-offset_top = 27.0
-offset_right = 329.0
-offset_bottom = 55.0
-texture = ExtResource("7_it2nd")
-region_rect = Rect2(0, 0, 23, 32)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 6
-patch_margin_bottom = 10
-
-[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect"]
-modulate = Color(0.160784, 0, 0.00392157, 1)
-offset_left = 770.0
-offset_top = 6.0
-offset_right = 1071.0
-offset_bottom = 34.0
-texture = ExtResource("7_it2nd")
-region_rect = Rect2(0, 0, 23, 32)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 6
-patch_margin_bottom = 10
 
 [connection signal="confirmPlay" from="CanvasLayer/CardManager/Button" to="CanvasLayer/CardManager" method="_on_button_confirm_play"]
 [connection signal="confirmPlay" from="CanvasLayer/CardManager/Button" to="CanvasLayer/CardManager/Queue" method="_on_button_confirm_play"]

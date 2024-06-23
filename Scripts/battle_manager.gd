@@ -10,6 +10,8 @@ var queue = []
 var card_funcs = [slash,heal,block,run]
 
 @onready var HBox = get_node("Hand")
+@onready var PlayerHealthBar = get_node("../../Player/PlayerHealthBar")
+@onready var EnemyHealthBar = get_node("../../Enemy/EnemyHealthBar")
 
 var card_preload = preload("res://Scenes/card_instance.tscn")
 var is_blocking = false
@@ -26,6 +28,9 @@ func _process(_delta):
 		true
 	pass
 
+func damage_enemy(amount):
+	enemy_health-=amount
+	EnemyHealthBar.TweenTo(enemy_health)
 # All player card functions
 func slash():
 	enemy_health-=70
@@ -38,12 +43,14 @@ func run():
 	get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
 	return true
 
+func damage_player(amount):
+	if(is_blocking):
+		amount/=4
+	player_health-=amount
+	enemy_health.TweenTo(player_health)
 # All enemy attack functions
 func basic_attack():
-	if !is_blocking:
-		player_health-=40
-	else:
-		player_health-=10
+	damage_player(40)
 
 # Pick random card from deck, then add it to hand and remove from deck
 # Then instantiate a new card with that ID

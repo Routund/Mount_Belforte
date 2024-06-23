@@ -14,7 +14,6 @@ offset_right = 115.0
 offset_bottom = 160.0
 texture_normal = ExtResource("1_ce6d6")
 stretch_mode = 5
-flip_h = true
 script = ExtResource("2_hwlra")
 
 [node name="Label" type="Label" parent="."]

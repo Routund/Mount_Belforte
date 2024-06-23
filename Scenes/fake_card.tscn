@@ -7,5 +7,4 @@ modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(115, 160)
 offset_right = 85.0
 offset_bottom = 118.0
-scale = Vector2(0.9, 0.9)
 texture = ExtResource("1_ifxp7")
