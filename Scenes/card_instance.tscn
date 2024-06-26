@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cg7ii38t3bmxx"]
 
-[ext_resource type="Texture2D" uid="uid://d1g4xrheo41cs" path="res://Sprites/Cards/Blank_Card.png" id="1_ce6d6"]
+[ext_resource type="Texture2D" uid="uid://cptg536y3bbgu" path="res://Sprites/CardNew.png" id="1_0vfsl"]
 [ext_resource type="Script" path="res://Scripts/Card.gd" id="2_hwlra"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dlat6"]
@@ -12,7 +12,7 @@ texture_filter = 1
 custom_minimum_size = Vector2(115, 160)
 offset_right = 115.0
 offset_bottom = 160.0
-texture_normal = ExtResource("1_ce6d6")
+texture_normal = ExtResource("1_0vfsl")
 stretch_mode = 5
 script = ExtResource("2_hwlra")
 

@@ -1,7 +1,9 @@
 extends Node2D
 
 var player_health = 200
+var player_max = 200
 var enemy_health = 200
+var enemy_max = 200
 var enemy_id = 0
 
 var deck = [0,1,2,3]
@@ -30,13 +32,13 @@ func _process(_delta):
 
 func damage_enemy(amount):
 	enemy_health-=amount
-	EnemyHealthBar.TweenTo(enemy_health)
+	EnemyHealthBar.TweenTo(enemy_health,enemy_max)
 # All player card functions
 func slash():
-	enemy_health-=70
+	damage_enemy(70)
 func heal():
 	# Make sure player doesnt overheal
-	player_health=min(player_health+40,200)
+	damage_player(-min(40,player_max-player_health))
 func block():
 	is_blocking=true
 func run():
@@ -47,7 +49,7 @@ func damage_player(amount):
 	if(is_blocking):
 		amount/=4
 	player_health-=amount
-	enemy_health.TweenTo(player_health)
+	PlayerHealthBar.TweenTo(player_health,player_max)
 # All enemy attack functions
 func basic_attack():
 	damage_player(40)

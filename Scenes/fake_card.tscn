@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://bgv2t27uk4qaq"]
 
-[ext_resource type="Texture2D" uid="uid://d1g4xrheo41cs" path="res://Sprites/Cards/Blank_Card.png" id="1_ifxp7"]
+[ext_resource type="Texture2D" uid="uid://cptg536y3bbgu" path="res://Sprites/CardNew.png" id="1_uxwbv"]
 
 [node name="CardInstance" type="TextureRect"]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(115, 160)
 offset_right = 85.0
 offset_bottom = 118.0
-texture = ExtResource("1_ifxp7")
+texture = ExtResource("1_uxwbv")
