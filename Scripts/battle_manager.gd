@@ -1,7 +1,9 @@
 extends Node2D
 
 var player_health = 200
+var player_max = 200
 var enemy_health = 200
+var enemy_max = 200
 var enemy_id = 0
 
 var deck = [0,1,2,3]
@@ -10,6 +12,8 @@ var queue = []
 var card_funcs = [slash,heal,block,run]
 
 @onready var HBox = get_node("Hand")
+@onready var PlayerHealthBar = get_node("../../Player/PlayerHealthBar")
+@onready var EnemyHealthBar = get_node("../../Enemy/EnemyHealthBar")
 
 var card_preload = preload("res://Scenes/card_instance.tscn")
 var is_blocking = false
@@ -26,24 +30,29 @@ func _process(_delta):
 		true
 	pass
 
+func damage_enemy(amount):
+	enemy_health-=amount
+	EnemyHealthBar.TweenTo(enemy_health,enemy_max)
 # All player card functions
 func slash():
-	enemy_health-=70
+	damage_enemy(70)
 func heal():
 	# Make sure player doesnt overheal
-	player_health=min(player_health+40,200)
+	damage_player(-min(40,player_max-player_health))
 func block():
 	is_blocking=true
 func run():
 	get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
 	return true
 
+func damage_player(amount):
+	if(is_blocking):
+		amount/=4
+	player_health-=amount
+	PlayerHealthBar.TweenTo(player_health,player_max)
 # All enemy attack functions
 func basic_attack():
-	if !is_blocking:
-		player_health-=40
-	else:
-		player_health-=10
+	damage_player(40)
 
 # Pick random card from deck, then add it to hand and remove from deck
 # Then instantiate a new card with that ID
