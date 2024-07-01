@@ -1,15 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://cg7ii38t3bmxx"]
 
-[ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="1_14jwp"]
-[ext_resource type="Script" path="res://Scripts/Card.gd" id="2_u5urt"]
+[gd_scene load_steps=4 format=3 uid="uid://cg7ii38t3bmxx"]
 
-[node name="CardInstance" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://cptg536y3bbgu" path="res://Sprites/CardNew.png" id="1_0vfsl"]
+[ext_resource type="Script" path="res://Scripts/Card.gd" id="2_hwlra"]
 
-[node name="TextureButton" type="TextureButton" parent="."]
-offset_left = 1.0
-offset_top = 3.0
-offset_right = 295.0
-offset_bottom = 380.0
-texture_normal = ExtResource("1_14jwp")
-stretch_mode = 0
-script = ExtResource("2_u5urt")
+[sub_resource type="LabelSettings" id="LabelSettings_dlat6"]
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[node name="CardInstance" type="TextureButton"]
+texture_filter = 1
+custom_minimum_size = Vector2(115, 160)
+offset_right = 115.0
+offset_bottom = 160.0
+texture_normal = ExtResource("1_0vfsl")
+stretch_mode = 5
+script = ExtResource("2_hwlra")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 113.0
+offset_right = 89.0
+offset_bottom = 142.0
+text = "0"
+label_settings = SubResource("LabelSettings_dlat6")
+horizontal_alignment = 1
+vertical_alignment = 1
