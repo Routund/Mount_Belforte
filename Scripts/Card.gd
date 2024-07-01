@@ -76,4 +76,3 @@ func on_tween_finished():
 	if parentSelf:
 		reparent(new_parent)
 	global_position=fake.global_position
-
