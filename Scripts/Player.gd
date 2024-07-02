@@ -1,9 +1,8 @@
 extends CharacterBody2D
 
 var speed = 700
+@onready var tree = get_node("AnimationTree")
 
-func _ready():
-	$AnimationPlayer.play("idle_down")
 
 func _physics_process(_delta):
 	var direction = Vector2(
@@ -12,27 +11,12 @@ func _physics_process(_delta):
 	)
 	velocity = direction * speed
 	
-	#if Input.is_action_pressed("up"):
-		#direction += Vector2(0,-1)
-		#$AnimationPlayer.play("walk_up")
-	#if Input.is_action_pressed("down"):
-		#direction += Vector2(0,1)
-		#$AnimationPlayer.play("walk_down")
-	#if Input.is_action_pressed("left"):
-		#direction += Vector2(-1,0) 
-		#$AnimationPlayer.play("walk_left")
-	#if Input.is_action_pressed("right"):
-		#direction += Vector2(1,0)
-		#$AnimationPlayer.play("walk_right")
-	#if Input.is_action_just_released("down"):
-		#$AnimationPlayer.play("idle_down")
-	#if Input.is_action_just_released("up"):
-		#$AnimationPlayer.play("idle_up")
-	#if Input.is_action_just_released("left"):
-		#$AnimationPlayer.play("idle_left")
-	#if Input.is_action_just_released("right"):
-		#$AnimationPlayer.play("idle_right")
-	
+	if direction == Vector2.ZERO:
+		tree.get("parameters/playback").travel("Idle")
+	else:
+		tree.get("parameters/playback").travel("Walk")
+		tree.set("parameters/Idle/BlendSpace2D/blend_position", direction)
+		tree.set("parameters/Walk/BlendSpace2D/blend_position", direction)
 	
 	move_and_slide()
 	
