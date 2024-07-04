@@ -24,11 +24,11 @@ position = Vector2(681, 7)
 position = Vector2(227, 247)
 navigation_polygon = SubResource("NavigationPolygon_0qgq4")
 
-[node name="Rock_bat2" parent="." instance=ExtResource("4_cntlh")]
-position = Vector2(1097, -392)
-
 [node name="Slime spawner" parent="." instance=ExtResource("3_xn2qj")]
 position = Vector2(329, -387)
+
+[node name="Rock_bat" parent="." instance=ExtResource("4_cntlh")]
+position = Vector2(1097, -392)
 
 [node name="Rock_Door" parent="." instance=ExtResource("6_v618f")]
 position = Vector2(523, 282)
