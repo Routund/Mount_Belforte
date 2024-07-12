@@ -5,15 +5,23 @@ var player_max = 200
 var enemy_health = 200
 var enemy_max = 200
 var enemy_id = 0
+var i = 0
 
 var deck = [0,1,2,3]
 var hand = []
 var queue = []
 var card_funcs = [slash,heal,block,run]
 
+var go_next =false
+var edamaged = false
+var pdamaged = false
+var enemyAttacked=true
+
 @onready var HBox = get_node("Hand")
-@onready var PlayerHealthBar = get_node("../../Player/PlayerHealthBar")
-@onready var EnemyHealthBar = get_node("../../Enemy/EnemyHealthBar")
+@onready var PlayerHealthBar = get_node("../../PlayerHealthBar")
+@onready var EnemyHealthBar = get_node("../../EnemyHealthBar")
+@onready var EnemyAnimator = get_node("../../Enemy")
+@onready var PlayerAnimator = get_node("../../Player")
 
 var card_preload = preload("res://Scenes/card_instance.tscn")
 var is_blocking = false
@@ -21,18 +29,36 @@ var is_blocking = false
 func _ready():
 	draw()
 	draw()
+	EnemyAnimator.enemy_id=enemy_id
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if (len(deck)>0):
-		true
-	pass
-
+	if(go_next):
+		go_next=false
+		if(i<len(queue)):
+			edamaged = false
+			card_funcs[queue[i]].call()
+			deck.append(queue[i])
+			i+=1
+		elif(queue!=[]):
+			queue = []
+			go_next=true
+		elif(!enemyAttacked):
+			enemyAttacked=true
+			pdamaged= false
+			enemies[enemy_id][3][randi_range(0,len(enemies[enemy_id][3])-1)].call()
+		else:
+			if(len(deck)>0):
+				draw()
+			is_blocking=false
+			print("Enemy Health: " + str(enemy_health))
+			print("Player Health: " + str(player_health))
 func damage_enemy(amount):
 	enemy_health-=amount
-	EnemyHealthBar.TweenTo(enemy_health,enemy_max)
+	PlayerAnimator.play("attack")
+	edamaged=true
 # All player card functions
 func slash():
 	damage_enemy(70)
@@ -41,15 +67,21 @@ func heal():
 	damage_player(-min(40,player_max-player_health))
 func block():
 	is_blocking=true
+	go_next=true
 func run():
 	get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
 	return true
 
 func damage_player(amount):
-	if(is_blocking):
-		amount/=4
-	player_health-=amount
-	PlayerHealthBar.TweenTo(player_health,player_max)
+	if(amount<0):
+		player_health-=amount
+		PlayerHealthBar.TweenTo(player_health,player_max)
+	else:
+		if(is_blocking):
+			amount/=4
+		player_health-=amount
+		EnemyAnimator.play("attack")
+		pdamaged=true
 # All enemy attack functions
 func basic_attack():
 	damage_player(40)
@@ -76,15 +108,31 @@ func dequeue_card(card):
 var enemies = [["Slime",150,1,[basic_attack]]]
 
 func _on_button_confirm_play():
-	for card in queue:
-		card_funcs[card].call()
-		deck.append(card)
-	queue = []
-	print(len(enemies[enemy_id][3]))
-	enemies[enemy_id][3][randi_range(0,len(enemies[enemy_id][3])-1)].call()
-	if(len(deck)>0):
-		draw()
-	is_blocking=false
-	print("Enemy Health: " + str(enemy_health))
-	print("Player Health: " + str(player_health))
+	enemyAttacked=false
+	go_next=true
+	i=0
+	pass # Replace with function body.
+
+
+func _on_enemy_animation_finished():
+	if pdamaged:
+		PlayerAnimator.play("hurt")
+		PlayerHealthBar.TweenTo(player_health,player_max)
+		pdamaged=false
+	pass # Replace with function body.
+
+func _on_player_animation_finished():
+	if edamaged:
+		EnemyAnimator.play("hurt")
+		EnemyHealthBar.TweenTo(enemy_health,enemy_max)
+		edamaged=false
+	pass # Replace with function body.
+
+func _on_player_health_bar_player_health_bar_finished():
+	go_next=true
+	pass # Replace with function body.
+
+
+func _on_enemy_health_bar_enemy_health_bar_finished():
+	go_next=true
 	pass # Replace with function body.
