@@ -10,7 +10,7 @@ var i = 0
 var deck = [0,1,2,3]
 var hand = []
 var queue = []
-var card_funcs = [slash,heal,block,run]
+var card_funcs = [slash,heal,block,poison]
 
 var go_next =false
 var edamaged = false
@@ -25,6 +25,8 @@ var enemyAttacked=true
 
 var card_preload = preload("res://Scenes/card_instance.tscn")
 var is_blocking = false
+var poisoned = false
+var poisonDamageDone = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	draw()
@@ -44,33 +46,49 @@ func _process(_delta):
 			i+=1
 		elif(queue!=[]):
 			queue = []
-			go_next=true
+			if(enemy_health<=0):
+				get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
+				return true
+			go_next = true
 		elif(!enemyAttacked):
 			enemyAttacked=true
 			pdamaged= false
 			enemies[enemy_id][3][randi_range(0,len(enemies[enemy_id][3])-1)].call()
 		else:
-			if(len(deck)>0):
-				draw()
-			is_blocking=false
-			print("Enemy Health: " + str(enemy_health))
-			print("Player Health: " + str(player_health))
-func damage_enemy(amount):
+			if !poisonDamageDone:
+				poisonDamageDone=true
+				damage_enemy(30,false)
+			else:
+				if(len(deck)>0):
+					draw()
+				is_blocking=false
+				print("Enemy Health: " + str(enemy_health))
+				print("Player Health: " + str(player_health))
+
+
+func damage_enemy(amount,animated):
 	enemy_health-=amount
-	PlayerAnimator.play("attack")
-	edamaged=true
+	if(animated):
+		PlayerAnimator.play("attack")
+		edamaged=true
+	else:
+		EnemyAnimator.play("hurt")
+		EnemyHealthBar.TweenTo(enemy_health,enemy_max)
+		
 # All player card functions
 func slash():
-	damage_enemy(70)
+	damage_enemy(70,true)
 func heal():
 	# Make sure player doesnt overheal
 	damage_player(-min(40,player_max-player_health))
 func block():
 	is_blocking=true
 	go_next=true
-func run():
-	get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
-	return true
+func poison():
+	EnemyHealthBar.Health_Rect.modulate = Color8(142,52,154)
+	poisoned=true
+	poisonDamageDone=false
+	go_next=true
 
 func damage_player(amount):
 	if(amount<0):
@@ -111,6 +129,8 @@ func _on_button_confirm_play():
 	enemyAttacked=false
 	go_next=true
 	i=0
+	if poisoned:
+		poisonDamageDone=false
 	pass # Replace with function body.
 
 

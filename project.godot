@@ -18,6 +18,11 @@ config/icon="res://Sprites/icon.svg"
 [autoload]
 
 Global="*res://Scripts/global.gd"
+Overworld="*res://Scripts/Overworld.gd"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [input]
 
