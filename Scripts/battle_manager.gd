@@ -30,10 +30,11 @@ var poisoned = false
 var poisonDamageDone = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	deck = Global.deck
 	draw()
 	draw()
 	EnemyAnimator.enemy_id=enemy_id
+	enemy_health=enemies[enemy_id][1]
 	pass # Replace with function body.
 
 

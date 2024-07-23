@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="1_l2n5d"]
 [ext_resource type="PackedScene" uid="uid://y5g78wv73dul" path="res://Scenes/tester_card.tscn" id="2_bjbhx"]
 [ext_resource type="PackedScene" uid="uid://boojurd07rf2h" path="res://Scenes/slime_spawner.tscn" id="3_xn2qj"]
-[ext_resource type="PackedScene" uid="uid://cynbtl2rfc874" path="res://Scenes/rock_button.tscn" id="5_40w5x"]
+[ext_resource type="PackedScene" path="res://Scenes/rock_button.tscn" id="5_40w5x"]
 [ext_resource type="PackedScene" uid="uid://vhgkwbm8ioku" path="res://rock_node.tscn" id="6_qfcjl"]
 [ext_resource type="PackedScene" uid="uid://dh835k1hqslwo" path="res://Scenes/rock_door.tscn" id="6_v618f"]
 

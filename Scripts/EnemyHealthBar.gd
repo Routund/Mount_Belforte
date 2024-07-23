@@ -8,10 +8,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func TweenTo(enemy_health,enemy_max):
 	var tween = create_tween()
 	health=enemy_health
