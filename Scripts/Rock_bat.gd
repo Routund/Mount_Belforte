@@ -69,4 +69,5 @@ func _physics_process(_delta):
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
+		Global.battle(0)
 		rock = true

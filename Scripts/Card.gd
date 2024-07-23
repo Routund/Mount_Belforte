@@ -11,6 +11,7 @@ var queue = self
 var fakeH = self
 var fakeQ = self
 @onready var text = get_node("Label")
+var text_to_set = "placeholder"
 var fake_preload = preload("res://Scenes/fake_card.tscn")
 var fake = self
 var new_parent=self
@@ -18,7 +19,7 @@ var parentSelf=false
 
 var is_button_pressed = false
 func _ready():
-	text.text=str(card_id)
+	text.text = str(text_to_set)
 	battle_manager=get_parent().get_parent()
 	queue = battle_manager.get_node("Queue")
 	hand = battle_manager.get_node("Hand")

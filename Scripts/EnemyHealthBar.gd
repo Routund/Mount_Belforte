@@ -2,6 +2,7 @@ extends NinePatchRect
 
 var health = 0
 @onready var Health_Rect = get_node("Health")
+signal enemyHealthBarFinished
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -23,3 +24,4 @@ func TweenTo(enemy_health,enemy_max):
 func on_tween_finished():
 	if(health<0):
 		Health_Rect.visible=false
+	enemyHealthBarFinished.emit()
