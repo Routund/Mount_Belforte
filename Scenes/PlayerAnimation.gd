@@ -16,8 +16,3 @@ func _ready():
 
 func set_to_idle():
 	play("idle")
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
