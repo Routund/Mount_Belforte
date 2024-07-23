@@ -10,7 +10,8 @@ var i = 0
 var deck = [0,1,2,3]
 var hand = []
 var queue = []
-var card_funcs = [slash,heal,block,poison]
+var card_funcs = [slash,heal,block,poison,run]
+const card_descs = ["Slash Attack","Heal","Block","Poison Enemy","Run away"]
 
 var go_next =false
 var edamaged = false
@@ -29,6 +30,7 @@ var poisoned = false
 var poisonDamageDone = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	draw()
 	draw()
 	EnemyAnimator.enemy_id=enemy_id
@@ -47,6 +49,7 @@ func _process(_delta):
 		elif(queue!=[]):
 			queue = []
 			if(enemy_health<=0):
+				Global.reset=false
 				get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
 				return true
 			go_next = true
@@ -57,13 +60,22 @@ func _process(_delta):
 		else:
 			if !poisonDamageDone:
 				poisonDamageDone=true
-				damage_enemy(30,false)
+				damage_enemy(20,false)
 			else:
 				if(len(deck)>0):
 					draw()
 				is_blocking=false
 				print("Enemy Health: " + str(enemy_health))
 				print("Player Health: " + str(player_health))
+				if player_health <= 0:
+					Global.reset=true
+					get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
+					return true
+				elif enemy_health <= 0:
+					Global.reset=false
+					get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
+					return true
+			
 
 
 func damage_enemy(amount,animated):
@@ -77,7 +89,7 @@ func damage_enemy(amount,animated):
 		
 # All player card functions
 func slash():
-	damage_enemy(70,true)
+	damage_enemy(60,true)
 func heal():
 	# Make sure player doesnt overheal
 	damage_player(-min(40,player_max-player_health))
@@ -89,6 +101,10 @@ func poison():
 	poisoned=true
 	poisonDamageDone=false
 	go_next=true
+func run():
+	Global.reset=true
+	get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
+	return true
 
 func damage_player(amount):
 	if(amount<0):
@@ -102,7 +118,7 @@ func damage_player(amount):
 		pdamaged=true
 # All enemy attack functions
 func basic_attack():
-	damage_player(40)
+	damage_player(50)
 
 # Pick random card from deck, then add it to hand and remove from deck
 # Then instantiate a new card with that ID
@@ -113,6 +129,7 @@ func draw():
 	var hand_last = hand[len(hand)-1]
 	var instance = card_preload.instantiate()
 	instance.set("card_id",hand_last)
+	instance.set("text_to_set",card_descs[hand_last])
 	get_node("Control").add_child(instance)
 
 func queue_card(card):
