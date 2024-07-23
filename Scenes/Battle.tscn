@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://uk07hjo5epu4"]
+[gd_scene load_steps=20 format=3 uid="uid://uk07hjo5epu4"]
 
 [ext_resource type="Script" path="res://Scripts/battle_manager.gd" id="2_nygms"]
 [ext_resource type="Script" path="res://Scripts/EnemyHealthBar.gd" id="3_ibbn5"]
@@ -8,9 +8,70 @@
 [ext_resource type="Script" path="res://Scripts/queue.gd" id="4_pefl7"]
 [ext_resource type="Script" path="res://Scripts/hand.gd" id="5_cltqn"]
 [ext_resource type="Script" path="res://Scripts/EnemyAnimator.gd" id="5_ee1ig"]
+[ext_resource type="Texture2D" uid="uid://c830oy4vqf404" path="res://Sprites/Main Character full.png" id="6_4goyg"]
 [ext_resource type="Script" path="res://Scenes/PlayerAnimation.gd" id="6_gxu4j"]
 [ext_resource type="Script" path="res://Scripts/fakes.gd" id="6_qetmb"]
 [ext_resource type="Texture2D" uid="uid://d1g4xrheo41cs" path="res://Sprites/Cards/Blank_Card.png" id="7_it2nd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82xog"]
+atlas = ExtResource("6_4goyg")
+region = Rect2(64, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yayp0"]
+atlas = ExtResource("6_4goyg")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21ht0"]
+atlas = ExtResource("6_4goyg")
+region = Rect2(64, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3c0ap"]
+atlas = ExtResource("6_4goyg")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlx4v"]
+atlas = ExtResource("6_4goyg")
+region = Rect2(64, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfi4x"]
+atlas = ExtResource("6_4goyg")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_biac8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82xog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yayp0")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21ht0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3c0ap")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlx4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfi4x")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 
@@ -86,12 +147,11 @@ script = ExtResource("5_ee1ig")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(31, 386)
-scale = Vector2(1.82813, 2.28125)
-sprite_frames = ExtResource("4_bksdn")
+position = Vector2(36, 390)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_biac8")
 animation = &"attack"
-offset = Vector2(39.9315, -32)
-flip_h = true
+offset = Vector2(31.9315, -32)
 script = ExtResource("6_gxu4j")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

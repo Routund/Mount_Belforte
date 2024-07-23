@@ -16,7 +16,6 @@ var enemy_id = 0
 var reset = true
 var inventory_open = false
 var slime = 1
-
 var state_dictionary = {}
 
 func battle(id):
