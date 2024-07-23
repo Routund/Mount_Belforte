@@ -3,6 +3,11 @@ extends CharacterBody2D
 var speed = 700
 @onready var tree = get_node("AnimationTree")
 
+func _ready():
+	$AnimationPlayer.play("idle_down")
+	Global.battleStarting.connect(give_coords)
+	if !Global.reset:
+		position= Global.state_dictionary["player_pos"]
 
 func _physics_process(_delta):
 	var direction = Vector2(
@@ -19,4 +24,6 @@ func _physics_process(_delta):
 		tree.set("parameters/Walk/BlendSpace2D/blend_position", direction)
 	
 	move_and_slide()
-	
+
+func give_coords():
+	Global.state_dictionary["player_pos"]=position
