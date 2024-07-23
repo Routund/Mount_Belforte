@@ -4,7 +4,6 @@ var speed = 700
 @onready var tree = get_node("AnimationTree")
 
 func _ready():
-	$AnimationPlayer.play("idle_down")
 	Global.battleStarting.connect(give_coords)
 	if !Global.reset:
 		position= Global.state_dictionary["player_pos"]

@@ -1,19 +1,65 @@
-[gd_scene load_steps=4 format=3 uid="uid://cynbtl2rfc874"]
+[gd_scene load_steps=7 format=3 uid="uid://cynbtl2rfc874"]
 
 [ext_resource type="Script" path="res://Scripts/Rock_button.gd" id="1_4gt8p"]
-[ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="2_pawiq"]
+[ext_resource type="Texture2D" uid="uid://cospfanlf6c68" path="res://Sprites/Button.png" id="2_7o0ov"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tkf72"]
-radius = 72.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubaig"]
+size = Vector2(79, 80)
+
+[sub_resource type="Animation" id="Animation_qgpja"]
+resource_name = "on"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_ihroi"]
+resource_name = "off"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3hfcb"]
+_data = {
+"off": SubResource("Animation_ihroi"),
+"on": SubResource("Animation_qgpja")
+}
 
 [node name="Rock_button" type="Area2D"]
 script = ExtResource("1_4gt8p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_pawiq")
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_7o0ov")
+vframes = 2
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_tkf72")
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_ubaig")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3hfcb")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

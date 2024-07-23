@@ -62,8 +62,7 @@ func _process(_delta):
 				poisonDamageDone=true
 				damage_enemy(20,false)
 			else:
-				if(len(deck)>0):
-					draw()
+				draw()
 				is_blocking=false
 				print("Enemy Health: " + str(enemy_health))
 				print("Player Health: " + str(player_health))
@@ -123,14 +122,15 @@ func basic_attack():
 # Pick random card from deck, then add it to hand and remove from deck
 # Then instantiate a new card with that ID
 func draw():
-	var chosen_index=randi_range(0,len(deck)-1)
-	hand.append((deck[chosen_index]))
-	deck.pop_at(chosen_index)
-	var hand_last = hand[len(hand)-1]
-	var instance = card_preload.instantiate()
-	instance.set("card_id",hand_last)
-	instance.set("text_to_set",card_descs[hand_last])
-	get_node("Control").add_child(instance)
+	if(len(deck)>0):
+		var chosen_index=randi_range(0,len(deck)-1)
+		hand.append((deck[chosen_index]))
+		deck.pop_at(chosen_index)
+		var hand_last = hand[len(hand)-1]
+		var instance = card_preload.instantiate()
+		instance.set("card_id",hand_last)
+		instance.set("text_to_set",card_descs[hand_last])
+		get_node("Control").add_child(instance)
 
 func queue_card(card):
 	hand.pop_at(hand.find(card))
