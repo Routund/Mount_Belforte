@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bqlroxiiv5reg"]
+[gd_scene load_steps=26 format=3 uid="uid://bqlroxiiv5reg"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_ubegy"]
 [ext_resource type="Texture2D" uid="uid://c830oy4vqf404" path="res://Sprites/Main Character full.png" id="2_6msmn"]
@@ -186,7 +186,6 @@ blend_mode = 1
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_g00t6"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_025rc"]
-graph_offset = Vector2(-46.4546, -4.27273)
 nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_askl3")
 nodes/BlendSpace2D/position = Vector2(0, 80)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_g00t6")
@@ -194,34 +193,7 @@ nodes/TimeScale/position = Vector2(220, 100)
 nodes/output/position = Vector2(420, 120)
 node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pw4do"]
-animation = &"walk_down"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3b5vr"]
-animation = &"walk_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fghf2"]
-animation = &"walk_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r7jr7"]
-animation = &"walk_up"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_t5wjm"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_pw4do")
-blend_point_0/pos = Vector2(0, 1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_3b5vr")
-blend_point_1/pos = Vector2(-1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_fghf2")
-blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_r7jr7")
-blend_point_3/pos = Vector2(0, -1)
-blend_mode = 1
-
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_l5nba"]
-nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_t5wjm")
-nodes/BlendSpace2D/position = Vector2(20, 80)
-nodes/output/position = Vector2(460, 140)
-node_connections = [&"output", 0, &"BlendSpace2D"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_38byx"]
 advance_mode = 2
@@ -247,7 +219,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_6msmn")
 hframes = 5
 vframes = 6
-frame = 25
+frame = 22
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -0.5)
@@ -267,6 +239,5 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_ndtvq")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Idle/BlendSpace2D/blend_position = Vector2(0.00160003, -0.0158731)
+parameters/Idle/BlendSpace2D/blend_position = Vector2(0.00320005, 0.277533)
 parameters/Idle/TimeScale/scale = 1.0
-parameters/Walk/BlendSpace2D/blend_position = Vector2(-0.00160003, 0.735683)

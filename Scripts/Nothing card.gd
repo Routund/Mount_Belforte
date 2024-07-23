@@ -10,7 +10,7 @@ extends Area2D
 func _on_body_entered(body):
 	if body.name == "Player":
 		if self.name == "card":
-			Global.poison = true
+			Global.inventory.append(3)
 		if self.name == "card2":
 			pass
 		queue_free()

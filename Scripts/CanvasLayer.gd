@@ -4,81 +4,78 @@ var deck = 4
 
 func _ready():
 	hide()
+	$ScrollContainer/VBoxContainer/Poison.hide()
+	$ScrollContainer/VBoxContainer/Water.hide()
 	$Deck/Poison.hide()
 	$Deck/Water.hide()
 
 func _process(_delta):
-	if Global.poison == false:
-		$ScrollContainer/VBoxContainer/Poison.hide()
-	else: 
+	if 3 in Global.inventory:
 		$ScrollContainer/VBoxContainer/Poison.show()
-	
-	if Global.water == false:
-		$ScrollContainer/VBoxContainer/Water.hide()
-	else: 
+	if 5 in Global.inventory:
 		$ScrollContainer/VBoxContainer/Water.show()
 	
 	
 
 func _on_block_pressed():
-	if Global.blockd == true:
-		Global.blockd = false
+	if 2 in Global.deck:
+		Global.deck.pop_at(Global.deck.find(2))
 		$Deck/Block.hide()
 		deck -= 1
 	elif deck <= 8:
-		Global.blockd = true
+		Global.deck.append(2)
 		$Deck/Block.show()
 		deck += 1
 
 func _on_attack_pressed():
-	if Global.attackd == true:
-		Global.attackd = false
+	if 0 in Global.deck:
+		Global.deck.pop_at(Global.deck.find(0))
 		$Deck/Attack.hide()
 		deck -= 1
 	elif deck <= 8:
-		Global.attackd = true
+		Global.deck.append(0)
 		$Deck/Attack.show()
 		deck += 1
 
 func _on_heal_pressed():
-	if Global.heald == true:
-		Global.heald = false
+	if 1 in Global.deck:
+		Global.deck.pop_at(Global.deck.find(1))
 		$Deck/Heal.hide()
 		deck -= 1
 	elif deck <= 8:
-		Global.heald = true
+		Global.deck.append(1)
 		$Deck/Heal.show()
 		deck += 1
 
 func _on_run_pressed():
-	if Global.rund == true:
-		Global.rund = false
+	if 4 in Global.deck:
+		Global.deck.pop_at(Global.deck.find(4))
 		$Deck/Run.hide()
 		deck -= 1
 	elif deck <= 8:
+		Global.deck.append(4)
 		$Deck/Run.show()
-		Global.rund = true
 		deck += 1
 
 func _on_water_pressed():
-	if Global.water == true and Global.waterd == false and deck <= 8:
-		Global.waterd = true
-		$Deck/Water.show()
-		deck += 1
-	elif Global.water == true and Global.waterd == true:
-		Global.waterd = false
+	if 5 in Global.deck:
+		Global.deck.pop_at(Global.deck.find(5))
 		$Deck/Water.hide()
 		deck -= 1
+	elif deck <= 8 and 5 in Global.inventory:
+		Global.deck.append(5)
+		$Deck/Water.show()
+		deck += 1
 
 func _on_poison_pressed():
-	if Global.poison == true and Global.poisond == false and deck <= 8:
-		Global.poisond = true
-		$Deck/Poison.show()
-		deck += 1
-	elif Global.poison == true and Global.poisond == true:
-		Global.poisond = false
+	if 3 in Global.deck:
+		Global.deck.pop_at(Global.deck.find(3))
 		$Deck/Poison.hide()
 		deck -= 1
+	elif deck <= 8 and 3 in Global.inventory:
+		Global.deck.append(3)
+		$Deck/Poison.show()
+		deck += 1
 
 
 func _on_go_back_pressed():

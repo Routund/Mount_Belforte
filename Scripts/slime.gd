@@ -1,7 +1,6 @@
 extends CharacterBody2D
 # Declare member variables here. Examples:
 # var a = 2
-
 var death = false
 var speed = 600
 @onready var player = get_parent().get_parent().get_node("Player")
@@ -11,8 +10,9 @@ var _movement_target_position = Vector2.ZERO
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
-
 func _ready():
+	$card.hide()
+	$AnimationPlayer.play("Walk")
 	Global.slime += 1
 	navigation_agent.path_desired_distance = 4.0
 	navigation_agent.target_desired_distance = 4.0
@@ -45,13 +45,15 @@ func _on_area_2d_body_entered(body):
 		Global.slime -= 1
 		if death == false:
 			var rng = RandomNumberGenerator.new()
-			var get_water = rng.randi_range(1,4)
-			if Global.water == false and get_water == 4:
+			var get_water = rng.randi_range(1,3)
+			if 5 not in Global.inventory and get_water == 4: #make it three when water bottle works 
+				$card.show()
+				$Sprite2D.hide()
 				death = true
 			else:
 				queue_free()
 		elif death == true:
 			Global.slime += 1
-			Global.water = true
+			Global.inventory.append(5)
 			queue_free()
 		
