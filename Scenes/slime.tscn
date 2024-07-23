@@ -1,12 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwl04xirr1hhv"]
+[gd_scene load_steps=8 format=3 uid="uid://bwl04xirr1hhv"]
 
 [ext_resource type="Script" path="res://Scripts/slime.gd" id="1_c6oyi"]
-[ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="2_tnsoo"]
+[ext_resource type="Texture2D" uid="uid://didgd8am3dtdp" path="res://Sprites/Slime-Sheet_overworld.png" id="2_dkcvx"]
+[ext_resource type="Texture2D" uid="uid://cptg536y3bbgu" path="res://Sprites/CardNew.png" id="3_3swje"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdkjx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2dgoh"]
-radius = 72.0
+radius = 69.3542
+
+[sub_resource type="Animation" id="Animation_1uhff"]
+resource_name = "Walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w6l2m"]
+_data = {
+"Walk": SubResource("Animation_1uhff")
+}
 
 [node name="slime" type="CharacterBody2D"]
 script = ExtResource("1_c6oyi")
@@ -16,7 +39,11 @@ shape = SubResource("RectangleShape2D_wdkjx")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_tnsoo")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_dkcvx")
+hframes = 3
+vframes = 3
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -24,5 +51,15 @@ texture = ExtResource("2_tnsoo")
 shape = SubResource("CircleShape2D_2dgoh")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w6l2m")
+}
+
+[node name="card" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_3swje")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

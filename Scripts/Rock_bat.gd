@@ -5,7 +5,7 @@ extends CharacterBody2D
 var rock = false
 var speed = 600
 var rock_speed = 700
-@onready var player = get_parent().get_node("Player")
+@onready var player = get_parent().get_parent().get_node("Player")
 
 var movement_speed: float = 400.0
 var _movement_target_position = Vector2.ZERO
@@ -14,6 +14,8 @@ var _movement_target_position = Vector2.ZERO
 
 
 func _ready():
+	$rock.hide()
+	$AnimationPlayer.play("walk")
 	navigation_agent.path_desired_distance = 4.0
 	navigation_agent.target_desired_distance = 4.0
 # Make sure to not await during _ready.
@@ -70,3 +72,5 @@ func _physics_process(_delta):
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
 		rock = true
+		$rock.show()
+		$Sprite2D.hide()

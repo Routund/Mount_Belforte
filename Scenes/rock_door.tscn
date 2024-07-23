@@ -6,9 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4y5c"]
 size = Vector2(64, 208)
 
-[node name="Rock_Door" type="RigidBody2D"]
-mass = 0.01
-gravity_scale = 0.0
+[node name="Rock_Door" type="CharacterBody2D"]
 script = ExtResource("1_8d36o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

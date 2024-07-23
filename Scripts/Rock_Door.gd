@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 var button = 0
 var open = 0
@@ -10,7 +10,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if open == button:
+	if open >= button:
 		$CollisionShape2D.disabled = true
+		$Sprite2D.hide()
 	else:
 		$CollisionShape2D.disabled = false
+		$Sprite2D.show()
