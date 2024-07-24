@@ -7,6 +7,8 @@ func _ready():
 	Global.battleStarting.connect(give_coords)
 	if !Global.reset:
 		position= Global.state_dictionary["player_pos"]
+	else:
+		Global.state_dictionary.clear()
 
 func _physics_process(_delta):
 	var direction = Vector2(

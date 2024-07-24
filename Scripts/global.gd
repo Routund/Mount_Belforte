@@ -12,7 +12,7 @@ signal battleStarting
 var battle_start_timer = Timer.new()
 
 
-var enmemy_id = 0
+var enemy_id = 0
 var reset = true
 var inventory_open = false
 var slime = 1
@@ -21,11 +21,8 @@ var state_dictionary = {}
 
 func battle(id):
 	battleStarting.emit()
-	battle_start_timer.connect("timeout",change_to_battle)
-	battle_start_timer.wait_time=0.1
-	battle_start_timer.one_shot=true
-	battle_start_timer.start()
-	enmemy_id=id
+	enemy_id=id
+	get_tree().change_scene_to_file("res://Scenes/Battle.tscn")
 	
 func change_to_battle():
 	get_tree().change_scene_to_file("res://Scenes/Battle.tscn")

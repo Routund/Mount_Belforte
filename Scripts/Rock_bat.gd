@@ -14,6 +14,13 @@ var _movement_target_position = Vector2.ZERO
 
 
 func _ready():
+	Global.battleStarting.connect(give_coords)
+	if !Global.reset:
+		position= Global.state_dictionary["bat_pos"]
+		if (Global.state_dictionary["rock_state"]):
+			rock = true
+			$Sprite2D.hide()
+			return
 	$rock.hide()
 	$AnimationPlayer.play("walk")
 	navigation_agent.path_desired_distance = 4.0
@@ -70,8 +77,10 @@ func _physics_process(_delta):
 
 
 func _on_area_2d_body_entered(body):
-	if body.name == "Player":
-		Global.battle(0)
+	if body.name == "Player" and !rock:
 		rock = true
-		$rock.show()
-		$Sprite2D.hide()
+		Global.battle(0)
+
+func give_coords():
+	Global.state_dictionary["bat_pos"]=position
+	Global.state_dictionary["rock_state"]=rock
