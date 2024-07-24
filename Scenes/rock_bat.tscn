@@ -8,7 +8,7 @@
 size = Vector2(57, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ytydg"]
-size = Vector2(160, 160)
+size = Vector2(122, 108)
 
 [sub_resource type="Animation" id="Animation_ws03c"]
 resource_name = "walk"
@@ -50,6 +50,7 @@ shape = SubResource("RectangleShape2D_1reh7")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_ytydg")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

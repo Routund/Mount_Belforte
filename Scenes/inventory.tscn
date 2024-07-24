@@ -43,7 +43,8 @@ text = "Heal"
 
 [node name="Run" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "Run(doesn't work)"
+text = "Run
+"
 
 [node name="Poison" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -88,7 +89,7 @@ text = "Heal"
 
 [node name="Run" type="Button" parent="Deck"]
 layout_mode = 2
-text = "Run(doesn't work)"
+text = "Run"
 
 [node name="Poison" type="Button" parent="Deck"]
 layout_mode = 2
