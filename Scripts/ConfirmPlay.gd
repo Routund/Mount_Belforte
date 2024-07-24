@@ -11,6 +11,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if is_button_pressed and not is_pressed():
+		disabled=true
 		is_button_pressed = false
 		confirmPlay.emit()
 	elif is_pressed() and not is_button_pressed:

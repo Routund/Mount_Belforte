@@ -65,6 +65,7 @@ func _process(_delta):
 			else:
 				draw()
 				is_blocking=false
+				$Button.disabled=false
 				print("Enemy Health: " + str(enemy_health))
 				print("Player Health: " + str(player_health))
 				if player_health <= 0:
@@ -141,7 +142,7 @@ func dequeue_card(card):
 	queue.pop_at(queue.find(card))
 	hand.append(card)
 
-var enemies = [["Slime",150,1,[basic_attack]]]
+var enemies = [["Slime",0,1,[basic_attack]]]
 
 func _on_button_confirm_play():
 	enemyAttacked=false

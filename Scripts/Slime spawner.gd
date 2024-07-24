@@ -14,6 +14,7 @@ func _ready():
 			add_child(spawn_slime)
 			spawn_slime.position = Global.state_dictionary["slime_pos"]
 			spawn_slime.death=true
+			spawn_slime.water_card=true
 			spawn_slime.card.show()
 			spawn_slime.Sprite.hide()
 	else:

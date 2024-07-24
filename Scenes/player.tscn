@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://y1go6d8bx2ue" path="res://Scenes/pause.tscn" id="3_mn2gf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ble7"]
-radius = 44.0
-height = 153.0
+radius = 33.0
+height = 96.0
 
 [sub_resource type="Animation" id="Animation_n7sfq"]
 resource_name = "idle_down"
@@ -247,10 +247,10 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_6msmn")
 hframes = 5
 vframes = 6
-frame = 25
+frame = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -0.5)
+position = Vector2(-1, 16)
 shape = SubResource("CapsuleShape2D_3ble7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -265,6 +265,9 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_riu4f")
+}
 tree_root = SubResource("AnimationNodeStateMachine_ndtvq")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/BlendSpace2D/blend_position = Vector2(0.00160003, -0.0158731)
