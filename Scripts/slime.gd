@@ -3,7 +3,10 @@ extends CharacterBody2D
 # var a = 2
 var death = false
 var speed = 600
+var water_card = false
 @onready var player = get_parent().get_parent().get_node("Player")
+@onready var card=get_node("card")
+@onready var Sprite= get_node("Sprite2D")
 
 var movement_speed: float = 400.0
 var _movement_target_position = Vector2.ZERO
@@ -11,6 +14,7 @@ var _movement_target_position = Vector2.ZERO
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
 func _ready():
+	Global.battleStarting.connect(give_coords)
 	$card.hide()
 	$AnimationPlayer.play("Walk")
 	Global.slime += 1
@@ -47,13 +51,14 @@ func _on_area_2d_body_entered(body):
 			var rng = RandomNumberGenerator.new()
 			var get_water = rng.randi_range(1,3)
 			if 5 not in Global.inventory and get_water == 4: #make it three when water bottle works 
-				$card.show()
-				$Sprite2D.hide()
-				death = true
-			else:
-				queue_free()
-		elif death == true:
+				water_card = true
+			Global.battle(0)
+		elif water_card == true:
 			Global.slime += 1
 			Global.inventory.append(5)
 			queue_free()
+
+func give_coords():
+	Global.state_dictionary["slime_pos"]=position
+	Global.state_dictionary["water"]=water_card
 		
