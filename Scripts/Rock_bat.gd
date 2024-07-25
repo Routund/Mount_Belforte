@@ -3,8 +3,8 @@ extends CharacterBody2D
 # var a = 2
 
 var rock = false
-var speed = 600
-var rock_speed = 700
+var speed = 300
+var rock_speed = 400
 @onready var player = get_parent().get_parent().get_node("Player")
 
 var movement_speed: float = 400.0

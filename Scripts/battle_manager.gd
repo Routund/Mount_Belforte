@@ -30,7 +30,7 @@ var poisoned = false
 var poisonDamageDone = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	deck = Global.deck
+	deck = Global.deck.duplicate()
 	draw()
 	draw()
 	EnemyAnimator.enemy_id=enemy_id
@@ -142,7 +142,7 @@ func dequeue_card(card):
 	queue.pop_at(queue.find(card))
 	hand.append(card)
 
-var enemies = [["Slime",0,1,[basic_attack]]]
+var enemies = [["Slime",150,1,[basic_attack]]]
 
 func _on_button_confirm_play():
 	enemyAttacked=false

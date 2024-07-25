@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://upmmvi2bl5bl"]
+[gd_scene load_steps=19 format=3 uid="uid://upmmvi2bl5bl"]
 
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="1_l2n5d"]
 [ext_resource type="PackedScene" uid="uid://y5g78wv73dul" path="res://Scenes/tester_card.tscn" id="2_bjbhx"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dh835k1hqslwo" path="res://Scenes/rock_door.tscn" id="6_v618f"]
 [ext_resource type="Texture2D" uid="uid://c2kfxbu7tm5mc" path="res://Sprites/NewerCave_tilemap.png" id="7_6y2mp"]
 [ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="8_sn375"]
+[ext_resource type="Texture2D" uid="uid://smd8uedfdbye" path="res://Sprites/Treasure.png" id="9_a6dg3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0qgq4"]
 vertices = PackedVector2Array(2401, 563, -2190, 605, -2179, -1569, 2317, -1588)
@@ -826,12 +827,14 @@ position = Vector2(329, -387)
 position = Vector2(-908, 231)
 
 [node name="Rock_button" parent="Rock_Door" instance=ExtResource("5_40w5x")]
+z_index = -1
 position = Vector2(487, -225)
 
 [node name="Rock_Node" parent="." instance=ExtResource("6_qfcjl")]
 position = Vector2(940, -351)
 
 [node name="TileMap" type="TileMap" parent="."]
+z_index = -1
 texture_filter = 1
 tile_set = SubResource("TileSet_r2wqs")
 format = 2
@@ -866,7 +869,13 @@ shape = SubResource("RectangleShape2D_gymuk")
 
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(0.051971, 0.051971, 0.051971, 1)
-z_index = -2
+z_index = -3
 position = Vector2(614, 338.5)
 scale = Vector2(91.3906, 54.3828)
 texture = ExtResource("8_sn375")
+
+[node name="Treasure" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1133, 222)
+scale = Vector2(3, 3)
+texture = ExtResource("9_a6dg3")

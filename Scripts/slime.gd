@@ -2,7 +2,7 @@ extends CharacterBody2D
 # Declare member variables here. Examples:
 # var a = 2
 var death = false
-var speed = 600
+var speed = 300
 var water_card = false
 @onready var player = get_parent().get_parent().get_node("Player")
 @onready var card=get_node("card")
