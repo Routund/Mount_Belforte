@@ -79,7 +79,7 @@ func _physics_process(_delta):
 func _on_area_2d_body_entered(body):
 	if body.name == "Player" and !rock:
 		rock = true
-		Global.battle(0)
+		Global.battle(1)
 
 func give_coords():
 	Global.state_dictionary["bat_pos"]=position

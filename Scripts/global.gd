@@ -21,8 +21,7 @@ var state_dictionary = {}
 func battle(id):
 	battleStarting.emit()
 	enemy_id=id
-	get_tree().change_scene_to_file("res://Scenes/Battle.tscn")
-	
+	get_tree().change_scene_to_file("res://Scenes/Battle.tscn")	
 func change_to_battle():
 	get_tree().change_scene_to_file("res://Scenes/Battle.tscn")
 	

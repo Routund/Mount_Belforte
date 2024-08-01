@@ -1,0 +1,84 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://ct8g24lbfj2bb"]
+
+[ext_resource type="Texture2D" uid="uid://bwe6krdy2pea8" path="res://Sprites/Combat_enemies/bat combat.png" id="1_7ibdo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6tpq"]
+atlas = ExtResource("1_7ibdo")
+region = Rect2(0, 0, 160, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywiki"]
+atlas = ExtResource("1_7ibdo")
+region = Rect2(160, 0, 160, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_se8nx"]
+atlas = ExtResource("1_7ibdo")
+region = Rect2(0, 260, 160, 260)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6tpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywiki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6tpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywiki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6tpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywiki")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywiki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_se8nx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywiki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_se8nx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywiki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_se8nx")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6tpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywiki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_se8nx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_se8nx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywiki")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 9.0
+}]

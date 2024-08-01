@@ -33,7 +33,9 @@ func _ready():
 	deck = Global.deck.duplicate()
 	draw()
 	draw()
+	enemy_id=Global.enemy_id
 	EnemyAnimator.enemy_id=enemy_id
+	EnemyAnimator.load_frames()
 	enemy_health=enemies[enemy_id][1]
 	pass # Replace with function body.
 
@@ -137,12 +139,16 @@ func draw():
 func queue_card(card):
 	hand.pop_at(hand.find(card))
 	queue.append(card)
+	if len(queue)==1:
+		$Button.text=='Play cards'
 
 func dequeue_card(card):
 	queue.pop_at(queue.find(card))
 	hand.append(card)
+	if len(queue)==0:
+		$Button.text=='Skip Turn'
 
-var enemies = [["Slime",150,1,[basic_attack]]]
+var enemies = [["Slime",150,1,[basic_attack]],["Rock bat",150,1,[basic_attack]]]
 
 func _on_button_confirm_play():
 	enemyAttacked=false
