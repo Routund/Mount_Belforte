@@ -3,8 +3,8 @@ extends CharacterBody2D
 # var a = 2
 
 var rock = false
-var speed = 600
-var rock_speed = 700
+var speed = 300
+var rock_speed = 400
 @onready var player = get_parent().get_parent().get_node("Player")
 
 var movement_speed: float = 400.0
@@ -79,7 +79,7 @@ func _physics_process(_delta):
 func _on_area_2d_body_entered(body):
 	if body.name == "Player" and !rock:
 		rock = true
-		Global.battle(0)
+		Global.battle(1)
 
 func give_coords():
 	Global.state_dictionary["bat_pos"]=position

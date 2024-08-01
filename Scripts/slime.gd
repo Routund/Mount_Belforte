@@ -2,7 +2,7 @@ extends CharacterBody2D
 # Declare member variables here. Examples:
 # var a = 2
 var death = false
-var speed = 600
+var speed = 300
 var water_card = false
 @onready var player = get_parent().get_parent().get_node("Player")
 @onready var card=get_node("card")
@@ -52,13 +52,13 @@ func _on_area_2d_body_entered(body):
 			var get_water = rng.randi_range(1,3)
 			if 5 not in Global.inventory and get_water == 4: #make it three when water bottle works 
 				water_card = true
+				Global.state_dictionary["water"]=water_card
 			Global.battle(0)
 		elif water_card == true:
-			Global.slime += 1
+			Global.slime -= 1
 			Global.inventory.append(5)
 			queue_free()
 
 func give_coords():
 	Global.state_dictionary["slime_pos"]=position
-	Global.state_dictionary["water"]=water_card
 		
