@@ -172,7 +172,7 @@ offset_left = -575.0
 offset_top = -89.0
 offset_right = -317.0
 offset_bottom = 43.0
-text = "Skip turn"
+text = " Skip Turn"
 script = ExtResource("3_kbwne")
 
 [node name="FakeQ" type="HBoxContainer" parent="CanvasLayer/CardManager"]

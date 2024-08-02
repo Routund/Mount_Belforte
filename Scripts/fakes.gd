@@ -14,3 +14,7 @@ func delete():
 	for i in get_children():
 		i.visible = false
 		i.queue_free()
+
+func change_spacing():
+	var all_children = len(get_children())
+	add_theme_constant_override("separation",-((all_children)*7))
