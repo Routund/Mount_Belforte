@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwl04xirr1hhv"]
+[gd_scene load_steps=9 format=3 uid="uid://bwl04xirr1hhv"]
 
 [ext_resource type="Script" path="res://Scripts/slime.gd" id="1_c6oyi"]
 [ext_resource type="Texture2D" uid="uid://didgd8am3dtdp" path="res://Sprites/Slime-Sheet_overworld.png" id="2_dkcvx"]
@@ -31,6 +31,9 @@ _data = {
 "Walk": SubResource("Animation_1uhff")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dy8tt"]
+radius = 348.036
+
 [node name="slime" type="CharacterBody2D"]
 script = ExtResource("1_c6oyi")
 
@@ -62,4 +65,11 @@ texture_filter = 1
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_3swje")
 
+[node name="vision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
+shape = SubResource("CircleShape2D_dy8tt")
+debug_color = Color(0.704267, 0.489645, 1.92523e-07, 0.42)
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="vision" to="." method="_on_vision_body_entered"]
