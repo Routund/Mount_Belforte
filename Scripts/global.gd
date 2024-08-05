@@ -7,7 +7,7 @@ extends Node
 #5 is water botttle
 var inventory = [0,1,2,4] 
 
-var deck = [0,0,0,0,0,1,2,4]
+var deck = [0,1,2,4]
 signal battleStarting
 var battle_start_timer = Timer.new()
 

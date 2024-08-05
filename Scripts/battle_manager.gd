@@ -30,6 +30,7 @@ var poisoned = false
 var poisonDamageDone = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
 	deck = Global.deck.duplicate()
 	draw()
 	draw()
@@ -147,9 +148,9 @@ func dequeue_card(card):
 	queue.pop_at(queue.find(card))
 	hand.append(card)
 	if len(queue)==0:
-		$Button.text ='Skip Turn'
+		$Button.text ='Skip Turn and draw an extra card'
 
-var enemies = [["Slime",150,1,[basic_attack]],["Rock bat",150,1,[basic_attack]]]
+var enemies = [["Slime",0,1,[basic_attack]],["Rock bat",0,1,[basic_attack]]]
 
 func _on_button_confirm_play():
 	enemyAttacked=false
