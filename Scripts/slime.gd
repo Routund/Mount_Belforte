@@ -6,6 +6,7 @@ var death = false
 var speed = 600
 @onready var player = get_parent().get_parent().get_node("Player")
 
+
 var movement_speed: float = 400.0
 var _movement_target_position = Vector2.ZERO
 
@@ -24,6 +25,10 @@ func actor_setup():
 	if seen_player == true:
 		await get_tree().physics_frame
 		set_movement_target(_movement_target_position)
+<<<<<<< Updated upstream
+=======
+	
+>>>>>>> Stashed changes
 func set_movement_target(_movement_target: Vector2):
 	navigation_agent.target_position = player.global_position
 	
@@ -70,7 +75,13 @@ func _on_area_2d_body_entered(body):
 >>>>>>> Stashed changes
 			Global.inventory.append(5)
 			queue_free()
+<<<<<<< Updated upstream
 		
+=======
+
+func give_coords():
+	Global.state_dictionary["slime_pos"]=position
+>>>>>>> Stashed changes
 
 
 func _on_vision_body_entered(body):

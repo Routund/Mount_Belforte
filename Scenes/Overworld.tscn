@@ -829,7 +829,11 @@ position = Vector2(-908, 231)
 position = Vector2(487, -225)
 
 [node name="Rock_Node" parent="." instance=ExtResource("6_qfcjl")]
+<<<<<<< Updated upstream
 position = Vector2(972, -550)
+=======
+position = Vector2(1070, -469)
+>>>>>>> Stashed changes
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -866,7 +870,12 @@ shape = SubResource("RectangleShape2D_gymuk")
 
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(0.051971, 0.051971, 0.051971, 1)
+<<<<<<< Updated upstream
 z_index = -2
 position = Vector2(614, 338.5)
+=======
+z_index = -3
+position = Vector2(647, 233)
+>>>>>>> Stashed changes
 scale = Vector2(91.3906, 54.3828)
 texture = ExtResource("8_sn375")

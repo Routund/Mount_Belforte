@@ -1,6 +1,7 @@
 extends CharacterBody2D
 # Declare member variables here. Examples:
 # var a = 2
+<<<<<<< Updated upstream
 var seen_player = false
 var rock = false
 <<<<<<< Updated upstream
@@ -10,6 +11,14 @@ var rock_speed = 700
 var speed = 400
 var rock_speed = 400
 var direction = Vector2.ZERO
+>>>>>>> Stashed changes
+=======
+var direction = Vector2.ZERO
+var seen_player = false
+var rock = false
+var speed = 300
+var rock_speed = 700
+var roaming_speed = 250
 >>>>>>> Stashed changes
 @onready var player = get_parent().get_parent().get_node("Player")
 
@@ -27,7 +36,7 @@ func _ready():
 	call_deferred("actor_setup")
 
 func actor_setup():
-	if rock == false:
+	if rock == false and seen_player == true:
 		await get_tree().physics_frame
 		set_movement_target(_movement_target_position)
 func set_movement_target(_movement_target: Vector2):
@@ -45,6 +54,10 @@ func _physics_process(_delta):
 		new_velocity = new_velocity.normalized()
 		velocity = new_velocity * speed
 	elif rock == true:
+<<<<<<< Updated upstream
+=======
+		direction = Vector2.ZERO
+>>>>>>> Stashed changes
 		if $down.is_colliding() and $down.get_collider().name == "Player":
 			direction += Vector2(0,-1)
 		elif $up.is_colliding() and $up.get_collider().name == "Player":
@@ -69,7 +82,11 @@ func _physics_process(_delta):
 				rock_speed = 900
 				$Rock_collision.disabled = false
 		velocity = direction * rock_speed
+<<<<<<< Updated upstream
 	elif seen_player == false:
+=======
+	elif seen_player == false and rock == false:
+>>>>>>> Stashed changes
 		if $down.is_colliding():
 			direction = Vector2(0,-1)
 		elif $up.is_colliding():
@@ -78,12 +95,17 @@ func _physics_process(_delta):
 			direction = Vector2(1,0)
 		elif $right.is_colliding():
 			direction = Vector2(-1,0)
+<<<<<<< Updated upstream
 		if direction == Vector2(0,0):
 			direction = Vector2(-1,0)
 		velocity = direction * speed
 			
+=======
+		elif $bottoml.is_colliding():
+			direction = Vector2(1,-1)
+		velocity = direction * roaming_speed
+>>>>>>> Stashed changes
 	move_and_slide()
-
 
 
 func _on_area_2d_body_entered(body):
@@ -96,6 +118,7 @@ func _on_area_2d_body_entered(body):
 =======
 		Global.battle(1)
 
+
 func give_coords():
 	Global.state_dictionary["bat_pos"]=position
 	Global.state_dictionary["rock_state"]=rock
@@ -104,4 +127,7 @@ func give_coords():
 func _on_vision_body_entered(body):
 	if body.name == "Player":
 		seen_player = true
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
