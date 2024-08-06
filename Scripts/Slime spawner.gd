@@ -15,7 +15,6 @@ func _ready():
 			spawn_slime.water_card=true
 			spawn_slime.position = Global.state_dictionary["slime_pos"]
 			add_child(spawn_slime)
-			Global.slime=1
 			
 	else:
 		Global.slime=1
