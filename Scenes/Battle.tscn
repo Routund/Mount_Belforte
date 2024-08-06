@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://uk07hjo5epu4"]
+[gd_scene load_steps=24 format=3 uid="uid://uk07hjo5epu4"]
 
 [ext_resource type="Script" path="res://Scripts/battle_manager.gd" id="2_nygms"]
 [ext_resource type="Script" path="res://Scripts/EnemyHealthBar.gd" id="3_ibbn5"]
@@ -12,6 +12,9 @@
 [ext_resource type="Script" path="res://Scenes/PlayerAnimation.gd" id="6_gxu4j"]
 [ext_resource type="Script" path="res://Scripts/fakes.gd" id="6_qetmb"]
 [ext_resource type="Texture2D" uid="uid://d1g4xrheo41cs" path="res://Sprites/Cards/Blank_Card.png" id="7_it2nd"]
+[ext_resource type="Script" path="res://Scenes/CombatDialog.gd" id="13_5h2wc"]
+[ext_resource type="Shader" path="res://Scenes/Battle.gdshader" id="14_fl2xu"]
+[ext_resource type="Texture2D" uid="uid://ci84vqroi8n4r" path="res://Sprites/DIALOGUE.png" id="15_s5xkn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_82xog"]
 atlas = ExtResource("6_4goyg")
@@ -73,14 +76,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0ke6"]
+shader = ExtResource("14_fl2xu")
+
 [node name="Node2D" type="Node2D"]
 
 [node name="PlayerHealthBar" type="NinePatchRect" parent="."]
 self_modulate = Color(0.160784, 0, 0.00392157, 1)
-offset_left = 32.0
-offset_top = 24.781
-offset_right = 392.0
-offset_bottom = 52.781
+texture_filter = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 370.0
+offset_bottom = 38.0
 pivot_offset = Vector2(824, 3.21875)
 texture = ExtResource("7_it2nd")
 region_rect = Rect2(0, 0, 23, 32)
@@ -103,13 +110,14 @@ patch_margin_bottom = 10
 
 [node name="EnemyHealthBar" type="NinePatchRect" parent="."]
 self_modulate = Color(0.160784, 0, 0.00392157, 1)
+texture_filter = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 760.0
-offset_top = 24.805
-offset_right = 1120.0
-offset_bottom = 52.805
+offset_left = 782.0
+offset_top = 10.0
+offset_right = 1142.0
+offset_bottom = 38.0
 texture = ExtResource("7_it2nd")
 region_rect = Rect2(0, 0, 23, 32)
 patch_margin_left = 5
@@ -136,7 +144,7 @@ patch_margin_bottom = 10
 
 [node name="Enemy" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1121, 386)
+position = Vector2(1141, 386)
 scale = Vector2(1.25, 1.25)
 sprite_frames = ExtResource("4_kjpku")
 animation = &"idle"
@@ -159,10 +167,10 @@ position = Vector2(578, 607)
 script = ExtResource("2_nygms")
 
 [node name="Button" type="Button" parent="CanvasLayer/CardManager"]
-offset_left = -578.0
-offset_top = -58.0
+offset_left = -574.0
+offset_top = -60.0
 offset_right = -360.0
-offset_bottom = 43.0
+offset_bottom = 37.0
 text = " Skip Turn
 and draw an extra card"
 script = ExtResource("3_kbwne")
@@ -228,6 +236,27 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+offset_left = 374.0
+offset_top = 14.0
+offset_right = 778.0
+offset_bottom = 37.0
+script = ExtResource("13_5h2wc")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/CenterContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_v0ke6")
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+texture = ExtResource("15_s5xkn")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
 
 [connection signal="playerHealthBarFinished" from="PlayerHealthBar" to="PlayerHealthBar" method="_on_player_health_bar_finished"]
 [connection signal="playerHealthBarFinished" from="PlayerHealthBar" to="CanvasLayer/CardManager" method="_on_player_health_bar_player_health_bar_finished"]
