@@ -52,11 +52,13 @@ func _physics_process(_delta):
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
-		Global.slime = 1
 		var rng = RandomNumberGenerator.new()
 		var get_water = rng.randi_range(1,1)
 		if 5 not in Global.inventory and get_water == 1: #make it threea when water bottle works 
 			Global.state_dictionary["water"]=water_card
+			Global.slime=3
+		else:
+			Global.slime = 1
 		Global.battle(0)
 func give_coords():
 	Global.state_dictionary["slime_pos"]=position
