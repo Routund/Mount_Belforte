@@ -1,6 +1,7 @@
 extends CharacterBody2D
 # Declare member variables here. Examples:
 # var a = 2
+var seen_player = false
 var death = false
 var speed = 300
 var water_card = false
@@ -24,9 +25,10 @@ func _ready():
 	call_deferred("actor_setup")
 
 func actor_setup():
-	# Wait for the first physics frame so the NavigationServer can sync.
-	await get_tree().physics_frame
-	set_movement_target(_movement_target_position)
+	if seen_player == true:
+		await get_tree().physics_frame
+		set_movement_target(_movement_target_position)
+
 func set_movement_target(_movement_target: Vector2):
 	navigation_agent.target_position = player.global_position
 	
@@ -46,19 +48,28 @@ func _physics_process(_delta):
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
+		var rng = RandomNumberGenerator.new()
+		var get_water = rng.randi_range(1,3)
 		Global.slime -= 1
 		if death == false:
-			var rng = RandomNumberGenerator.new()
-			var get_water = rng.randi_range(1,3)
 			if 5 not in Global.inventory and get_water == 4: #make it three when water bottle works 
-				water_card = true
-				Global.state_dictionary["water"]=water_card
-			Global.battle(0)
-		elif water_card == true:
-			Global.slime -= 1
+				$card.show()
+				$Sprite2D.hide()
+				death = true
+			else:
+				queue_free()
+		elif death == true:
+			Global.slime += 1
+			if 5 not in Global.inventory and get_water == 1:
+				Global.battle(0)
+				Global.slime -= 1
 			Global.inventory.append(5)
 			queue_free()
 
 func give_coords():
 	Global.state_dictionary["slime_pos"]=position
-		
+
+func _on_vision_body_entered(body):
+	if body.name == "Player":
+		seen_player = true
+
