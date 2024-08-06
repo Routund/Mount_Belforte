@@ -31,6 +31,9 @@ _data = {
 "Walk": SubResource("Animation_1uhff")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_btptw"]
+radius = 248.652
+
 [node name="slime" type="CharacterBody2D"]
 script = ExtResource("1_c6oyi")
 
@@ -57,9 +60,36 @@ libraries = {
 "": SubResource("AnimationLibrary_w6l2m")
 }
 
+<<<<<<< Updated upstream
 [node name="card" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_3swje")
+=======
+[node name="vision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
+shape = SubResource("CircleShape2D_btptw")
+
+[node name="down" type="RayCast2D" parent="."]
+scale = Vector2(20.4967, 1)
+target_position = Vector2(0.0975765, 55)
+
+[node name="up" type="RayCast2D" parent="."]
+rotation = 3.14159
+scale = Vector2(20, 1)
+target_position = Vector2(-0.100007, 55)
+
+[node name="left" type="RayCast2D" parent="."]
+rotation = 1.5708
+scale = Vector2(20, 1)
+target_position = Vector2(-0.149989, 61)
+
+[node name="right" type="RayCast2D" parent="."]
+rotation = 4.71239
+scale = Vector2(20, 1)
+target_position = Vector2(0.150003, 62)
+>>>>>>> Stashed changes
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="vision" to="." method="_on_vision_body_entered"]

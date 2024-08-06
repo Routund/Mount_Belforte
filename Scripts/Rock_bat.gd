@@ -29,7 +29,7 @@ func _ready():
 	call_deferred("actor_setup")
 
 func actor_setup():
-	if rock == false:
+	if rock == false and seen_player == true:
 		await get_tree().physics_frame
 		set_movement_target(_movement_target_position)
 func set_movement_target(_movement_target: Vector2):
@@ -37,7 +37,7 @@ func set_movement_target(_movement_target: Vector2):
 		navigation_agent.target_position = player.global_position
 	
 func _physics_process(_delta):
-	if rock == false:
+	if rock == false and seen_player == true:
 		navigation_agent.target_position = player.global_position
 		if navigation_agent.is_navigation_finished():
 			return

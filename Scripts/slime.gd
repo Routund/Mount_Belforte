@@ -1,6 +1,12 @@
 extends CharacterBody2D
 # Declare member variables here. Examples:
 # var a = 2
+<<<<<<< Updated upstream
+=======
+var direction = Vector2.ZERO
+var roaming_speed = 250
+var seen_player = false
+>>>>>>> Stashed changes
 var death = false
 var speed = 300
 var water_card = false
@@ -31,7 +37,7 @@ func set_movement_target(_movement_target: Vector2):
 	navigation_agent.target_position = player.global_position
 	
 func _physics_process(_delta):
-	if death == false:
+	if death == false and seen_player == true:
 		navigation_agent.target_position = player.global_position
 	if navigation_agent.is_navigation_finished():
 		return
@@ -40,6 +46,9 @@ func _physics_process(_delta):
 	var new_velocity: Vector2 = next_path_position - current_agent_position
 	new_velocity = new_velocity.normalized()
 	velocity = new_velocity * speed
+	if seen_player == false:
+		pass #make slime roam around water
+		velocity = direction * roaming_speed
 	move_and_slide()
 
 
