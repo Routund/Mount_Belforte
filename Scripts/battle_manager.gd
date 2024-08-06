@@ -17,12 +17,14 @@ var go_next =false
 var edamaged = false
 var pdamaged = false
 var enemyAttacked=true
+var continuable=false
 
 @onready var HBox = get_node("Hand")
 @onready var PlayerHealthBar = get_node("../../PlayerHealthBar")
 @onready var EnemyHealthBar = get_node("../../EnemyHealthBar")
 @onready var EnemyAnimator = get_node("../../Enemy")
 @onready var PlayerAnimator = get_node("../../Player")
+@onready var DialogContainer = get_node("../DialogContainer")
 
 var card_preload = preload("res://Scenes/card_instance.tscn")
 var is_blocking = false
@@ -43,11 +45,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if((Input.is_action_just_pressed("interact") or Input.is_action_just_released("click")) and continuable):
+		go_next=true
+		continuable=false
 	if(go_next):
 		go_next=false
 		if(i<len(queue)):
 			edamaged = false
-			card_funcs[queue[i]].call()
+			DialogContainer.reset(card_funcs[queue[i]].call())
 			deck.append(queue[i])
 			i+=1
 		elif(queue!=[]):
@@ -60,7 +65,8 @@ func _process(_delta):
 		elif(!enemyAttacked):
 			enemyAttacked=true
 			pdamaged= false
-			enemies[enemy_id][3][randi_range(0,len(enemies[enemy_id][3])-1)].call()
+			# Call a random function from the enemies attack pattern
+			DialogContainer.reset(enemies[enemy_id][3][randi_range(0,len(enemies[enemy_id][3])-1)].call())
 		else:
 			if !poisonDamageDone:
 				poisonDamageDone=true
@@ -72,6 +78,7 @@ func _process(_delta):
 				print("Enemy Health: " + str(enemy_health))
 				print("Player Health: " + str(player_health))
 				$Button.text='Skip Turn'
+				DialogContainer.reset(null)
 				if player_health <= 0:
 					Global.reset=true
 					get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
@@ -95,21 +102,25 @@ func damage_enemy(amount,animated):
 # All player card functions
 func slash():
 	damage_enemy(60,true)
+	return "You slash at the %s" % enemies[enemy_id][0] 
 func heal():
 	# Make sure player doesnt overheal
 	damage_player(-min(40,player_max-player_health))
+	return "You heal some damage off" 
 func block():
 	is_blocking=true
 	go_next=true
+	return "You raise your shield"
 func poison():
 	EnemyHealthBar.Health_Rect.modulate = Color8(142,52,154)
 	poisoned=true
 	poisonDamageDone=false
 	go_next=true
+	return "You poison the %s" % enemies[enemy_id][0] 
 func run():
 	Global.reset=true
 	get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
-	return true
+	return "You run away" 
 
 func damage_player(amount):
 	if(amount<0):
@@ -124,6 +135,7 @@ func damage_player(amount):
 # All enemy attack functions
 func basic_attack():
 	damage_player(50)
+	return "The %s attacks" % enemies[enemy_id][0] 
 
 # Pick random card from deck, then add it to hand and remove from deck
 # Then instantiate a new card with that ID
@@ -150,15 +162,14 @@ func dequeue_card(card):
 	if len(queue)==0:
 		$Button.text ='Skip Turn and draw an extra card'
 
-var enemies = [["Slime",0,1,[basic_attack]],["Rock bat",0,1,[basic_attack]]]
+var enemies = [["Slime",175,1,[basic_attack]],["Rock bat",175,1,[basic_attack]]]
 
 func _on_button_confirm_play():
 	enemyAttacked=false
-	go_next=true
 	i=0
 	if poisoned:
 		poisonDamageDone=false
-	pass # Replace with function body.
+	go_next=true
 
 
 func _on_enemy_animation_finished():
@@ -166,20 +177,13 @@ func _on_enemy_animation_finished():
 		PlayerAnimator.play("hurt")
 		PlayerHealthBar.TweenTo(player_health,player_max)
 		pdamaged=false
-	pass # Replace with function body.
 
 func _on_player_animation_finished():
 	if edamaged:
 		EnemyAnimator.play("hurt")
 		EnemyHealthBar.TweenTo(enemy_health,enemy_max)
 		edamaged=false
-	pass # Replace with function body.
 
-func _on_player_health_bar_player_health_bar_finished():
-	go_next=true
-	pass # Replace with function body.
-
-
-func _on_enemy_health_bar_enemy_health_bar_finished():
-	go_next=true
+func _on_dialog_container_dialog_finished():
+	continuable=true
 	pass # Replace with function body.

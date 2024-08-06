@@ -18,3 +18,6 @@ func on_tween_finished():
 	if(health<0):
 		Health_Rect.visible=false
 	playerHealthBarFinished.emit()
+
+
+

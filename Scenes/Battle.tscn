@@ -9,10 +9,10 @@
 [ext_resource type="Script" path="res://Scripts/hand.gd" id="5_cltqn"]
 [ext_resource type="Script" path="res://Scripts/EnemyAnimator.gd" id="5_ee1ig"]
 [ext_resource type="Texture2D" uid="uid://c830oy4vqf404" path="res://Sprites/Main Character full.png" id="6_4goyg"]
-[ext_resource type="Script" path="res://Scenes/PlayerAnimation.gd" id="6_gxu4j"]
+[ext_resource type="Script" path="res://Scripts/PlayerAnimation.gd" id="6_gxu4j"]
 [ext_resource type="Script" path="res://Scripts/fakes.gd" id="6_qetmb"]
 [ext_resource type="Texture2D" uid="uid://d1g4xrheo41cs" path="res://Sprites/Cards/Blank_Card.png" id="7_it2nd"]
-[ext_resource type="Script" path="res://Scenes/CombatDialog.gd" id="13_5h2wc"]
+[ext_resource type="Script" path="res://Scripts/CombatDialog.gd" id="13_5h2wc"]
 [ext_resource type="Shader" path="res://Scenes/Battle.gdshader" id="14_fl2xu"]
 [ext_resource type="Texture2D" uid="uid://ci84vqroi8n4r" path="res://Sprites/DIALOGUE.png" id="15_s5xkn"]
 
@@ -237,14 +237,15 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+[node name="DialogContainer" type="CenterContainer" parent="CanvasLayer"]
+visible = false
 offset_left = 374.0
 offset_top = 14.0
 offset_right = 778.0
 offset_bottom = 37.0
 script = ExtResource("13_5h2wc")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/CenterContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/DialogContainer"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_v0ke6")
 custom_minimum_size = Vector2(0, 35)
@@ -255,7 +256,7 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="Label" type="Label" parent="CanvasLayer/CenterContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/DialogContainer"]
 layout_mode = 2
 
 [connection signal="playerHealthBarFinished" from="PlayerHealthBar" to="PlayerHealthBar" method="_on_player_health_bar_finished"]
@@ -265,3 +266,5 @@ layout_mode = 2
 [connection signal="animation_finished" from="Player" to="CanvasLayer/CardManager" method="_on_player_animation_finished"]
 [connection signal="confirmPlay" from="CanvasLayer/CardManager/Button" to="CanvasLayer/CardManager" method="_on_button_confirm_play"]
 [connection signal="confirmPlay" from="CanvasLayer/CardManager/Button" to="CanvasLayer/CardManager/Queue" method="_on_button_confirm_play"]
+[connection signal="dialogFinished" from="CanvasLayer/DialogContainer" to="PlayerHealthBar" method="_on_dialog_container_dialog_finished"]
+[connection signal="dialogFinished" from="CanvasLayer/DialogContainer" to="CanvasLayer/CardManager" method="_on_dialog_container_dialog_finished"]
