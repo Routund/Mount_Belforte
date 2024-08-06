@@ -28,6 +28,10 @@ func _ready():
 	fake = fake_preload.instantiate()
 	new_parent=hand
 	fakeH.add_child(fake)
+	hand.change_spacing()
+	queue.change_spacing()
+	fakeH.change_spacing()
+	fakeQ.change_spacing()
 	previous_pos=global_position-Vector2(0,-100)
 	animate = true
 	return
@@ -59,6 +63,8 @@ func _process(_delta):
 		animate=true
 		fake.get_parent().remove_child(fake)
 		new_fake_parent.add_child(fake)
+		fakeH.change_spacing()
+		fakeQ.change_spacing()
 		parentSelf=true
 	elif is_pressed() and not is_button_pressed:
 		# Button is pressed for the first time
@@ -67,7 +73,7 @@ func _process(_delta):
 func animate_self():
 	var newTransform = fake.global_position
 	var tween = create_tween()
-	tween.tween_property(self, "global_position", newTransform, 0.08)
+	tween.tween_property(self, "global_position", newTransform, 0.2)
 	tween.connect("finished", on_tween_finished)
 	disabled = true
 
@@ -76,4 +82,6 @@ func on_tween_finished():
 	disabled = false
 	if parentSelf:
 		reparent(new_parent)
+	hand.change_spacing()
+	queue.change_spacing()
 	global_position=fake.global_position

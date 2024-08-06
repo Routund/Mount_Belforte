@@ -8,6 +8,7 @@ var water_card = false
 @onready var player = get_parent().get_parent().get_node("Player")
 @onready var card=get_node("card")
 @onready var Sprite= get_node("Sprite2D")
+var card_preload = preload("res://Scenes/tester_card.tscn")
 
 var movement_speed: float = 400.0
 var _movement_target_position = Vector2.ZERO
@@ -15,8 +16,13 @@ var _movement_target_position = Vector2.ZERO
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
 func _ready():
+	if water_card:
+		var instance = card_preload.instantiate()
+		instance.card_id=5
+		get_parent().add_child(instance)
+		instance.global_position = global_position
+		queue_free()
 	Global.battleStarting.connect(give_coords)
-	$card.hide()
 	$AnimationPlayer.play("Walk")
 	Global.slime += 1
 	navigation_agent.path_desired_distance = 4.0
@@ -48,8 +54,6 @@ func _physics_process(_delta):
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
-		var rng = RandomNumberGenerator.new()
-		var get_water = rng.randi_range(1,3)
 		Global.slime -= 1
 		if death == false:
 			if 5 not in Global.inventory and get_water == 4: #make it three when water bottle works 
@@ -59,13 +63,12 @@ func _on_area_2d_body_entered(body):
 			else:
 				queue_free()
 		elif death == true:
-			Global.slime += 1
-			if 5 not in Global.inventory and get_water == 1:
-				Global.battle(0)
-				Global.slime -= 1
-			Global.inventory.append(5)
-			queue_free()
-
+			Global.slime = 1
+			var rng = RandomNumberGenerator.new()
+			var get_water = rng.randi_range(1,1)
+			if 5 not in Global.inventory and get_water == 1: #make it threea when water bottle works 
+			Global.state_dictionary["water"]=water_card
+		Global.battle(0)
 func give_coords():
 	Global.state_dictionary["slime_pos"]=position
 
