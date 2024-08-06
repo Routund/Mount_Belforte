@@ -19,3 +19,6 @@ func animate():
 	for sprite in get_children():
 		sprite.animate_self()
 	pass
+
+func change_spacing():
+	add_theme_constant_override("separation",-(len(get_children())*7))

@@ -143,15 +143,6 @@ animation = &"idle"
 offset = Vector2(-80, -130)
 script = ExtResource("5_ee1ig")
 
-[node name="Enemy" type="AnimatedSprite2D" parent="Enemy"]
-texture_filter = 1
-position = Vector2(1121, 386)
-scale = Vector2(1.25, 1.25)
-sprite_frames = ExtResource("4_kjpku")
-animation = &"idle"
-offset = Vector2(-80, -130)
-script = ExtResource("5_ee1ig")
-
 [node name="Player" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(36, 390)
@@ -168,11 +159,12 @@ position = Vector2(578, 607)
 script = ExtResource("2_nygms")
 
 [node name="Button" type="Button" parent="CanvasLayer/CardManager"]
-offset_left = -575.0
-offset_top = -89.0
-offset_right = -317.0
+offset_left = -578.0
+offset_top = -58.0
+offset_right = -360.0
 offset_bottom = 43.0
-text = "Skip turn"
+text = " Skip Turn
+and draw an extra card"
 script = ExtResource("3_kbwne")
 
 [node name="FakeQ" type="HBoxContainer" parent="CanvasLayer/CardManager"]
@@ -241,7 +233,6 @@ offset_bottom = 40.0
 [connection signal="playerHealthBarFinished" from="PlayerHealthBar" to="CanvasLayer/CardManager" method="_on_player_health_bar_player_health_bar_finished"]
 [connection signal="enemyHealthBarFinished" from="EnemyHealthBar" to="CanvasLayer/CardManager" method="_on_enemy_health_bar_enemy_health_bar_finished"]
 [connection signal="animation_finished" from="Enemy" to="CanvasLayer/CardManager" method="_on_enemy_animation_finished"]
-[connection signal="animation_finished" from="Enemy/Enemy" to="CanvasLayer/CardManager" method="_on_enemy_animation_finished"]
 [connection signal="animation_finished" from="Player" to="CanvasLayer/CardManager" method="_on_player_animation_finished"]
 [connection signal="confirmPlay" from="CanvasLayer/CardManager/Button" to="CanvasLayer/CardManager" method="_on_button_confirm_play"]
 [connection signal="confirmPlay" from="CanvasLayer/CardManager/Button" to="CanvasLayer/CardManager/Queue" method="_on_button_confirm_play"]

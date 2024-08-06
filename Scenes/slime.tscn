@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwl04xirr1hhv"]
+[gd_scene load_steps=7 format=3 uid="uid://bwl04xirr1hhv"]
 
 [ext_resource type="Script" path="res://Scripts/slime.gd" id="1_c6oyi"]
 [ext_resource type="Texture2D" uid="uid://didgd8am3dtdp" path="res://Sprites/Slime-Sheet_overworld.png" id="2_dkcvx"]
-[ext_resource type="Texture2D" uid="uid://cptg536y3bbgu" path="res://Sprites/CardNew.png" id="3_3swje"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdkjx"]
 
@@ -56,10 +55,5 @@ shape = SubResource("CircleShape2D_2dgoh")
 libraries = {
 "": SubResource("AnimationLibrary_w6l2m")
 }
-
-[node name="card" type="Sprite2D" parent="."]
-texture_filter = 1
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_3swje")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
