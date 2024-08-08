@@ -29,3 +29,4 @@ func reset(newText):
 		i=0
 		visible=true
 	label.text=""
+	dialogBackground.custom_minimum_size.x=12

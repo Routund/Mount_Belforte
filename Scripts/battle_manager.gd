@@ -18,6 +18,9 @@ var edamaged = false
 var pdamaged = false
 var enemyAttacked=true
 var continuable=false
+var runFlag = false
+var winFlag = false
+var loseFlag = false
 
 @onready var HBox = get_node("Hand")
 @onready var PlayerHealthBar = get_node("../../PlayerHealthBar")
@@ -50,7 +53,14 @@ func _process(_delta):
 		continuable=false
 	if(go_next):
 		go_next=false
-		if(i<len(queue)):
+		if runFlag:
+			get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
+		if winFlag:
+			Global.reset=true
+		elif loseFlag:
+			Global.reset=false
+			get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
+		elif(i<len(queue)):
 			edamaged = false
 			DialogContainer.reset(card_funcs[queue[i]].call())
 			deck.append(queue[i])
@@ -71,21 +81,22 @@ func _process(_delta):
 			if !poisonDamageDone:
 				poisonDamageDone=true
 				damage_enemy(20,false)
+				DialogContainer.reset("The %s takes poison damage" % enemies[enemy_id][0])
 			else:
 				draw()
 				is_blocking=false
 				$Button.disabled=false
 				print("Enemy Health: " + str(enemy_health))
 				print("Player Health: " + str(player_health))
-				$Button.text='Skip Turn'
+				$Button.text= 'Skip Turn and draw an extra card'
 				DialogContainer.reset(null)
 				if player_health <= 0:
-					Global.reset=true
-					get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
+					loseFlag=true
+					DialogContainer.reset("You black out")
 					return true
 				elif enemy_health <= 0:
-					Global.reset=false
-					get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
+					winFlag=true
+					DialogContainer.reset("You have slain the %s" % enemies[enemy_id][0])
 					return true
 			
 
@@ -109,17 +120,15 @@ func heal():
 	return "You heal some damage off" 
 func block():
 	is_blocking=true
-	go_next=true
 	return "You raise your shield"
 func poison():
 	EnemyHealthBar.Health_Rect.modulate = Color8(142,52,154)
 	poisoned=true
 	poisonDamageDone=false
-	go_next=true
 	return "You poison the %s" % enemies[enemy_id][0] 
 func run():
 	Global.reset=true
-	get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
+	runFlag = true
 	return "You run away" 
 
 func damage_player(amount):
