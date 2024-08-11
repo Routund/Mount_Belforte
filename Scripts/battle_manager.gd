@@ -56,9 +56,10 @@ func _process(_delta):
 		if runFlag:
 			get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
 		if winFlag:
-			Global.reset=true
-		elif loseFlag:
 			Global.reset=false
+			get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
+		elif loseFlag:
+			Global.reset=true
 			get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
 		elif(i<len(queue)):
 			edamaged = false

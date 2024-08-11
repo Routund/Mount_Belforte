@@ -1,6 +1,6 @@
 extends CenterContainer
 var text = ""
-var speed = 3
+var speed = 2
 @onready var label = get_node("Label")
 @onready var dialogBackground = get_node("NinePatchRect")
 var i = 0

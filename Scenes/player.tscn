@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ble7"]
 radius = 33.0
-height = 96.0
+height = 108.0
 
 [sub_resource type="Animation" id="Animation_n7sfq"]
 resource_name = "idle_down"
@@ -247,10 +247,10 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_6msmn")
 hframes = 5
 vframes = 6
-frame = 25
+frame = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 16)
+position = Vector2(-1, 25)
 shape = SubResource("CapsuleShape2D_3ble7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
