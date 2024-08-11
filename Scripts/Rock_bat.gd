@@ -32,7 +32,7 @@ func _ready():
 	call_deferred("actor_setup")
 
 func actor_setup():
-	if rock == false:
+	if rock == false and seen_player == true:
 		await get_tree().physics_frame
 		set_movement_target(_movement_target_position)
 func set_movement_target(_movement_target: Vector2):

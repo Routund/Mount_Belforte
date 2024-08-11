@@ -156,7 +156,7 @@ z_index = -1
 position = Vector2(487, -225)
 
 [node name="Rock_Node" parent="." instance=ExtResource("6_qfcjl")]
-position = Vector2(940, -351)
+position = Vector2(949, -543)
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -1
