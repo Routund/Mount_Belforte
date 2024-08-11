@@ -15,9 +15,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(goUp):
-		wiper.position.y-=5
+		wiper.position.y-=20
 	elif goDown:
-		wiper.position.y+=5
+		wiper.position.y+=20
+		if wiper.position.y==0:
+			get_tree().change_scene_to_file("res://Scenes/Battle.tscn")
 	pass
 
 func setDown():

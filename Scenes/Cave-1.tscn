@@ -1779,7 +1779,7 @@ terrain_set_0/terrain_3/name = "empty"
 terrain_set_0/terrain_3/color = Color(1, 1, 1, 1)
 sources/0 = SubResource("TileSetAtlasSource_y8hly")
 
-[node name="Cave-1" type="Node2D"]
+[node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_6edlc")]
 

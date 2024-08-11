@@ -9,7 +9,6 @@ var death = false
 var speed = 300
 var water_card = false
 @onready var player = get_parent().get_parent().get_node("Player")
-@onready var card=get_node("card")
 @onready var Sprite= get_node("Sprite2D")
 var card_preload = preload("res://Scenes/tester_card.tscn")
 
