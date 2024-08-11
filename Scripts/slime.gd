@@ -1,12 +1,9 @@
 extends CharacterBody2D
 # Declare member variables here. Examples:
 # var a = 2
-<<<<<<< Updated upstream
-=======
+
 var direction = Vector2.ZERO
 var roaming_speed = 250
-var seen_player = false
->>>>>>> Stashed changes
 var seen_player = false
 var death = false
 var speed = 300

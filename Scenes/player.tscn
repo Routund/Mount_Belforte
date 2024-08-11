@@ -1,8 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://bqlroxiiv5reg"]
+[gd_scene load_steps=33 format=3 uid="uid://bqlroxiiv5reg"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_ubegy"]
 [ext_resource type="Texture2D" uid="uid://c830oy4vqf404" path="res://Sprites/Main Character full.png" id="2_6msmn"]
 [ext_resource type="PackedScene" uid="uid://y1go6d8bx2ue" path="res://Scenes/pause.tscn" id="3_mn2gf"]
+[ext_resource type="Script" path="res://Scenes/BattleWipe.gd" id="4_onpyr"]
+[ext_resource type="Texture2D" uid="uid://cospfanlf6c68" path="res://Sprites/Button.png" id="5_qp8pn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ble7"]
 radius = 33.0
@@ -273,3 +275,15 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/BlendSpace2D/blend_position = Vector2(0.00160003, -0.0158731)
 parameters/Idle/TimeScale/scale = 1.0
 parameters/Walk/BlendSpace2D/blend_position = Vector2(-0.00160003, 0.735683)
+
+[node name="WipeLayer" type="CanvasLayer" parent="."]
+script = ExtResource("4_onpyr")
+
+[node name="TextureRect" type="TextureRect" parent="WipeLayer"]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = -1
+anchor_right = 0.017
+offset_left = -62.0
+offset_top = -648.0
+offset_right = 1190.42
+texture = ExtResource("5_qp8pn")
