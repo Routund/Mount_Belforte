@@ -1,7 +1,7 @@
 extends CharacterBody2D
 # Declare member variables here. Examples:
 # var a = 2
-var r = 500
+var r = 400
 var direction = Vector2.ZERO
 var roaming_speed = 200
 var seen_player = false
@@ -40,8 +40,8 @@ func actor_setup():
 
 func set_movement_target(_movement_target: Vector2):
 	navigation_agent.target_position = player.global_position
-	
 func _physics_process(_delta):
+	
 	if death == false and seen_player == true:
 		navigation_agent.target_position = player.global_position
 		if navigation_agent.is_navigation_finished():

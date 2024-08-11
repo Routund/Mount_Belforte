@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfc3lobkl8yiu"]
+[gd_scene load_steps=10 format=3 uid="uid://dos1tgroc2jdf"]
 
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="1_6edlc"]
 [ext_resource type="Texture2D" uid="uid://c2kfxbu7tm5mc" path="res://Sprites/NewerCave_tilemap.png" id="2_myhv0"]
 [ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="3_08063"]
 [ext_resource type="PackedScene" uid="uid://boojurd07rf2h" path="res://Scenes/slime_spawner.tscn" id="4_l2p68"]
+[ext_resource type="PackedScene" uid="uid://y5g78wv73dul" path="res://Scenes/tester_card.tscn" id="5_dw7wp"]
+[ext_resource type="PackedScene" uid="uid://ba85yfhojk0ne" path="res://Scenes/walking_talking_fish.tscn" id="6_7hxir"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2oi7j"]
 vertices = PackedVector2Array(826, 52, -616, -41, -702, -279, -518, -448, 599, -446, 1226, -54, 1508, -464, 1585, -374, 1529, -3, 1197, 460, 1538, 310, 1050, 1057, 1023, 697, 1766, 576, 1830, 713, 1841, 1124, 1714, 1301, 1193, 1363, 1639, 1504, 1446, 1584, 1229, 1501)
@@ -1809,3 +1811,9 @@ position = Vector2(1914, 1157)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(2056, 833, 1826, 1064, 1823, 1299, 1890, 1337, 1896, 1429, 1964, 1499, 2064, 1525)
+
+[node name="3" parent="." instance=ExtResource("5_dw7wp")]
+position = Vector2(1553, -144)
+
+[node name="Walking_Talking_Fish" parent="." instance=ExtResource("6_7hxir")]
+position = Vector2(475, 5)
