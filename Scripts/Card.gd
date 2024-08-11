@@ -67,8 +67,9 @@ func _process(_delta):
 		fakeQ.change_spacing()
 		parentSelf=true
 	elif is_pressed() and not is_button_pressed:
-		# Button is pressed for the first time
-		is_button_pressed = true
+		if !battle_manager.get_node("Button").disabled:
+			# Button is pressed for the first time
+			is_button_pressed = true
 
 func animate_self():
 	var newTransform = fake.global_position

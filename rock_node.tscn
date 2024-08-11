@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://nvrcst3a7tlc"]
+
+[ext_resource type="PackedScene" uid="uid://cdigm0hn3chus" path="res://Scenes/rock_bat.tscn" id="1_0uqbq"]
+
+[node name="Rock_Node" type="Node2D"]
+
+[node name="Rock_bat" parent="." instance=ExtResource("1_0uqbq")]

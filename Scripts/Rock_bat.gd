@@ -1,6 +1,7 @@
 extends CharacterBody2D
 # Declare member variables here. Examples:
 # var a = 2
+var r = 500
 var direction = Vector2.ZERO
 var seen_player = false
 var rock = false
@@ -32,7 +33,7 @@ func _ready():
 	call_deferred("actor_setup")
 
 func actor_setup():
-	if rock == false:
+	if rock == false and seen_player == true:
 		await get_tree().physics_frame
 		set_movement_target(_movement_target_position)
 func set_movement_target(_movement_target: Vector2):
@@ -40,16 +41,22 @@ func set_movement_target(_movement_target: Vector2):
 		navigation_agent.target_position = player.global_position
 	
 func _physics_process(_delta):
-	if rock == false:
+	if rock == false and seen_player == true:
 		navigation_agent.target_position = player.global_position
 		if navigation_agent.is_navigation_finished():
 			return
-		var current_agent_position: Vector2 = global_position
-		var next_path_position: Vector2 = navigation_agent.get_next_path_position()
-		var new_velocity: Vector2 = next_path_position - current_agent_position
-		new_velocity = new_velocity.normalized()
+	elif seen_player == false:
+		if navigation_agent.is_navigation_finished():
+			navigation_agent.target_position = Vector2(global_position.x + randi_range(-r,r),global_position.y + + randi_range(-r,r)).normalized() * r
+	var current_agent_position: Vector2 = global_position
+	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
+	var new_velocity: Vector2 = next_path_position - current_agent_position
+	new_velocity = new_velocity.normalized()
+	if rock == false and seen_player == true:
 		velocity = new_velocity * speed
-	elif rock == true:
+	elif seen_player == false:
+		velocity = new_velocity * roaming_speed
+	if rock == true:
 		direction = Vector2.ZERO
 		if $down.is_colliding() and $down.get_collider().name == "Player":
 			direction += Vector2(0,-1)
@@ -75,18 +82,6 @@ func _physics_process(_delta):
 				rock_speed = 700
 				$Rock_collision.disabled = false
 		velocity = direction * rock_speed
-	elif seen_player == false and rock == false:
-		if $down.is_colliding():
-			direction = Vector2(0,-1)
-		elif $up.is_colliding():
-			direction = Vector2(0,1)
-		elif $left.is_colliding():
-			direction = Vector2(1,0)
-		elif $right.is_colliding():
-			direction = Vector2(-1,0)
-		if direction == Vector2(0,0):
-			direction = Vector2(-1,0)
-		velocity = direction * roaming_speed
 	move_and_slide()
 
 
