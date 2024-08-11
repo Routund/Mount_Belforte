@@ -30,6 +30,7 @@ var poisoned = false
 var poisonDamageDone = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
 	deck = Global.deck.duplicate()
 	draw()
 	draw()
@@ -70,6 +71,7 @@ func _process(_delta):
 				$Button.disabled=false
 				print("Enemy Health: " + str(enemy_health))
 				print("Player Health: " + str(player_health))
+				$Button.text='Skip Turn'
 				if player_health <= 0:
 					Global.reset=true
 					get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
@@ -140,15 +142,15 @@ func queue_card(card):
 	hand.pop_at(hand.find(card))
 	queue.append(card)
 	if len(queue)==1:
-		$Button.text=='Play cards'
+		$Button.text ='Play cards'
 
 func dequeue_card(card):
 	queue.pop_at(queue.find(card))
 	hand.append(card)
 	if len(queue)==0:
-		$Button.text=='Skip Turn'
+		$Button.text ='Skip Turn and draw an extra card'
 
-var enemies = [["Slime",150,1,[basic_attack]],["Rock bat",150,1,[basic_attack]]]
+var enemies = [["Slime",0,1,[basic_attack]],["Rock bat",0,1,[basic_attack]]]
 
 func _on_button_confirm_play():
 	enemyAttacked=false

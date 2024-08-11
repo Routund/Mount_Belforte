@@ -11,12 +11,12 @@ func _ready():
 			spawn_slime.position = Global.state_dictionary["slime_pos"]
 		elif "water" in Global.state_dictionary.keys():
 			var spawn_slime = slime.instantiate()
-			add_child(spawn_slime)
-			spawn_slime.position = Global.state_dictionary["slime_pos"]
 			spawn_slime.death=true
 			spawn_slime.water_card=true
-			spawn_slime.card.show()
-			spawn_slime.Sprite.hide()
+			spawn_slime.position = Global.state_dictionary["slime_pos"]
+			add_child(spawn_slime)
+			Global.slime=1
+			
 	else:
 		Global.slime=1
 

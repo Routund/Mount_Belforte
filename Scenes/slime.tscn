@@ -2,12 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/slime.gd" id="1_c6oyi"]
 [ext_resource type="Texture2D" uid="uid://didgd8am3dtdp" path="res://Sprites/Slime-Sheet_overworld.png" id="2_dkcvx"]
-[ext_resource type="Texture2D" uid="uid://cptg536y3bbgu" path="res://Sprites/CardNew.png" id="3_3swje"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdkjx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2dgoh"]
-radius = 69.3542
+radius = 52.0
 
 [sub_resource type="Animation" id="Animation_1uhff"]
 resource_name = "Walk"
@@ -31,8 +30,8 @@ _data = {
 "Walk": SubResource("Animation_1uhff")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_btptw"]
-radius = 248.652
+[sub_resource type="CircleShape2D" id="CircleShape2D_wff8o"]
+radius = 418.172
 
 [node name="slime" type="CharacterBody2D"]
 script = ExtResource("1_c6oyi")
@@ -43,6 +42,7 @@ disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(-2, -1)
 scale = Vector2(2, 2)
 texture = ExtResource("2_dkcvx")
 hframes = 3
@@ -51,6 +51,7 @@ vframes = 3
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 16)
 shape = SubResource("CircleShape2D_2dgoh")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -60,36 +61,10 @@ libraries = {
 "": SubResource("AnimationLibrary_w6l2m")
 }
 
-<<<<<<< Updated upstream
-[node name="card" type="Sprite2D" parent="."]
-texture_filter = 1
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_3swje")
-=======
 [node name="vision" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
-shape = SubResource("CircleShape2D_btptw")
-
-[node name="down" type="RayCast2D" parent="."]
-scale = Vector2(20.4967, 1)
-target_position = Vector2(0.0975765, 55)
-
-[node name="up" type="RayCast2D" parent="."]
-rotation = 3.14159
-scale = Vector2(20, 1)
-target_position = Vector2(-0.100007, 55)
-
-[node name="left" type="RayCast2D" parent="."]
-rotation = 1.5708
-scale = Vector2(20, 1)
-target_position = Vector2(-0.149989, 61)
-
-[node name="right" type="RayCast2D" parent="."]
-rotation = 4.71239
-scale = Vector2(20, 1)
-target_position = Vector2(0.150003, 62)
->>>>>>> Stashed changes
+shape = SubResource("CircleShape2D_wff8o")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="vision" to="." method="_on_vision_body_entered"]
