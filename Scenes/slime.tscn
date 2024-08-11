@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwl04xirr1hhv"]
+[gd_scene load_steps=8 format=3 uid="uid://bwl04xirr1hhv"]
 
 [ext_resource type="Script" path="res://Scripts/slime.gd" id="1_c6oyi"]
 [ext_resource type="Texture2D" uid="uid://didgd8am3dtdp" path="res://Sprites/Slime-Sheet_overworld.png" id="2_dkcvx"]
@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdkjx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2dgoh"]
-radius = 69.3542
+radius = 52.0
 
 [sub_resource type="Animation" id="Animation_1uhff"]
 resource_name = "Walk"
@@ -30,6 +30,9 @@ _data = {
 "Walk": SubResource("Animation_1uhff")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_wff8o"]
+radius = 418.172
+
 [node name="slime" type="CharacterBody2D"]
 script = ExtResource("1_c6oyi")
 
@@ -39,6 +42,7 @@ disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(-2, -1)
 scale = Vector2(2, 2)
 texture = ExtResource("2_dkcvx")
 hframes = 3
@@ -47,6 +51,7 @@ vframes = 3
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 16)
 shape = SubResource("CircleShape2D_2dgoh")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -55,5 +60,10 @@ shape = SubResource("CircleShape2D_2dgoh")
 libraries = {
 "": SubResource("AnimationLibrary_w6l2m")
 }
+
+[node name="vision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
+shape = SubResource("CircleShape2D_wff8o")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
