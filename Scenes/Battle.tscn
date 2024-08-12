@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://uk07hjo5epu4"]
+[gd_scene load_steps=30 format=3 uid="uid://uk07hjo5epu4"]
 
 [ext_resource type="Texture2D" uid="uid://dtvu6cm37arkp" path="res://Sprites/CaveCombat.png" id="1_roa77"]
 [ext_resource type="Script" path="res://Scripts/battle_manager.gd" id="2_nygms"]
@@ -14,9 +14,8 @@
 [ext_resource type="Script" path="res://Scripts/fakes.gd" id="6_qetmb"]
 [ext_resource type="Texture2D" uid="uid://rl5pvy46nyjv" path="res://Sprites/Main Character attack-Sheet.png" id="6_wkqp5"]
 [ext_resource type="Texture2D" uid="uid://d1g4xrheo41cs" path="res://Sprites/Cards/Blank_Card.png" id="7_it2nd"]
-[ext_resource type="Script" path="res://Scenes/OverworldWipe.gd" id="9_0apxm"]
+[ext_resource type="Script" path="res://Scripts/OverworldWipe.gd" id="9_0apxm"]
 [ext_resource type="Script" path="res://Scripts/CombatDialog.gd" id="13_5h2wc"]
-[ext_resource type="Shader" path="res://Scenes/Battle.gdshader" id="14_fl2xu"]
 [ext_resource type="Texture2D" uid="uid://ci84vqroi8n4r" path="res://Sprites/DIALOGUE.png" id="15_s5xkn"]
 [ext_resource type="Texture2D" uid="uid://cospfanlf6c68" path="res://Sprites/Button.png" id="18_uukb5"]
 
@@ -101,8 +100,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0ke6"]
-shader = ExtResource("14_fl2xu")
+[sub_resource type="LabelSettings" id="LabelSettings_8p7x2"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="Node2D" type="Node2D"]
 
@@ -279,7 +278,6 @@ script = ExtResource("13_5h2wc")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/DialogContainer"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_v0ke6")
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 texture = ExtResource("15_s5xkn")
@@ -290,6 +288,7 @@ patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="CanvasLayer/DialogContainer"]
 layout_mode = 2
+label_settings = SubResource("LabelSettings_8p7x2")
 
 [node name="Wiper" type="TextureRect" parent="CanvasLayer"]
 modulate = Color(0, 0, 0, 1)

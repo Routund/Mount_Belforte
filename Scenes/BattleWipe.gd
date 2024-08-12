@@ -1,13 +1,11 @@
 extends CanvasLayer
 @onready var wiper = get_node("TextureRect")
-var goUp = false
-var goDown = true 
+var goUp = true
+var goDown = false 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if(Global.reset):
-		wiper.position.y=0
-		goUp=true
+	wiper.position.y=0
 	Global.battleStarting.connect(setDown)
 	pass # Replace with function body.
 

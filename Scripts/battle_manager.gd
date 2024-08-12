@@ -170,7 +170,7 @@ func dequeue_card(card):
 	if len(queue)==0:
 		$Button.text ='Skip Turn and draw an extra card'
 
-var enemies = [["Slime",175,1,[basic_attack]],["Rock bat",175,1,[basic_attack]]]
+var enemies = [["Slime",0,1,[basic_attack]],["Rock bat",0,1,[basic_attack]]]
 
 func _on_button_confirm_play():
 	enemyAttacked=false
