@@ -16,10 +16,9 @@ var reset = true
 var inventory_open = false
 var slime = 1
 var state_dictionary = {}
+var overworld_scene = "res://Scenes/Overworld.tscn"
 
 func battle(id):
 	battleStarting.emit()
 	enemy_id=id
-func change_to_battle():
-	get_tree().change_scene_to_file("res://Scenes/Battle.tscn")
-	
+	overworld_scene = get_tree().current_scene.scene_file_path

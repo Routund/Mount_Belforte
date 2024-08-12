@@ -53,14 +53,12 @@ func _process(_delta):
 		continuable=false
 	if(go_next):
 		go_next=false
-		if runFlag:
-			get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
 		if winFlag:
 			Global.reset=false
-			get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
-		elif loseFlag:
+			$"..".setUp()
+		elif loseFlag or runFlag:
 			Global.reset=true
-			get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
+			$"..".setUp()
 		elif(i<len(queue)):
 			edamaged = false
 			DialogContainer.reset(card_funcs[queue[i]].call())
@@ -69,8 +67,8 @@ func _process(_delta):
 		elif(queue!=[]):
 			queue = []
 			if(enemy_health<=0):
-				Global.reset=false
-				get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")
+				winFlag=true
+				DialogContainer.reset("You have slain the %s" % enemies[enemy_id][0])
 				return true
 			go_next = true
 		elif(!enemyAttacked):

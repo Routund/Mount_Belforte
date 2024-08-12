@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://uk07hjo5epu4"]
+[gd_scene load_steps=31 format=3 uid="uid://uk07hjo5epu4"]
 
+[ext_resource type="Texture2D" uid="uid://dtvu6cm37arkp" path="res://Sprites/CaveCombat.png" id="1_roa77"]
 [ext_resource type="Script" path="res://Scripts/battle_manager.gd" id="2_nygms"]
 [ext_resource type="Script" path="res://Scripts/EnemyHealthBar.gd" id="3_ibbn5"]
 [ext_resource type="Script" path="res://Scripts/ConfirmPlay.gd" id="3_kbwne"]
@@ -13,9 +14,11 @@
 [ext_resource type="Script" path="res://Scripts/fakes.gd" id="6_qetmb"]
 [ext_resource type="Texture2D" uid="uid://rl5pvy46nyjv" path="res://Sprites/Main Character attack-Sheet.png" id="6_wkqp5"]
 [ext_resource type="Texture2D" uid="uid://d1g4xrheo41cs" path="res://Sprites/Cards/Blank_Card.png" id="7_it2nd"]
+[ext_resource type="Script" path="res://Scenes/OverworldWipe.gd" id="9_0apxm"]
 [ext_resource type="Script" path="res://Scripts/CombatDialog.gd" id="13_5h2wc"]
 [ext_resource type="Shader" path="res://Scenes/Battle.gdshader" id="14_fl2xu"]
 [ext_resource type="Texture2D" uid="uid://ci84vqroi8n4r" path="res://Sprites/DIALOGUE.png" id="15_s5xkn"]
+[ext_resource type="Texture2D" uid="uid://cospfanlf6c68" path="res://Sprites/Button.png" id="18_uukb5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t5los"]
 atlas = ExtResource("6_wkqp5")
@@ -103,6 +106,12 @@ shader = ExtResource("14_fl2xu")
 
 [node name="Node2D" type="Node2D"]
 
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_roa77")
+
 [node name="PlayerHealthBar" type="NinePatchRect" parent="."]
 self_modulate = Color(0.160784, 0, 0.00392157, 1)
 texture_filter = 1
@@ -166,7 +175,7 @@ patch_margin_bottom = 10
 
 [node name="Enemy" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1141, 386)
+position = Vector2(1141, 521)
 scale = Vector2(1.25, 1.25)
 sprite_frames = ExtResource("4_kjpku")
 animation = &"idle"
@@ -175,7 +184,7 @@ script = ExtResource("5_ee1ig")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(36, 390)
+position = Vector2(36, 509)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_biac8")
 animation = &"attack"
@@ -183,6 +192,7 @@ offset = Vector2(31.9315, -32)
 script = ExtResource("6_gxu4j")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("9_0apxm")
 
 [node name="CardManager" type="Node2D" parent="CanvasLayer"]
 position = Vector2(578, 607)
@@ -280,6 +290,15 @@ patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="CanvasLayer/DialogContainer"]
 layout_mode = 2
+
+[node name="Wiper" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = -1
+anchor_right = 0.017
+offset_left = -62.0
+offset_top = -831.0
+offset_right = 1190.42
+texture = ExtResource("18_uukb5")
 
 [connection signal="playerHealthBarFinished" from="PlayerHealthBar" to="PlayerHealthBar" method="_on_player_health_bar_finished"]
 [connection signal="playerHealthBarFinished" from="PlayerHealthBar" to="CanvasLayer/CardManager" method="_on_player_health_bar_player_health_bar_finished"]
