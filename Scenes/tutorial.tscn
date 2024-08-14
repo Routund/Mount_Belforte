@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bejaaqfbcxwl5"]
+
+[ext_resource type="PackedScene" uid="uid://ba85yfhojk0ne" path="res://Scenes/walking_talking_fish.tscn" id="1_01ble"]
+[ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="2_oggf4"]
+
+[node name="Tutorial" type="Node2D"]
+
+[node name="Walking_Talking_Fish" parent="." instance=ExtResource("1_01ble")]
+position = Vector2(118, 91)
+
+[node name="Player" parent="." instance=ExtResource("2_oggf4")]
+position = Vector2(-167, 83)

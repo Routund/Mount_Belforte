@@ -1,14 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfc3lobkl8yiu"]
+[gd_scene load_steps=10 format=3 uid="uid://dos1tgroc2jdf"]
 
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="1_6edlc"]
 [ext_resource type="Texture2D" uid="uid://c2kfxbu7tm5mc" path="res://Sprites/NewerCave_tilemap.png" id="2_myhv0"]
 [ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="3_08063"]
 [ext_resource type="PackedScene" uid="uid://boojurd07rf2h" path="res://Scenes/slime_spawner.tscn" id="4_l2p68"]
+[ext_resource type="PackedScene" uid="uid://y5g78wv73dul" path="res://Scenes/tester_card.tscn" id="5_dw7wp"]
+[ext_resource type="PackedScene" uid="uid://ba85yfhojk0ne" path="res://Scenes/walking_talking_fish.tscn" id="6_7hxir"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2oi7j"]
-vertices = PackedVector2Array(826, 52, -616, -41, -702, -279, -518, -448, 599, -446, 1226, -54, 1508, -464, 1585, -374, 1529, -3, 1197, 460, 1538, 310, 1050, 1057, 1023, 697, 1766, 576, 1830, 713, 1841, 1124, 1714, 1301, 1193, 1363, 1639, 1504, 1446, 1584, 1229, 1501)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 0, 4, 6, 7), PackedInt32Array(5, 7, 8, 9), PackedInt32Array(9, 8, 10), PackedInt32Array(11, 12, 9, 10, 13, 14, 15, 16, 17), PackedInt32Array(17, 16, 18, 19, 20)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-522, -459, -714, -283, -623, -32, 829, 63, 1215, -41, 1187, 456, 1013, 695, 1041, 1060, 1184, 1366, 1221, 1509, 1447, 1595, 1647, 1512, 1723, 1306, 1852, 1128, 1840, 712, 1774, 569, 1548, 306, 1539, -2, 1596, -377, 1513, -475, 599, -456)])
+vertices = PackedVector2Array(1487, 326, 1728, 586, 1727, 585, 1280, -9, 1498, -49, 1253, 443, 1050, 1057, 1023, 698, 1830, 715, 1841, 1124, 1714, 1301, 1193, 1363, 1639, 1504, 1446, 1584, 1229, 1501)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 0, 5), PackedInt32Array(6, 7, 5, 0, 2, 8, 9, 10, 11), PackedInt32Array(11, 10, 12, 13, 14)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1271, -18, 1243, 439, 1013, 695, 1041, 1060, 1184, 1366, 1221, 1509, 1447, 1595, 1647, 1512, 1723, 1306, 1852, 1128, 1840, 712, 1735, 579, 1497, 322, 1509, -62)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y8hly"]
@@ -1779,9 +1781,10 @@ terrain_set_0/terrain_3/name = "empty"
 terrain_set_0/terrain_3/color = Color(1, 1, 1, 1)
 sources/0 = SubResource("TileSetAtlasSource_y8hly")
 
-[node name="Cave-1" type="Node2D"]
+[node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_6edlc")]
+position = Vector2(1665, 1838)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(227, 247)
@@ -1809,3 +1812,9 @@ position = Vector2(1914, 1157)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(2056, 833, 1826, 1064, 1823, 1299, 1890, 1337, 1896, 1429, 1964, 1499, 2064, 1525)
+
+[node name="3" parent="." instance=ExtResource("5_dw7wp")]
+position = Vector2(1553, -144)
+
+[node name="Walking_Talking_Fish" parent="." instance=ExtResource("6_7hxir")]
+position = Vector2(521, 0)

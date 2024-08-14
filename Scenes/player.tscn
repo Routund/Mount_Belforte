@@ -249,7 +249,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_6msmn")
 hframes = 5
 vframes = 6
-frame = 24
+frame = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 25)
@@ -284,6 +284,6 @@ modulate = Color(0, 0, 0, 1)
 anchors_preset = -1
 anchor_right = 0.017
 offset_left = -62.0
-offset_top = -648.0
+offset_top = -831.0
 offset_right = 1190.42
 texture = ExtResource("5_qp8pn")
