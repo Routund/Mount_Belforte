@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba85yfhojk0ne"]
+
+[ext_resource type="Texture2D" uid="uid://1e0xfob6mm56" path="res://Sprites/Fish-Sheet.png" id="1_ecw2o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfx1u"]
+size = Vector2(118, 113)
+
+[node name="Walking_Talking_Fish" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 12.5)
+shape = SubResource("RectangleShape2D_yfx1u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_ecw2o")
+hframes = 2
+vframes = 2

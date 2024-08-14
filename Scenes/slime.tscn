@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bwl04xirr1hhv"]
 
 [ext_resource type="Script" path="res://Scripts/slime.gd" id="1_c6oyi"]
-[ext_resource type="Texture2D" uid="uid://didgd8am3dtdp" path="res://Sprites/Slime-Sheet_overworld.png" id="2_dkcvx"]
+[ext_resource type="Texture2D" uid="uid://bp2sarx85n1xp" path="res://Sprites/Slime-Sheet.png" id="2_1w7hr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdkjx"]
 
@@ -43,7 +43,7 @@ disabled = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(2, 2)
-texture = ExtResource("2_dkcvx")
+texture = ExtResource("2_1w7hr")
 hframes = 3
 vframes = 3
 
@@ -62,7 +62,8 @@ libraries = {
 [node name="vision" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
-shape = SubResource("CircleShape2D_1c0uv")
+shape = SubResource("CircleShape2D_wff8o")
+disabled = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="vision" to="." method="_on_vision_body_entered"]

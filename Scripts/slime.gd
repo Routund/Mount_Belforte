@@ -1,7 +1,7 @@
 extends CharacterBody2D
 # Declare member variables here. Examples:
 # var a = 2
-var r = 500
+var r = 1000
 var direction = Vector2.ZERO
 var roaming_speed = 200
 var seen_player = false
@@ -29,26 +29,20 @@ func _ready():
 	Global.slime += 1
 	navigation_agent.path_desired_distance = 4.0
 	navigation_agent.target_desired_distance = 4.0
-# Make sure to not await during _ready.
-	call_deferred("actor_setup")
+	navigation_agent.target_position = get_parent().global_position
 
-func actor_setup():
-	if seen_player == true:
-		await get_tree().physics_frame
-		set_movement_target(_movement_target_position)
-
-func set_movement_target(_movement_target: Vector2):
-	navigation_agent.target_position = player.global_position
-	
 func _physics_process(_delta):
+	print(navigation_agent.target_position)
+	var current_agent_position: Vector2 = global_position
 	if death == false and seen_player == true:
 		navigation_agent.target_position = player.global_position
+		if not navigation_agent.is_target_reachable():
+			seen_player = false
 		if navigation_agent.is_navigation_finished():
 			return
 	elif seen_player == false:
 		if navigation_agent.is_navigation_finished():
-			navigation_agent.target_position = Vector2(global_position.x + randi_range(-r,r),global_position.y + + randi_range(-r,r)).normalized() * r
-	var current_agent_position: Vector2 = global_position
+			navigation_agent.target_position = Vector2(global_position.x + randi_range(-r,r),global_position.y + + randi_range(-r,r)).normalized() * randi_range(-r,r)
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 	var new_velocity: Vector2 = next_path_position - current_agent_position
 	new_velocity = new_velocity.normalized()
