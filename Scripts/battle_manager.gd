@@ -21,6 +21,10 @@ var continuable=false
 var runFlag = false
 var winFlag = false
 var loseFlag = false
+var recoilFlag = false
+var is_blocking = false
+var poisoned = false
+var poisonDamageDone = true
 
 @onready var HBox = get_node("Hand")
 @onready var PlayerHealthBar = get_node("../../PlayerHealthBar")
@@ -30,9 +34,7 @@ var loseFlag = false
 @onready var DialogContainer = get_node("../DialogContainer")
 
 var card_preload = preload("res://Scenes/card_instance.tscn")
-var is_blocking = false
-var poisoned = false
-var poisonDamageDone = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
@@ -102,7 +104,10 @@ func _process(_delta):
 
 func damage_enemy(amount,animated):
 	enemy_health-=amount
-	if(animated):
+	if amount<=0:
+		player_health-=amount
+		EnemyHealthBar.TweenTo(enemy_health,enemy_max)
+	elif(animated):
 		PlayerAnimator.play("attack")
 		edamaged=true
 	else:
@@ -111,11 +116,11 @@ func damage_enemy(amount,animated):
 		
 # All player card functions
 func slash():
-	damage_enemy(60,true)
+	damage_enemy(55,true)
 	return "You slash at the %s" % enemies[enemy_id][0] 
 func heal():
 	# Make sure player doesnt overheal
-	damage_player(-min(40,player_max-player_health))
+	damage_player(-min(40,player_max-player_health),true)
 	return "You heal some damage off" 
 func block():
 	is_blocking=true
@@ -130,20 +135,33 @@ func run():
 	runFlag = true
 	return "You run away" 
 
-func damage_player(amount):
+func damage_player(amount,animated):
 	if(amount<0):
 		player_health-=amount
 		PlayerHealthBar.TweenTo(player_health,player_max)
-	else:
+	elif(animated):
 		if(is_blocking):
 			amount/=4
 		player_health-=amount
 		EnemyAnimator.play("attack")
 		pdamaged=true
+	else:
+		PlayerAnimator.play("hurt")
+		PlayerHealthBar.TweenTo(player_health,player_max)
+
+
 # All enemy attack functions
 func basic_attack():
-	damage_player(50)
+	damage_player(50,true)
 	return "The %s attacks" % enemies[enemy_id][0] 
+func slimeai():
+	if enemy_health > 100 or randi_range(0,3)==0:
+		damage_player(60,true)
+		return "The Water slime attacks!"
+	else:
+		damage_enemy(-70,false)
+		return "The Water slime soaks up water to heal itself"
+		 
 
 # Pick random card from deck, then add it to hand and remove from deck
 # Then instantiate a new card with that ID
@@ -170,7 +188,7 @@ func dequeue_card(card):
 	if len(queue)==0:
 		$Button.text ='Skip Turn and draw an extra card'
 
-var enemies = [["Slime",0,1,[basic_attack]],["Rock bat",0,1,[basic_attack]]]
+var enemies = [["Slime",150,1,[slimeai]],["Rock bat",150,1,[basic_attack]]]
 
 func _on_button_confirm_play():
 	enemyAttacked=false
@@ -178,6 +196,8 @@ func _on_button_confirm_play():
 	if poisoned:
 		poisonDamageDone=false
 	go_next=true
+	if len(queue)==0:
+		draw()
 
 
 func _on_enemy_animation_finished():

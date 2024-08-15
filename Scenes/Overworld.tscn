@@ -131,7 +131,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(
 outlines = Array[PackedVector2Array]([PackedVector2Array(-940, -546, 179, -533, 201, -236, 484, -222, 470, -536, 1051, -533, 1059, 466, -935, 460, -932, 372, -760, 383, -769, 95, -927, 103)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_l2n5d")]
 z_index = 1
