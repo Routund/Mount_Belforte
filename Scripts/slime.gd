@@ -1,7 +1,7 @@
 extends CharacterBody2D
 # Declare member variables here. Examples:
 # var a = 2
-var r = 1000
+var r = 300
 var direction = Vector2.ZERO
 var roaming_speed = 200
 var seen_player = false
@@ -30,9 +30,9 @@ func _ready():
 	navigation_agent.path_desired_distance = 4.0
 	navigation_agent.target_desired_distance = 4.0
 	navigation_agent.target_position = get_parent().global_position
+	randomize()
 
 func _physics_process(_delta):
-	print(navigation_agent.target_position)
 	var current_agent_position: Vector2 = global_position
 	if death == false and seen_player == true:
 		navigation_agent.target_position = player.global_position
@@ -42,7 +42,9 @@ func _physics_process(_delta):
 			return
 	elif seen_player == false:
 		if navigation_agent.is_navigation_finished():
-			navigation_agent.target_position = Vector2(global_position.x + randi_range(-r,r),global_position.y + + randi_range(-r,r)).normalized() * randi_range(-r,r)
+			navigation_agent.target_position =global_position + Vector2(randf_range(-1,1),randf_range(-1,1)).normalized()*randf_range(r/2,r)
+			print(global_position)
+			print(navigation_agent.target_position)
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 	var new_velocity: Vector2 = next_path_position - current_agent_position
 	new_velocity = new_velocity.normalized()
