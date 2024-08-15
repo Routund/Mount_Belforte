@@ -249,7 +249,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_6msmn")
 hframes = 5
 vframes = 6
-frame = 25
+frame = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 25)
@@ -267,9 +267,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_riu4f")
-}
 tree_root = SubResource("AnimationNodeStateMachine_ndtvq")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/BlendSpace2D/blend_position = Vector2(0.00160003, -0.0158731)
@@ -280,6 +277,7 @@ parameters/Walk/BlendSpace2D/blend_position = Vector2(-0.00160003, 0.735683)
 script = ExtResource("4_onpyr")
 
 [node name="TextureRect" type="TextureRect" parent="WipeLayer"]
+visible = false
 modulate = Color(0, 0, 0, 1)
 anchors_preset = -1
 anchor_right = 0.017
