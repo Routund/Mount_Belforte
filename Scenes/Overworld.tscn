@@ -159,7 +159,6 @@ texture_filter = 1
 tile_set = SubResource("TileSet_r2wqs")
 format = 2
 layer_0/z_index = -1
-layer_0/tile_data = PackedInt32Array(196588, 0, 0, 262124, 0, 1, 327660, 0, 2, 196589, 65536, 0, 262125, 65536, 1, 327661, 131072, 3, 196590, 65536, 0, 262126, 65536, 1, 327662, 131072, 3, 196591, 65536, 0, 262127, 65536, 1, 327663, 131072, 3, 196592, 65536, 0, 262128, 65536, 1, 327664, 131072, 3)
 
 [node name="Treasure" type="Sprite2D" parent="."]
 texture_filter = 1
