@@ -103,7 +103,7 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_8p7x2"]
 font_color = Color(0, 0, 0, 1)
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
