@@ -41,14 +41,18 @@ func set_movement_target(_movement_target: Vector2):
 		navigation_agent.target_position = player.global_position
 	
 func _physics_process(_delta):
+	var current_agent_position: Vector2 = global_position
 	if rock == false and seen_player == true:
 		navigation_agent.target_position = player.global_position
+		if not navigation_agent.is_target_reachable():
+			seen_player = false
 		if navigation_agent.is_navigation_finished():
 			return
 	elif seen_player == false:
 		if navigation_agent.is_navigation_finished():
-			navigation_agent.target_position = Vector2(global_position.x + randi_range(-r,r),global_position.y + + randi_range(-r,r)).normalized() * r
-	var current_agent_position: Vector2 = global_position
+			navigation_agent.target_position =global_position + Vector2(randf_range(-1,1),randf_range(-1,1)).normalized()*randf_range(r/2,r)
+			print(global_position)
+			print(navigation_agent.target_position)
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 	var new_velocity: Vector2 = next_path_position - current_agent_position
 	new_velocity = new_velocity.normalized()

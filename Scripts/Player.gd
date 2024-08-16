@@ -8,6 +8,7 @@ func _ready():
 	if !Global.reset:
 		position= Global.state_dictionary["player_pos"]
 	else:
+		position = Global.state_dictionary["init_player_pos"]
 		Global.state_dictionary.clear()
 
 func _physics_process(_delta):

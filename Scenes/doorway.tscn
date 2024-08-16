@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://m2l0feudy3o1"]
 
-[ext_resource type="Script" path="res://Scenes/doorway.gd" id="1_14yjf"]
+[ext_resource type="Script" path="res://Scripts/doorway.gd" id="1_14yjf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hwtxn"]
 size = Vector2(174, 131)
@@ -12,3 +12,5 @@ script = ExtResource("1_14yjf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(66, 165)
 shape = SubResource("RectangleShape2D_hwtxn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

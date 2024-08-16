@@ -18,6 +18,9 @@ var slime = 1
 var state_dictionary = {}
 var overworld_scene = "res://Scenes/Overworld.tscn"
 
+func _ready():
+	state_dictionary["init_player_pos"]= Vector2(0,0)
+
 func battle(id):
 	battleStarting.emit()
 	enemy_id=id
