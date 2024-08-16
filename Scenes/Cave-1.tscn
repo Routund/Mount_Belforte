@@ -1785,7 +1785,7 @@ sources/0 = SubResource("TileSetAtlasSource_y8hly")
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_6edlc")]
-position = Vector2(1665, 1838)
+position = Vector2(-844, -548)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(227, 247)

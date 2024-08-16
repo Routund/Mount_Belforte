@@ -3,7 +3,7 @@ extends Node2D
 var player_health = 200
 var player_max = 200
 var enemy_health = 200
-var enemy_max = 200
+var enemy_max = 1000
 var enemy_id = 0
 var i = 0
 
@@ -12,6 +12,7 @@ var hand = []
 var queue = []
 var card_funcs = [slash,heal,block,poison,run]
 const card_descs = ["Slash Attack","Heal","Block","Poison Enemy","Run away"]
+var enemies = [["Slime",150,1,[slimeai]],["Rock bat",150,1,[basic_attack]]]
 
 var go_next =false
 var edamaged = false
@@ -45,6 +46,7 @@ func _ready():
 	EnemyAnimator.enemy_id=enemy_id
 	EnemyAnimator.load_frames()
 	enemy_health=enemies[enemy_id][1]
+	enemy_max=enemy_health
 	pass # Replace with function body.
 
 
@@ -103,11 +105,11 @@ func _process(_delta):
 
 
 func damage_enemy(amount,animated):
-	enemy_health-=amount
 	if amount<=0:
-		player_health-=amount
+		enemy_health=min(enemy_max,enemy_health-amount)
 		EnemyHealthBar.TweenTo(enemy_health,enemy_max)
 	elif(animated):
+		enemy_health-=amount
 		PlayerAnimator.play("attack")
 		edamaged=true
 	else:
@@ -120,7 +122,7 @@ func slash():
 	return "You slash at the %s" % enemies[enemy_id][0] 
 func heal():
 	# Make sure player doesnt overheal
-	damage_player(-min(40,player_max-player_health),true)
+	damage_player(-min(40,player_max-player_health),false)
 	return "You heal some damage off" 
 func block():
 	is_blocking=true
@@ -155,11 +157,11 @@ func basic_attack():
 	damage_player(50,true)
 	return "The %s attacks" % enemies[enemy_id][0] 
 func slimeai():
-	if enemy_health > 100 or randi_range(0,3)==0:
+	if enemy_health > 100 or randi_range(0,3)!=0:
 		damage_player(60,true)
 		return "The Water slime attacks!"
 	else:
-		damage_enemy(-70,false)
+		damage_enemy(-80,false)
 		return "The Water slime soaks up water to heal itself"
 		 
 
@@ -188,7 +190,6 @@ func dequeue_card(card):
 	if len(queue)==0:
 		$Button.text ='Skip Turn and draw an extra card'
 
-var enemies = [["Slime",150,1,[slimeai]],["Rock bat",150,1,[basic_attack]]]
 
 func _on_button_confirm_play():
 	enemyAttacked=false
