@@ -4,16 +4,28 @@ var deck = 4
 
 func _ready():
 	hide()
-	$ScrollContainer/VBoxContainer/Poison.hide()
-	$ScrollContainer/VBoxContainer/Water.hide()
-	$Deck/Poison.hide()
-	$Deck/Water.hide()
+	if 0 not in Global.deck:
+		$Deck/Attack.hide()
+	if 1 not in Global.deck:
+		$Deck/Heal.hide()
+	if 2 not in Global.deck:
+		$Deck/Block.hide()
+	if 3 not in Global.deck:
+		$Deck/Poison.hide()
+	if 4 not in Global.deck:
+		$Deck/Run.hide()
+	if 5 not in Global.deck:
+		$Deck/Water.hide()
 
 func _process(_delta):
 	if 3 in Global.inventory:
 		$ScrollContainer/VBoxContainer/Poison.show()
+	else: 
+		$ScrollContainer/VBoxContainer/Poison.hide()
 	if 5 in Global.inventory:
 		$ScrollContainer/VBoxContainer/Water.show()
+	else:
+		$ScrollContainer/VBoxContainer/Water.hide()
 	
 	
 
