@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b0y1fiprrwrv8"]
+[gd_scene load_steps=17 format=3 uid="uid://b0y1fiprrwrv8"]
 
 [ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="1_8pg0x"]
 [ext_resource type="Texture2D" uid="uid://c2kfxbu7tm5mc" path="res://Sprites/NewerCave_tilemap.png" id="1_olaqt"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://nvrcst3a7tlc" path="res://rock_node.tscn" id="6_pexte"]
 [ext_resource type="PackedScene" uid="uid://ch40hb30w63p7" path="res://Scenes/hidden_path.tscn" id="7_6vajn"]
 [ext_resource type="PackedScene" uid="uid://m2l0feudy3o1" path="res://Scenes/doorway.tscn" id="8_bgjtf"]
+[ext_resource type="PackedScene" uid="uid://y5g78wv73dul" path="res://Scenes/tester_card.tscn" id="9_0quyf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ki577"]
 texture = ExtResource("1_olaqt")
@@ -126,16 +127,16 @@ terrain_set_0/terrain_3/color = Color(1, 1, 1, 1)
 sources/2 = SubResource("TileSetAtlasSource_ki577")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tajh1"]
-vertices = PackedVector2Array(585, 110, 597, 601, 158, 577, 163, 503, -570, 111, -173, 492, -564, 186, -167, 594, -576, 586, -576, 332, -1424, 347, -1414, 177)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5, 6), PackedInt32Array(6, 5, 7, 8, 9), PackedInt32Array(9, 10, 11, 6)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-1424, 167, -575, 176, -582, 102, 595, 100, 608, 612, 148, 587, 152, 513, -162, 502, -157, 605, -586, 596, -586, 342, -1435, 358)])
+vertices = PackedVector2Array(-582, 332, -1424, 347, -1414, 176, -467, 173, 570, 430, 153, 574, 127, 505, 482, 138, -402, 113, -108, 502, -480, 436, -161, 591)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(0, 3, 8, 7, 6, 9, 10), PackedInt32Array(10, 9, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1424, 167, -471, 163, -406, 103, 490, 129, 583, 436, 148, 587, 120, 515, -102, 512, -157, 605, -487, 445, -586, 342, -1435, 358)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uipl2"]
 size = Vector2(595, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wp7oo"]
-size = Vector2(243, 341)
+size = Vector2(27, 349)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7pfwt"]
 size = Vector2(1248, 171)
@@ -201,9 +202,9 @@ z_index = 2
 position = Vector2(1353, 255)
 
 [node name="ColorRect" type="ColorRect" parent="hidden path"]
-offset_left = -112.0
+offset_left = -68.0
 offset_top = -326.0
-offset_right = 99.0
+offset_right = 53.0
 offset_bottom = 6.0
 color = Color(0, 0, 0, 1)
 
@@ -211,18 +212,18 @@ color = Color(0, 0, 0, 1)
 offset_left = -1172.0
 offset_top = -556.0
 offset_right = 99.0
-offset_bottom = -326.0
+offset_bottom = -323.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="hidden path"]
 offset_left = -1172.0
 offset_top = -326.0
 offset_right = -769.0
-offset_bottom = -183.0
+offset_bottom = -191.0
 color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="hidden path"]
-position = Vector2(-2.5, -180.5)
+position = Vector2(-12.5, -176.5)
 shape = SubResource("RectangleShape2D_wp7oo")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="hidden path"]
@@ -238,5 +239,8 @@ position = Vector2(-71, -266)
 
 [node name="2 0" parent="." instance=ExtResource("7_6vajn")]
 position = Vector2(-9, 637)
+
+[node name="6" parent="." instance=ExtResource("9_0quyf")]
+position = Vector2(360, -142)
 
 [connection signal="body_exited" from="hidden path" to="hidden path" method="_on_body_exited"]
