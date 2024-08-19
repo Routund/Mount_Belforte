@@ -10,9 +10,9 @@ var i = 0
 var deck = [0,1,2,3]
 var hand = []
 var queue = []
-var card_funcs = [slash,heal,block,poison,run]
-const card_descs = ["Slash Attack","Heal","Block","Poison Enemy","Run away"]
-var enemies = [["Slime",150,1,[slimeai]],["Rock bat",150,1,[basic_attack]]]
+var card_funcs = [slash,heal,block,poison,run,water,recoil]
+const card_descs = ["Slash Attack","Heal","Block","Poison Enemy","Run away","Vial of water","Headbutt"]
+var enemies = [["Slime",150,1,[slimeai],true],["Rock bat",150,1,[basic_attack],false]]
 
 var go_next =false
 var edamaged = false
@@ -49,6 +49,17 @@ func _ready():
 	enemy_max=enemy_health
 	pass # Replace with function body.
 
+func checkWhoseDead():
+	if player_health <= 0:
+		loseFlag=true
+		DialogContainer.reset("You black out")
+		return true
+	elif enemy_health <= 0:
+		winFlag=true
+		DialogContainer.reset("You have slain the %s" % enemies[enemy_id][0])
+		return true
+	else:
+		return false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -63,6 +74,12 @@ func _process(_delta):
 		elif loseFlag or runFlag:
 			Global.reset=true
 			$"..".setUp()
+		elif recoilFlag:
+			DialogContainer.reset("Your helmet reverberates around your head")
+			damage_player(50,false)
+			recoilFlag=false
+		elif checkWhoseDead():
+			pass
 		elif(i<len(queue)):
 			edamaged = false
 			DialogContainer.reset(card_funcs[queue[i]].call())
@@ -93,14 +110,7 @@ func _process(_delta):
 				print("Player Health: " + str(player_health))
 				$Button.text= 'Skip Turn and draw an extra card'
 				DialogContainer.reset(null)
-				if player_health <= 0:
-					loseFlag=true
-					DialogContainer.reset("You black out")
-					return true
-				elif enemy_health <= 0:
-					winFlag=true
-					DialogContainer.reset("You have slain the %s" % enemies[enemy_id][0])
-					return true
+
 			
 
 
@@ -132,19 +142,26 @@ func poison():
 	poisoned=true
 	poisonDamageDone=false
 	return "You poison the %s" % enemies[enemy_id][0] 
+func water():
+	return "It doesn't seem to do anything"
 func run():
-	Global.reset=true
-	runFlag = true
-	return "You run away" 
+	if enemies[enemy_id][4]:
+		runFlag = true
+		return "You run away"
+	else:
+		return "You can't run away from this battle" 
+func recoil():
+	damage_enemy(90,true)
+	recoilFlag=true
+	return "You charge headfirst at the enemy"
 
 func damage_player(amount,animated):
+	player_health-=amount
 	if(amount<0):
-		player_health-=amount
 		PlayerHealthBar.TweenTo(player_health,player_max)
 	elif(animated):
 		if(is_blocking):
 			amount/=4
-		player_health-=amount
 		EnemyAnimator.play("attack")
 		pdamaged=true
 	else:
@@ -157,11 +174,11 @@ func basic_attack():
 	damage_player(50,true)
 	return "The %s attacks" % enemies[enemy_id][0] 
 func slimeai():
-	if enemy_health > 100 or randi_range(0,3)!=0:
+	if enemy_health > 60 or randi_range(0,1)==0:
 		damage_player(60,true)
 		return "The Water slime attacks!"
 	else:
-		damage_enemy(-80,false)
+		damage_enemy(-50,false)
 		return "The Water slime soaks up water to heal itself"
 		 
 

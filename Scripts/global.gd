@@ -5,9 +5,10 @@ extends Node
 #3 is poison 
 #4 is run
 #5 is water botttle
-var inventory = [0,1,2,4] 
+#6 is recoil
+var inventory = [0,1,2,4,6] 
 
-var deck = [0,1,2,4]
+var deck = [0,1,2,4,6]
 signal battleStarting
 
 
