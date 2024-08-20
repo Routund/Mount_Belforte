@@ -1,7 +1,7 @@
 extends Area2D
 var dialogue = ["texdfsdfdgfsdgfdfsdsgdfsdft", "hi"]
 var id = 0
-var fin = 0
+var fin = 3
 var funny = 0
 var done = false
 
@@ -17,8 +17,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("interact") or Input.is_action_just_released("click") and done == true:
 		id += 1
 		funny += 1
-		if funny == fin:
-			self.hide()
+		if funny >= fin:
+			hide()
+			DialogContainer.visible=false
 			get_tree().paused = false
 		else:
 			DialogContainer.reset(dialogue[id])

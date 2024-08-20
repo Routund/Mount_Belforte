@@ -54,7 +54,7 @@ text = "Poison"
 layout_mode = 2
 text = "Bottled Water"
 
-[node name="Headbut" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="Headbutt" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Headbutt"
 
@@ -103,7 +103,7 @@ text = "Poison"
 layout_mode = 2
 text = "Bottled Water"
 
-[node name="Headbut" type="Button" parent="Deck"]
+[node name="Headbutt" type="Button" parent="Deck"]
 layout_mode = 2
 text = "Headbutt"
 
@@ -113,7 +113,7 @@ text = "Headbutt"
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Run" to="." method="_on_run_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Poison" to="." method="_on_poison_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Water" to="." method="_on_water_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Headbut" to="." method="_on_headbut_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Headbutt" to="." method="_on_headbutt_pressed"]
 [connection signal="pressed" from="go_back" to="." method="_on_go_back_pressed"]
 [connection signal="pressed" from="Deck/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Deck/Block" to="." method="_on_block_pressed"]
@@ -121,4 +121,4 @@ text = "Headbutt"
 [connection signal="pressed" from="Deck/Run" to="." method="_on_run_pressed"]
 [connection signal="pressed" from="Deck/Poison" to="." method="_on_poison_pressed"]
 [connection signal="pressed" from="Deck/Water" to="." method="_on_water_pressed"]
-[connection signal="pressed" from="Deck/Headbut" to="." method="_on_headbut_pressed"]
+[connection signal="pressed" from="Deck/Headbutt" to="." method="_on_headbutt_pressed"]
