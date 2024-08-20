@@ -12,7 +12,7 @@ var hand = []
 var queue = []
 var card_funcs = [slash,heal,block,poison,run,water,recoil]
 const card_descs = ["Slash Attack","Heal","Block","Poison Enemy","Run away","Vial of water","Headbutt"]
-var enemies = [["Slime",150,1,[slimeai],true],["Rock bat",150,1,[basic_attack],false]]
+var enemies = [["Slime",160,1,[slimeai],true],["Rock bat",120,1,[batai],false]]
 
 var go_next =false
 var edamaged = false
@@ -24,9 +24,10 @@ var winFlag = false
 var loseFlag = false
 var recoilFlag = false
 var is_blocking = false
-var poisoned = false
-var poisonDamageDone = true
+var enemyInfectionDone = true
+var playerInfectionDone = true
 var playerInfected = false
+var enemyInfected = false
 var playerOvertime = 0
 var enemyOvertime = 0
 
@@ -101,10 +102,14 @@ func _process(_delta):
 			# Call a random function from the enemies attack pattern
 			DialogContainer.reset(enemies[enemy_id][3][randi_range(0,len(enemies[enemy_id][3])-1)].call())
 		else:
-			if !poisonDamageDone:
-				poisonDamageDone=true
-				damage_enemy(20,false)
+			if !enemyInfectionDone:
+				enemyInfectionDone=true
+				damage_enemy(enemyOvertime,false)
 				DialogContainer.reset("The %s takes poison damage" % enemies[enemy_id][0])
+			elif !playerInfectionDone:
+				playerInfectionDone=true
+				damage_player(playerOvertime,false)
+				DialogContainer.reset("You hurt from your wounds")
 			else:
 				draw()
 				is_blocking=false
@@ -143,11 +148,16 @@ func block():
 	return "You raise your shield"
 func poison():
 	EnemyHealthBar.Health_Rect.modulate = Color8(142,52,154)
-	poisoned=true
-	poisonDamageDone=false
+	enemyInfected=true
+	enemyInfectionDone=false
+	enemyOvertime+=20
 	return "You poison the %s" % enemies[enemy_id][0] 
 func water():
-	return "It doesn't seem to do anything"
+	PlayerHealthBar.Health_Rect.modulate = Color8(249,41,0)
+	playerInfected=false
+	playerInfectionDone=true
+	playerOvertime=0
+	return "You cleanse yourself"
 func run():
 	if enemies[enemy_id][4]:
 		runFlag = true
@@ -187,8 +197,17 @@ func slimeai():
 	else:
 		damage_enemy(-50,false)
 		return "The Water slime soaks up water to heal itself"
-
-
+func batai():
+	if !playerInfected and randi_range(0,1)!=0:
+		PlayerHealthBar.Health_Rect.modulate = Color8(124,173,19)
+		damage_player(20,true)
+		playerInfected=true
+		playerInfectionDone=false
+		playerOvertime+=10
+		return "The Rock bat sinks it's fangs into your neck"
+	else:
+		damage_player(45,true)
+		return "The Rock bat attacks"
 # Pick random card from deck, then add it to hand and remove from deck
 # Then instantiate a new card with that ID
 func draw():
@@ -218,8 +237,10 @@ func dequeue_card(card):
 func _on_button_confirm_play():
 	enemyAttacked=false
 	i=0
-	if poisoned:
-		poisonDamageDone=false
+	if enemyInfected:
+		enemyInfectionDone=false
+	if playerInfected:
+		playerInfectionDone=false
 	go_next=true
 	if len(queue)==0:
 		draw()
