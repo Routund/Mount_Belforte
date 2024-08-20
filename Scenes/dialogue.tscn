@@ -1,40 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://chi6q777d6lc4"]
+[gd_scene load_steps=3 format=3 uid="uid://chi6q777d6lc4"]
 
 [ext_resource type="Script" path="res://dialogue.gd" id="1_edq8h"]
-[ext_resource type="Script" path="res://Scripts/dialogue Container.gd" id="2_41mj4"]
-[ext_resource type="Texture2D" uid="uid://ci84vqroi8n4r" path="res://Sprites/DIALOGUE.png" id="3_f5et8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhvjp"]
 size = Vector2(158, 135)
 
-[sub_resource type="LabelSettings" id="LabelSettings_ii8l2"]
-font_size = 50
-font_color = Color(0, 0, 0, 1)
-
 [node name="dialogue" type="Area2D"]
+process_mode = 3
 script = ExtResource("1_edq8h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_vhvjp")
-
-[node name="dialogue Container" type="CenterContainer" parent="."]
-offset_right = 8.0
-offset_bottom = 35.0
-script = ExtResource("2_41mj4")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="dialogue Container"]
-texture_filter = 1
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = ExtResource("3_f5et8")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
-
-[node name="Label" type="Label" parent="dialogue Container"]
-layout_mode = 2
-label_settings = SubResource("LabelSettings_ii8l2")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
