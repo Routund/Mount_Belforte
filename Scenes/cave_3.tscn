@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cojkgwp52hypk"]
+
+[ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="1_pohdt"]
+[ext_resource type="PackedScene" uid="uid://vhgkwbm8ioku" path="res://Scenes/rock_node.tscn" id="2_0itcl"]
+
+[node name="cave_3" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_pohdt")]
+
+[node name="Rock_Node" parent="." instance=ExtResource("2_0itcl")]
+position = Vector2(-743, 54)
+
+[node name="Rock_Node2" parent="." instance=ExtResource("2_0itcl")]
+position = Vector2(928, 81)
