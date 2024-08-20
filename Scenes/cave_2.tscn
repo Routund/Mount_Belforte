@@ -133,7 +133,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-1424, 167, -471, 163, 
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uipl2"]
-size = Vector2(595, 20)
+size = Vector2(442.5, 18.9996)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wp7oo"]
 size = Vector2(27, 349)
@@ -167,13 +167,15 @@ position = Vector2(1348, 144)
 
 [node name="Rock_Door" parent="." instance=ExtResource("4_mjwlv")]
 position = Vector2(663, 323)
+scale = Vector2(1, 1.12)
 
 [node name="Rock_button" parent="Rock_Door" instance=ExtResource("5_3tgr3")]
 z_index = -1
-position = Vector2(-676, -158)
+position = Vector2(-990, -115)
+scale = Vector2(1, 0.893)
 
 [node name="Rock_Door2" parent="." instance=ExtResource("4_mjwlv")]
-position = Vector2(2, 577)
+position = Vector2(-17, 632)
 rotation = 1.5708
 
 [node name="Rock_button" parent="Rock_Door2" instance=ExtResource("5_3tgr3")]
@@ -190,7 +192,7 @@ position = Vector2(-1356, 242)
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(404, 83)
+position = Vector2(341.75, 64.5004)
 rotation = 3.14159
 shape = SubResource("RectangleShape2D_uipl2")
 one_way_collision = true

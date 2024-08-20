@@ -26,6 +26,9 @@ var recoilFlag = false
 var is_blocking = false
 var poisoned = false
 var poisonDamageDone = true
+var playerInfected = false
+var playerOvertime = 0
+var enemyOvertime = 0
 
 @onready var HBox = get_node("Hand")
 @onready var PlayerHealthBar = get_node("../../PlayerHealthBar")
@@ -123,6 +126,7 @@ func damage_enemy(amount,animated):
 		PlayerAnimator.play("attack")
 		edamaged=true
 	else:
+		enemy_health-=amount
 		EnemyAnimator.play("hurt")
 		EnemyHealthBar.TweenTo(enemy_health,enemy_max)
 		
@@ -156,15 +160,18 @@ func recoil():
 	return "You charge headfirst at the enemy"
 
 func damage_player(amount,animated):
-	player_health-=amount
 	if(amount<0):
+		player_health-=amount
+		player_health=min(player_health,player_max)
 		PlayerHealthBar.TweenTo(player_health,player_max)
 	elif(animated):
 		if(is_blocking):
 			amount/=4
+		player_health-=amount
 		EnemyAnimator.play("attack")
 		pdamaged=true
 	else:
+		player_health-=amount
 		PlayerAnimator.play("hurt")
 		PlayerHealthBar.TweenTo(player_health,player_max)
 
@@ -174,13 +181,13 @@ func basic_attack():
 	damage_player(50,true)
 	return "The %s attacks" % enemies[enemy_id][0] 
 func slimeai():
-	if enemy_health > 60 or randi_range(0,1)==0:
+	if enemy_health > 60 or randi_range(0,1)!=0:
 		damage_player(60,true)
 		return "The Water slime attacks!"
 	else:
 		damage_enemy(-50,false)
 		return "The Water slime soaks up water to heal itself"
-		 
+
 
 # Pick random card from deck, then add it to hand and remove from deck
 # Then instantiate a new card with that ID

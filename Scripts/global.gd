@@ -15,6 +15,7 @@ signal battleStarting
 var enemy_id = 0
 var reset = true
 var inventory_open = false
+var changing = false
 var slime = 1
 var state_dictionary = {}
 var overworld_scene = "res://Scenes/Overworld.tscn"

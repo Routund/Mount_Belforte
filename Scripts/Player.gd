@@ -10,6 +10,7 @@ func _ready():
 	else:
 		position = Global.state_dictionary["init_player_pos"]
 		Global.state_dictionary.clear()
+		Global.state_dictionary["init_player_pos"]=position
 
 func _physics_process(_delta):
 	var direction = Vector2(

@@ -24,5 +24,3 @@ func setUp():
 	goDown=false
 	goUp=true
 	wiper.position.y=831
-
-

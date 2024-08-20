@@ -17,7 +17,11 @@ func _process(_delta):
 	elif goDown:
 		wiper.position.y+=20
 		if wiper.position.y>=20:
-			get_tree().change_scene_to_file("res://Scenes/Battle.tscn")
+			if(!Global.changing):
+				get_tree().change_scene_to_file("res://Scenes/Battle.tscn")
+			else:
+				get_tree().change_scene_to_file(Global.overworld_scene)
+				Global.changing=false
 	pass
 
 func setDown():
