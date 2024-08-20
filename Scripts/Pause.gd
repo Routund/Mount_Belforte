@@ -11,6 +11,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("inventory") and paused == false:
 		get_tree().paused = true
 		paused = true
+		owner.tree.get("parameters/playback").travel("Idle")
 		show()
 	elif Input.is_action_just_pressed("inventory") and paused == true and Global.inventory_open == false:
 		get_tree().paused = false

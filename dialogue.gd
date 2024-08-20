@@ -1,5 +1,5 @@
 extends Area2D
-var dialogue = ["texdfsdfdgfsdgfdfsdsgdfsdft", "hi"]
+var dialogue = ["Welcome traveler to Mount Belforte. Press space to interact", "*Gargling noises*", "You picked up Poison, tab to open pause menu", "You picked up Headbutt"]
 var id = 0
 var fin = 3
 var funny = 0
@@ -14,7 +14,7 @@ func _ready():
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("interact") or Input.is_action_just_released("click") and done == true:
+	if done == true and Input.is_action_just_pressed("interact") or Input.is_action_just_released("click") and done == true:
 		id += 1
 		funny += 1
 		if funny >= fin:

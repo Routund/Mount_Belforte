@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cojkgwp52hypk"]
+[gd_scene load_steps=5 format=3 uid="uid://cojkgwp52hypk"]
 
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="1_pohdt"]
 [ext_resource type="PackedScene" uid="uid://vhgkwbm8ioku" path="res://Scenes/rock_node.tscn" id="2_0itcl"]
+[ext_resource type="PackedScene" uid="uid://dh835k1hqslwo" path="res://Scenes/rock_door.tscn" id="3_ly0h5"]
+[ext_resource type="PackedScene" uid="uid://cynbtl2rfc874" path="res://Scenes/rock_button.tscn" id="4_ge8m2"]
 
 [node name="cave_3" type="Node2D"]
 
@@ -12,3 +14,15 @@ position = Vector2(-743, 54)
 
 [node name="Rock_Node2" parent="." instance=ExtResource("2_0itcl")]
 position = Vector2(928, 81)
+
+[node name="Rock_Door" parent="." instance=ExtResource("3_ly0h5")]
+position = Vector2(61, 1436)
+rotation = 1.52662
+
+[node name="Rock_button" parent="Rock_Door" instance=ExtResource("4_ge8m2")]
+position = Vector2(-1200.89, -391.414)
+rotation = -1.52805
+
+[node name="Rock_button2" parent="Rock_Door" instance=ExtResource("4_ge8m2")]
+position = Vector2(-1235.6, 280.709)
+rotation = -1.48654
