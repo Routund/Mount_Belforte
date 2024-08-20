@@ -21,4 +21,8 @@ func _process(delta):
 func _on_body_entered(body):
 	if body.name == "Player":
 		Global.state_dictionary["init_player_pos"]=doorways[next_scene_data[0]][1][next_scene_data[1]]
-		get_tree().change_scene_to_file(doorways[next_scene_data[0]][0])
+		Global.changing=true
+		Global.reset=true
+		Global.overworld_scene = doorways[next_scene_data[0]][0]
+		get_parent().get_node("Player/WipeLayer").setDown()
+		
