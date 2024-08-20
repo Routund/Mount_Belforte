@@ -7,6 +7,7 @@ var i = 0
 signal dialogFinished
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	visible=false
 	pass # Replace with function body.
 
 
@@ -15,7 +16,8 @@ func _process(delta):
 	if i<len(text)*speed:
 		if i%speed==0:
 			label.text+=text[i/speed]
-			dialogBackground.custom_minimum_size.x=label.size.x+24
+			dialogBackground.custom_minimum_size.x=label.size.x+250
+			dialogBackground.custom_minimum_size.y=label.size.y+175
 		i+=1
 		if i==len(text)*speed:
 			dialogFinished.emit()

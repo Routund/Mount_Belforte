@@ -16,6 +16,8 @@ func _ready():
 		$Deck/Run.hide()
 	if 5 not in Global.deck:
 		$Deck/Water.hide()
+	if 6 not in Global.deck:
+		$Deck/Headbutt.hide()
 
 func _process(_delta):
 	if 3 in Global.inventory:
@@ -26,6 +28,10 @@ func _process(_delta):
 		$ScrollContainer/VBoxContainer/Water.show()
 	else:
 		$ScrollContainer/VBoxContainer/Water.hide()
+	if 6 in Global.inventory:
+		$ScrollContainer/VBoxContainer/Headbutt.show()
+	else:
+		$ScrollContainer/VBoxContainer/Headbutt.hide()
 	
 	
 
@@ -97,3 +103,15 @@ func _on_go_back_pressed():
 	$"../Settings".show()
 	$"../Inventor".show()
 	$"../Exit".show()
+
+
+func _on_headbutt_pressed():
+	if 6 in Global.deck:
+		Global.deck.pop_at(Global.deck.find(6))
+		$Deck/Headbutt.hide()
+		deck -= 1
+	elif deck <= 8 and 6 in Global.inventory:
+		Global.deck.append(6)
+		$Deck/Headbutt.show()
+		deck += 1
+	pass # Replace with function body.
