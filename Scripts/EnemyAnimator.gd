@@ -2,7 +2,8 @@ extends AnimatedSprite2D
 
 const frame_paths = [
 	["res://Sprites/Combat_enemies/Slime.tres",3,-40,-32],
-	["res://Sprites/Combat_enemies/rockbat.tres",1.25,-80,-100]
+	["res://Sprites/Combat_enemies/rockbat.tres",1.25,-80,-100],
+	["res://Sprites/Combat_enemies/Golem.tres",7,-40,-40],
 ]
 var enemy_id = 0
 

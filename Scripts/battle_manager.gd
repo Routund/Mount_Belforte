@@ -12,7 +12,11 @@ var hand = []
 var queue = []
 var card_funcs = [slash,heal,block,poison,run,water,recoil]
 const card_descs = ["Slash Attack","Heal","Block","Poison Enemy","Run away","Vial of water","Headbutt"]
-var enemies = [["Slime",160,1,[slimeai],true],["Rock bat",120,1,[batai],false]]
+var enemies = [
+	["Slime",160,1,[slimeai],true],
+	["Rock bat",120,1,[batai],false],
+	["Golem",240,1,[golemAi],false]
+	]
 
 var go_next =false
 var edamaged = false
@@ -208,6 +212,9 @@ func batai():
 	else:
 		damage_player(45,true)
 		return "The Rock bat attacks"
+func golemAi():
+	damage_player(70,true)
+	return "The Golem attacks"
 # Pick random card from deck, then add it to hand and remove from deck
 # Then instantiate a new card with that ID
 func draw():
