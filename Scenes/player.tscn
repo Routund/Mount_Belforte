@@ -275,9 +275,6 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 process_mode = 3
-libraries = {
-"": SubResource("AnimationLibrary_riu4f")
-}
 tree_root = SubResource("AnimationNodeStateMachine_ndtvq")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/BlendSpace2D/blend_position = Vector2(0.00160003, -0.0158731)
@@ -298,10 +295,11 @@ texture = ExtResource("5_qp8pn")
 
 [node name="dialogue Container" type="CenterContainer" parent="."]
 process_mode = 3
-offset_left = -949.0
-offset_top = 342.0
-offset_right = 947.0
-offset_bottom = 442.0
+z_index = 9
+offset_left = -945.0
+offset_top = 270.0
+offset_right = 951.0
+offset_bottom = 370.0
 script = ExtResource("6_po838")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="dialogue Container"]
