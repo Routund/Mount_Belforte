@@ -285,9 +285,11 @@ parameters/Idle/TimeScale/scale = 1.0
 parameters/Walk/BlendSpace2D/blend_position = Vector2(-0.00160003, 0.735683)
 
 [node name="WipeLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 script = ExtResource("4_onpyr")
 
 [node name="TextureRect" type="TextureRect" parent="WipeLayer"]
+process_mode = 3
 modulate = Color(0, 0, 0, 1)
 anchors_preset = -1
 anchor_right = 0.017

@@ -17,6 +17,10 @@ func _process(_delta):
 	elif goDown:
 		wiper.position.y+=20
 		if wiper.position.y>=20:
+			Global.running=false
+			get_tree().paused = false
+			# Changing is set in the the doorway script,
+			# to see if a battle scene, or an overworld scene is needed
 			if(!Global.changing):
 				get_tree().change_scene_to_file("res://Scenes/Battle.tscn")
 			else:

@@ -16,6 +16,7 @@ var enemy_id = 2
 var reset = true
 var inventory_open = false
 var changing = false
+var running = false
 var slime = 1
 var state_dictionary = {}
 var overworld_scene = "res://Scenes/Overworld.tscn"
@@ -27,3 +28,4 @@ func battle(id):
 	battleStarting.emit()
 	enemy_id=id
 	overworld_scene = get_tree().current_scene.scene_file_path
+	get_tree().paused = true

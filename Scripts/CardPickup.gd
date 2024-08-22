@@ -3,7 +3,8 @@ var card_id = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	card_id = int(str(self.name))
+	if card_id==0:
+		card_id = int(str(self.name))
 	if(card_id in Global.inventory):
 		queue_free()
 

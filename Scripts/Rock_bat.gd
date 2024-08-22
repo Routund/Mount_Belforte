@@ -20,8 +20,9 @@ var _movement_target_position = Vector2.ZERO
 func _ready():
 	Global.battleStarting.connect(give_coords)
 	if !Global.reset:
-		position= Global.state_dictionary["bat_pos"]
-		if (Global.state_dictionary["rock_state"]):
+		print(get_parent().name)
+		position= Global.state_dictionary["bat_pos %s" % get_parent().name]
+		if (Global.state_dictionary["rock_state %s" % get_parent().name]):
 			rock = true
 			$Sprite2D.hide()
 			return
@@ -51,8 +52,6 @@ func _physics_process(_delta):
 	elif seen_player == false:
 		if navigation_agent.is_navigation_finished():
 			navigation_agent.target_position =global_position + Vector2(randf_range(-1,1),randf_range(-1,1)).normalized()*randf_range(r/2,r)
-			print(global_position)
-			print(navigation_agent.target_position)
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 	var new_velocity: Vector2 = next_path_position - current_agent_position
 	new_velocity = new_velocity.normalized()
@@ -75,9 +74,15 @@ func _physics_process(_delta):
 		elif $bottomr.is_colliding() and $bottomr.get_collider().name == "Player":
 			direction += Vector2(-1,-1)
 		elif $topl.is_colliding() and $topl.get_collider().name == "Player":
-			direction += Vector2(1,1)
+			direction += Vector2(1,1)w
 		elif $topr.is_colliding() and $topr.get_collider().name == "Player":
 			direction += Vector2(-1,1)
+		if direction!= Vector2.ZERO:
+			$"../Label".visible=true
+			$"../Label".global_position.x=global_position.x-40
+			$"../Label".global_position.y=global_position.y-97
+		else:
+			$"../Label".visible=false
 		if Input.is_action_just_pressed("interact"):
 			if rock_speed == 700:
 				rock_speed = -700
@@ -95,8 +100,8 @@ func _on_area_2d_body_entered(body):
 		Global.battle(1)
 
 func give_coords():
-	Global.state_dictionary["bat_pos"]=position
-	Global.state_dictionary["rock_state"]=rock
+	Global.state_dictionary["bat_pos %s" % get_parent().name]=position
+	Global.state_dictionary["rock_state %s" % get_parent().name]=rock
 
 
 func _on_vision_body_entered(body):

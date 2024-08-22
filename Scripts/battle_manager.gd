@@ -14,7 +14,7 @@ var card_funcs = [slash,heal,block,poison,run,water,recoil]
 const card_descs = ["Slash Attack","Heal","Block","Poison Enemy","Run away","Vial of water","Headbutt"]
 var enemies = [
 	["Slime",160,1,[slimeai],true],
-	["Rock bat",120,1,[batai],false],
+	["Rock bat",0,1,[batai],false],
 	["Golem",240,1,[golemAi],false]
 	]
 
@@ -76,10 +76,10 @@ func _process(_delta):
 		continuable=false
 	if(go_next):
 		go_next=false
-		if winFlag:
+		if winFlag or runFlag:
 			Global.reset=false
 			$"..".setUp()
-		elif loseFlag or runFlag:
+		elif loseFlag:
 			Global.reset=true
 			$"..".setUp()
 		elif recoilFlag:
@@ -165,6 +165,7 @@ func water():
 func run():
 	if enemies[enemy_id][4]:
 		runFlag = true
+		Global.running=true
 		return "You run away"
 	else:
 		return "You can't run away from this battle" 

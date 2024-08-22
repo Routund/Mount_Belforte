@@ -2,7 +2,8 @@ extends Area2D
 
 var doorways = [
 	["res://Scenes/Cave-1.tscn",[Vector2(1665,1838)]],
-	["res://Scenes/cave_2.tscn", [Vector2(0,0)]]
+	["res://Scenes/cave_2.tscn", [Vector2(0,0),Vector2(19,738)]],
+	["res://Scenes/cave_3.tscn", [Vector2(-981,-761)]]
 ]
 var next_scene_data = [0,0]
 # Called when the node enters the scene tree for the first time.
@@ -21,6 +22,7 @@ func _process(delta):
 func _on_body_entered(body):
 	if body.name == "Player":
 		Global.state_dictionary["init_player_pos"]=doorways[next_scene_data[0]][1][next_scene_data[1]]
+		# Changing is used by the battleWipe to determine wheter to go to a battle, or the next level
 		Global.changing=true
 		Global.reset=true
 		Global.overworld_scene = doorways[next_scene_data[0]][0]

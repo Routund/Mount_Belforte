@@ -24,6 +24,7 @@ func _ready():
 		get_parent().add_child(instance)
 		instance.global_position = global_position
 		queue_free()
+		return
 	Global.battleStarting.connect(give_coords)
 	$AnimationPlayer.play("Walk")
 	Global.slime += 1
@@ -59,8 +60,8 @@ func _physics_process(_delta):
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
 		var rng = RandomNumberGenerator.new()
-		var get_water = rng.randi_range(2,3)
-		if 5 not in Global.inventory and get_water == 3: #make it threea when water bottle works 
+		var get_water = rng.randi_range(1,3)
+		if 5 not in Global.inventory and get_water == 3:
 			Global.state_dictionary["water"]=water_card
 			Global.slime=3
 		else:
