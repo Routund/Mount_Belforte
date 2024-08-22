@@ -21,6 +21,7 @@ func _ready():
 	if water_card:
 		var instance = card_preload.instantiate()
 		instance.card_id=5
+		instance.id = 3
 		get_parent().add_child(instance)
 		instance.global_position = global_position
 		queue_free()
@@ -60,8 +61,8 @@ func _physics_process(_delta):
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
 		var rng = RandomNumberGenerator.new()
-		var get_water = rng.randi_range(1,3)
-		if 5 not in Global.inventory and get_water == 3:
+		var get_water = rng.randi_range(1,1)
+		if 5 not in Global.inventory and get_water == 1:
 			Global.state_dictionary["water"]=water_card
 			Global.slime=3
 		else:

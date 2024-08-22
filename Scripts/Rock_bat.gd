@@ -74,7 +74,7 @@ func _physics_process(_delta):
 		elif $bottomr.is_colliding() and $bottomr.get_collider().name == "Player":
 			direction += Vector2(-1,-1)
 		elif $topl.is_colliding() and $topl.get_collider().name == "Player":
-			direction += Vector2(1,1)w
+			direction += Vector2(1,1)
 		elif $topr.is_colliding() and $topr.get_collider().name == "Player":
 			direction += Vector2(-1,1)
 		if direction!= Vector2.ZERO:

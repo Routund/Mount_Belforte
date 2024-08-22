@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/ConfirmPlay.gd" id="3_kbwne"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="3_mdeto"]
 [ext_resource type="Script" path="res://Scripts/queue.gd" id="4_pefl7"]
-[ext_resource type="SpriteFrames" uid="uid://cjuq62gk12ic7" path="res://Sprites/Combat_enemies/Golem.tres" id="5_7mwyr"]
+[ext_resource type="SpriteFrames" uid="uid://bq1w3iljtwavl" path="res://Sprites/Combat_enemies/Golem.tres" id="5_7mwyr"]
 [ext_resource type="Script" path="res://Scripts/hand.gd" id="5_cltqn"]
 [ext_resource type="Script" path="res://Scripts/EnemyAnimator.gd" id="5_ee1ig"]
 [ext_resource type="Texture2D" uid="uid://c830oy4vqf404" path="res://Sprites/Main Character full.png" id="6_4goyg"]

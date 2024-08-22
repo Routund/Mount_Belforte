@@ -1807,7 +1807,7 @@ position = Vector2(1914, 1157)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(2056, 833, 1826, 1064, 1823, 1299, 1890, 1337, 1896, 1429, 1964, 1499, 2064, 1525)
 
-[node name="3" parent="." instance=ExtResource("5_dw7wp")]
+[node name="3 0" parent="." instance=ExtResource("5_dw7wp")]
 position = Vector2(1553, -144)
 
 [node name="Walking_Talking_Fish" parent="." instance=ExtResource("6_7hxir")]

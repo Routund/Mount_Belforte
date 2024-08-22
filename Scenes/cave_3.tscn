@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://cojkgwp52hypk"]
+[gd_scene load_steps=10 format=3 uid="uid://cojkgwp52hypk"]
 
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="1_pohdt"]
 [ext_resource type="PackedScene" uid="uid://vhgkwbm8ioku" path="res://Scenes/rock_node.tscn" id="2_0itcl"]
 [ext_resource type="PackedScene" uid="uid://dh835k1hqslwo" path="res://Scenes/rock_door.tscn" id="3_ly0h5"]
 [ext_resource type="PackedScene" uid="uid://cynbtl2rfc874" path="res://Scenes/rock_button.tscn" id="4_ge8m2"]
-[ext_resource type="TileSet" uid="uid://pp6ogb2hgmah" path="res://CaveFloor.tres" id="5_8ig84"]
+[ext_resource type="TileSet" uid="uid://dbjldvnx313py" path="res://CaveFloor.tres" id="5_8ig84"]
 [ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="6_nigy0"]
 [ext_resource type="PackedScene" uid="uid://m2l0feudy3o1" path="res://Scenes/doorway.tscn" id="7_yh8rf"]
+[ext_resource type="PackedScene" uid="uid://drl44f5x3yvrs" path="res://Scenes/rock_golem.tscn" id="8_fm4ai"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tb8xi"]
 vertices = PackedVector2Array(944, -487, 853, -525, 908, -745, 1677, -749, 1745, -599, 1657, -446, 1308, -389, 1179, -343, 960, -318, 899, -31, 848, -98, 702, -52, 878, 63, 797, 102, -1124, 201, -1142, -111, -788, -269, -737, -249, -737, 110, -1030, 343, -683, 348, -588, 128, -594, 406, 605, 402, -557, -56, -492, -121, 634, -118, 795, 308)
@@ -27,15 +28,15 @@ position = Vector2(1048, -662)
 
 [node name="Rock_Door" parent="." instance=ExtResource("3_ly0h5")]
 z_index = -1
-position = Vector2(76, 841)
+position = Vector2(63, 953)
 rotation = 1.5708
 
 [node name="Rock_button" parent="Rock_Door" instance=ExtResource("4_ge8m2")]
-position = Vector2(-822, -336)
+position = Vector2(-993.001, -371.996)
 rotation = -1.5708
 
 [node name="Rock_button2" parent="Rock_Door" instance=ExtResource("4_ge8m2")]
-position = Vector2(-870, 439)
+position = Vector2(-1026, 428.004)
 rotation = -1.5708
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -57,3 +58,6 @@ navigation_polygon = SubResource("NavigationPolygon_tb8xi")
 
 [node name="1 1" parent="." instance=ExtResource("7_yh8rf")]
 position = Vector2(-1045, -1035)
+
+[node name="Rock_Golem" parent="." instance=ExtResource("8_fm4ai")]
+position = Vector2(80, 1047)

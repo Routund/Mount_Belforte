@@ -1,11 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba85yfhojk0ne"]
+[gd_scene load_steps=6 format=3 uid="uid://ba85yfhojk0ne"]
 
-[ext_resource type="Texture2D" uid="uid://1e0xfob6mm56" path="res://Sprites/Fish-Sheet.png" id="1_ecw2o"]
+[ext_resource type="Script" path="res://Scenes/walking_talking_fish.gd" id="1_d5ux8"]
+[ext_resource type="Texture2D" uid="uid://chp451dxvonvy" path="res://Sprites/Fish-Sheet (1).png" id="2_6f01j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yfx1u"]
 size = Vector2(118, 113)
 
+[sub_resource type="Animation" id="Animation_nea7c"]
+resource_name = "fish"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tb2ku"]
+_data = {
+"fish": SubResource("Animation_nea7c")
+}
+
 [node name="Walking_Talking_Fish" type="Area2D"]
+script = ExtResource("1_d5ux8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, 12.5)
@@ -14,6 +38,12 @@ shape = SubResource("RectangleShape2D_yfx1u")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(2, 2)
-texture = ExtResource("1_ecw2o")
-hframes = 2
+texture = ExtResource("2_6f01j")
+hframes = 3
 vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_tb2ku")
+}
