@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="3_08063"]
 [ext_resource type="PackedScene" uid="uid://boojurd07rf2h" path="res://Scenes/slime_spawner.tscn" id="4_l2p68"]
 [ext_resource type="PackedScene" uid="uid://y5g78wv73dul" path="res://Scenes/tester_card.tscn" id="5_dw7wp"]
-[ext_resource type="PackedScene" uid="uid://ba85yfhojk0ne" path="res://Scenes/walking_talking_fish.tscn" id="6_7hxir"]
+[ext_resource type="PackedScene" path="res://Scenes/walking_talking_fish.tscn" id="6_7hxir"]
 [ext_resource type="PackedScene" uid="uid://m2l0feudy3o1" path="res://Scenes/doorway.tscn" id="7_dcu0y"]
 [ext_resource type="PackedScene" uid="uid://chi6q777d6lc4" path="res://Scenes/dialogue.tscn" id="8_e18tj"]
 

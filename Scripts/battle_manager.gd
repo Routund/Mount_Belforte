@@ -28,6 +28,9 @@ var winFlag = false
 var loseFlag = false
 var recoilFlag = false
 var is_blocking = false
+var enemy_blocking = false
+var enemy_charging = false
+var enemy_charging_count = 0
 var enemyInfectionDone = true
 var playerInfectionDone = true
 var playerInfected = false
@@ -131,6 +134,8 @@ func damage_enemy(amount,animated):
 		enemy_health=min(enemy_max,enemy_health-amount)
 		EnemyHealthBar.TweenTo(enemy_health,enemy_max)
 	elif(animated):
+		if(enemy_blocking):
+			amount/=4
 		enemy_health-=amount
 		PlayerAnimator.play("attack")
 		edamaged=true
@@ -214,7 +219,25 @@ func batai():
 		damage_player(45,true)
 		return "The Rock bat attacks"
 func golemAi():
-	damage_player(70,true)
+	enemy_blocking=false
+	if enemy_charging:
+		enemy_charging_count+=1
+		if enemy_charging_count>=2:
+			enemy_charging_count=0
+			enemy_charging=false
+			damage_player(170,true)
+			return "The Golem releases a devastating attack"
+		else:
+			return "The Golem starts spinning faster"
+	elif randi_range(0,3)==2:
+		enemy_blocking=true
+		EnemyAnimator.play("idle_closed")
+		return "The Golem closes off"
+	elif randi_range(0,2)==1:
+		enemy_charging=true
+		EnemyAnimator.play("idle_fast")
+		return "The Golem starts spinning faster"
+	damage_player(60,true)
 	return "The Golem attacks"
 # Pick random card from deck, then add it to hand and remove from deck
 # Then instantiate a new card with that ID
