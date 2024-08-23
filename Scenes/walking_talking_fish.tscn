@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ba85yfhojk0ne"]
 
-[ext_resource type="Script" path="res://Scenes/walking_talking_fish.gd" id="1_d5ux8"]
+[ext_resource type="Script" path="res://Scripts/walking_talking_fish.gd" id="1_dcrg2"]
 [ext_resource type="Texture2D" uid="uid://chp451dxvonvy" path="res://Sprites/Fish-Sheet (1).png" id="2_6f01j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yfx1u"]
@@ -29,7 +29,7 @@ _data = {
 }
 
 [node name="Walking_Talking_Fish" type="Area2D"]
-script = ExtResource("1_d5ux8")
+script = ExtResource("1_dcrg2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, 12.5)

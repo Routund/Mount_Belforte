@@ -14,16 +14,17 @@ func _process(delta):
 	
 	
 func _on_body_entered(body):
+	leave = false
 	if pressed == false and body.name == "Rock_bat" and body.rock == true or body.name == "Player" and pressed == false:
 		$"..".open += 1
 		print($"..".open)
 		pressed = true
-		leave = false
 
 func _on_body_exited(body):
 	if body.name == "Rock_bat" and leave == false and body.rock == true or body.name == "Player" and leave == false:
 		leave = true
 		await get_tree().create_timer(2).timeout
-		$"..".open -= 1
-		print($"..".open)
-		pressed = false
+		if leave:
+			$"..".open -= 1
+			print($"..".open)
+			pressed = false

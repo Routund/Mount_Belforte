@@ -22,7 +22,7 @@ func _ready():
 		var instance = card_preload.instantiate()
 		instance.card_id=5
 		instance.id = 3
-		get_parent().add_child(instance)
+		get_parent().get_parent().add_child(instance)
 		instance.global_position = global_position
 		queue_free()
 		return
@@ -45,8 +45,6 @@ func _physics_process(_delta):
 	elif seen_player == false:
 		if navigation_agent.is_navigation_finished():
 			navigation_agent.target_position =global_position + Vector2(randf_range(-1,1),randf_range(-1,1)).normalized()*randf_range(r/2,r)
-			print(global_position)
-			print(navigation_agent.target_position)
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 	var new_velocity: Vector2 = next_path_position - current_agent_position
 	new_velocity = new_velocity.normalized()

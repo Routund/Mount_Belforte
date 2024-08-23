@@ -7,6 +7,7 @@
 size = Vector2(69, 96)
 
 [node name="card" type="Area2D"]
+process_mode = 3
 script = ExtResource("1_ihthu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

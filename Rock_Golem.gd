@@ -9,4 +9,5 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.name == "Player":
+		Global.battle(2)
 		queue_free()

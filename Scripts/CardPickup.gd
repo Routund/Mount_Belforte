@@ -15,7 +15,9 @@ func _ready():
 		id = int(self.name.split(" ")[1])
 
 func _process(delta):
-	if done == true and Input.is_action_just_pressed("interact") or Input.is_action_just_released("click") and done == true:
+	if done:
+		print("haha")
+	if done and Input.is_action_just_released("click"):
 		DialogContainer.visible=false
 		get_tree().paused = false
 		queue_free()
@@ -27,7 +29,9 @@ func _on_body_entered(body):
 		DialogContainer.show()
 		DialogContainer.reset(dialogue[id])
 		get_tree().paused = true
-		done = true
+		DialogContainer.dialogFinished.connect(setDone)
 		Global.inventory.append(card_id)
 		hide()
-		
+
+func setDone():
+	done=true

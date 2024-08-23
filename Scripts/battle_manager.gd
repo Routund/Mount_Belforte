@@ -13,7 +13,7 @@ var queue = []
 var card_funcs = [slash,heal,block,poison,run,water,recoil]
 const card_descs = ["Slash Attack","Heal","Block","Poison Enemy","Run away","Vial of water","Headbutt"]
 var enemies = [
-	["Slime",160,1,[slimeai],true],
+	["Slime",120,1,[slimeai],true],
 	["Rock bat",0,1,[batai],false],
 	["Golem",240,1,[golemAi],false]
 	]
@@ -145,7 +145,7 @@ func slash():
 	return "You slash at the %s" % enemies[enemy_id][0] 
 func heal():
 	# Make sure player doesnt overheal
-	damage_player(-min(40,player_max-player_health),false)
+	damage_player(-min(35,player_max-player_health),false)
 	return "You heal some damage off" 
 func block():
 	is_blocking=true
@@ -196,8 +196,8 @@ func basic_attack():
 	damage_player(50,true)
 	return "The %s attacks" % enemies[enemy_id][0] 
 func slimeai():
-	if enemy_health > 60 or randi_range(0,1)!=0:
-		damage_player(60,true)
+	if enemy_health > 60 or randi_range(0,2)!=0:
+		damage_player(55,true)
 		return "The Water slime attacks!"
 	else:
 		damage_enemy(-50,false)
@@ -208,7 +208,7 @@ func batai():
 		damage_player(20,true)
 		playerInfected=true
 		playerInfectionDone=false
-		playerOvertime+=10
+		playerOvertime+=30
 		return "The Rock bat sinks it's fangs into your neck"
 	else:
 		damage_player(45,true)
