@@ -28,3 +28,4 @@ func _on_body_exited(body):
 			$"..".open -= 1
 			print($"..".open)
 			pressed = false
+			leave=false

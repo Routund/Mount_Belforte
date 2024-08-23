@@ -14,7 +14,7 @@ var card_funcs = [slash,heal,block,poison,run,water,recoil]
 const card_descs = ["Slash Attack","Heal","Block","Poison Enemy","Run away","Vial of water","Headbutt"]
 var enemies = [
 	["Slime",120,1,[slimeai],true],
-	["Rock bat",0,1,[batai],false],
+	["Rock bat",160,1,[batai],false],
 	["Golem",240,1,[golemAi],false]
 	]
 
@@ -28,6 +28,9 @@ var winFlag = false
 var loseFlag = false
 var recoilFlag = false
 var is_blocking = false
+var enemy_blocking = false
+var enemy_charging = false
+var enemy_charging_count = 0
 var enemyInfectionDone = true
 var playerInfectionDone = true
 var playerInfected = false
@@ -131,11 +134,14 @@ func damage_enemy(amount,animated):
 		enemy_health=min(enemy_max,enemy_health-amount)
 		EnemyHealthBar.TweenTo(enemy_health,enemy_max)
 	elif(animated):
+		if(enemy_blocking):
+			amount/=4
 		enemy_health-=amount
 		PlayerAnimator.play("attack")
 		edamaged=true
 	else:
 		enemy_health-=amount
+		EnemyAnimator.idle_current=EnemyAnimator.get_animation()
 		EnemyAnimator.play("hurt")
 		EnemyHealthBar.TweenTo(enemy_health,enemy_max)
 		
@@ -214,7 +220,26 @@ func batai():
 		damage_player(45,true)
 		return "The Rock bat attacks"
 func golemAi():
-	damage_player(70,true)
+	enemy_blocking=false
+	if enemy_charging:
+		enemy_charging_count+=1
+		if enemy_charging_count>=2:
+			EnemyAnimator.play("idle_fast")
+			enemy_charging_count=0
+			enemy_charging=false
+			damage_player(150,true)
+			return "The Golem releases a devastating attack"
+		else:
+			return "The Golem starts spinning faster"
+	elif randi_range(0,2)==1:
+		enemy_blocking=true
+		EnemyAnimator.play("idle_closed")
+		return "The Golem closes off"
+	elif randi_range(0,2)==1:
+		enemy_charging=true
+		EnemyAnimator.play("idle_fast")
+		return "The Golem starts spinning faster"
+	damage_player(60,true)
 	return "The Golem attacks"
 # Pick random card from deck, then add it to hand and remove from deck
 # Then instantiate a new card with that ID
@@ -262,6 +287,7 @@ func _on_enemy_animation_finished():
 
 func _on_player_animation_finished():
 	if edamaged:
+		EnemyAnimator.idle_current=EnemyAnimator.get_animation()
 		EnemyAnimator.play("hurt")
 		EnemyHealthBar.TweenTo(enemy_health,enemy_max)
 		edamaged=false
