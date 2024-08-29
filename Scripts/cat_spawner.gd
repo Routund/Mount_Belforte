@@ -1,0 +1,29 @@
+extends Node2D
+
+var slime = preload("res://Scenes/cat.tscn")
+# Called when the node enters the scene tree for the first time.
+
+func _ready():
+	if !Global.reset:
+		if Global.slime==2:
+			var spawn_slime = slime.instantiate()
+			add_child(spawn_slime)
+			spawn_slime.position = Global.state_dictionary["slime_pos"]
+		elif "water" in Global.state_dictionary.keys():
+			Global.slime=1
+			Global.state_dictionary.erase("water")
+			if Global.running:
+				return
+			var spawn_slime = slime.instantiate()
+			spawn_slime.death=true
+			spawn_slime.water_card=true
+			spawn_slime.position = Global.state_dictionary["slime_pos"]
+			add_child(spawn_slime)
+			
+	else:
+		Global.slime=1
+
+func _on_spawn_time_timeout():
+	var spawn_slime = slime.instantiate()
+	spawn_slime.position = $Spawn_point.position
+	add_child(spawn_slime)

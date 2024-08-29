@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://gulqgj7sh07c"]
+
+[ext_resource type="Script" path="res://Scripts/cat_spawner.gd" id="1_7asrw"]
+[ext_resource type="Texture2D" uid="uid://d0isf5vpc5vsx" path="res://Sprites/BushSprites.png.png" id="2_128tc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v3la"]
+size = Vector2(24, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5ota"]
+atlas = ExtResource("2_128tc")
+region = Rect2(0, 0, 480, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lspp"]
+atlas = ExtResource("2_128tc")
+region = Rect2(480, 0, 480, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7b6w"]
+atlas = ExtResource("2_128tc")
+region = Rect2(0, 320, 480, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbd04"]
+atlas = ExtResource("2_128tc")
+region = Rect2(480, 320, 480, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlmni"]
+atlas = ExtResource("2_128tc")
+region = Rect2(0, 0, 480, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ohhdu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5ota")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lspp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7b6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbd04")
+}],
+"loop": true,
+"name": &"Shake",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlmni")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Cat_Spawner" type="CharacterBody2D"]
+script = ExtResource("1_7asrw")
+
+[node name="Spawn_point" type="Node2D" parent="."]
+
+[node name="Spawn_time" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_4v3la")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0.999999, -25)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_ohhdu")
+animation = &"Shake"
+frame_progress = 0.439812
+
+[connection signal="timeout" from="Spawn_time" to="." method="_on_spawn_time_timeout"]

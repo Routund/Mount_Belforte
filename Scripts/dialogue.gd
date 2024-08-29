@@ -1,6 +1,6 @@
 extends Area2D
 var dialogue = ["Welcome traveler to Mount Belforte. *Gargling noises*", "I know you like treasure, and I heard there was some at the 
-					end of this cave. Go get them buster.", "You picked up Poison, tab to open pause menu", "You picked up Headbutt"]
+					end of this cave. Go get them buster.", "You picked up Poison, tab to open your inventory", "You picked up Headbutt"]
 var id = 0
 var fin = 3
 var funny = 0
@@ -15,7 +15,6 @@ func _ready():
 
 
 func _process(delta):
-	print(done)
 	if done and Input.is_action_just_released("click"):
 		id += 1
 		funny += 1

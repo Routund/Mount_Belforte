@@ -9,7 +9,6 @@ var death = false
 var speed = 300
 var water_card = false
 @onready var player = get_parent().get_parent().get_node("Player")
-@onready var Sprite= get_node("Sprite2D")
 var card_preload = preload("res://Scenes/tester_card.tscn")
 
 var movement_speed: float = 400.0
@@ -21,8 +20,8 @@ func _ready():
 	if water_card:
 		var instance = card_preload.instantiate()
 		instance.card_id=5
-		instance.id = 3
-		get_parent().get_parent().add_child(instance)
+		instance.id = 2
+		get_parent().get_parent().add_child.call_deferred(instance)
 		instance.global_position = global_position
 		queue_free()
 		return

@@ -1,6 +1,7 @@
 extends Area2D
 var pressed = false
 var leave = true
+var count = 0
 
 func _ready():
 	$"..".button += 1
@@ -23,9 +24,12 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if body.name == "Rock_bat" and leave == false and body.rock == true or body.name == "Player" and leave == false:
 		leave = true
+		count+=1
 		await get_tree().create_timer(2).timeout
-		if leave:
+		count-=1
+		if count==0 and leave:
 			$"..".open -= 1
 			print($"..".open)
 			pressed = false
 			leave=false
+			

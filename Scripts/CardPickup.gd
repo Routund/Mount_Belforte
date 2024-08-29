@@ -9,14 +9,13 @@ var done = false
 func _ready():
 	if card_id==0:
 		card_id = int(str(self.name.split(" ")[0]))
+	print(card_id)
 	if(card_id in Global.inventory):
 		queue_free()
 	if id == 0:
 		id = int(self.name.split(" ")[1])
 
 func _process(delta):
-	if done:
-		print("haha")
 	if done and Input.is_action_just_released("click"):
 		DialogContainer.visible=false
 		get_tree().paused = false

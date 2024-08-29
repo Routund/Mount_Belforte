@@ -14,7 +14,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if i<len(text)*speed:
-		print(i)
 		if i%speed==0:
 			label.text+=text[i/speed]
 			dialogBackground.custom_minimum_size.x=label.size.x+250
