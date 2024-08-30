@@ -58,10 +58,7 @@ animations = [{
 script = ExtResource("1_7asrw")
 
 [node name="Spawn_point" type="Node2D" parent="."]
-
-[node name="Spawn_time" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
+position = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
@@ -69,11 +66,10 @@ position = Vector2(0, -6.5)
 shape = SubResource("RectangleShape2D_4v3la")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 texture_filter = 1
 position = Vector2(0.999999, -25)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_ohhdu")
 animation = &"Shake"
 frame_progress = 0.439812
-
-[connection signal="timeout" from="Spawn_time" to="." method="_on_spawn_time_timeout"]
