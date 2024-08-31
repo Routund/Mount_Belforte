@@ -63,20 +63,30 @@ func _physics_process(_delta):
 		direction = Vector2.ZERO
 		if $down.is_colliding() and $down.get_collider().name == "Player":
 			direction += Vector2(0,-1)
+			$Rock_collision.disabled = true
 		elif $up.is_colliding() and $up.get_collider().name == "Player":
 			direction += Vector2(0,1)
+			$Rock_collision.disabled = true
 		elif $left.is_colliding() and $left.get_collider().name == "Player":
 			direction += Vector2(1,0)
+			$Rock_collision.disabled = true
 		elif $right.is_colliding() and $right.get_collider().name == "Player":
 			direction += Vector2(-1,0)
+			$Rock_collision.disabled = true
 		elif $bottoml.is_colliding() and $bottoml.get_collider().name == "Player":
 			direction += Vector2(1,-1)
+			$Rock_collision.disabled = true
 		elif $bottomr.is_colliding() and $bottomr.get_collider().name == "Player":
 			direction += Vector2(-1,-1)
+			$Rock_collision.disabled = true
 		elif $topl.is_colliding() and $topl.get_collider().name == "Player":
 			direction += Vector2(1,1)
+			$Rock_collision.disabled = true
 		elif $topr.is_colliding() and $topr.get_collider().name == "Player":
 			direction += Vector2(-1,1)
+			$Rock_collision.disabled = true
+		else:
+			$Rock_collision.disabled = false
 		if direction!= Vector2.ZERO:
 			$"../Label".visible=true
 			$"../Label".global_position.x=global_position.x-40

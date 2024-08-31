@@ -14,7 +14,7 @@ var card_funcs = [slash,heal,block,poison,run,water,recoil]
 const card_descs = ["Slash Attack","Heal","Block","Poison Enemy","Run away","Vial of water","Headbutt"]
 var enemies = [
 	["Slime",120,1,[slimeai],true],
-	["Rock bat",180,1,[batai],false],
+	["Rock bat",0,1,[batai],false],
 	["Golem",280,1,[golemAi],false]
 	]
 
