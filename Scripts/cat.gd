@@ -8,6 +8,7 @@ var seen_player = false
 var death = false
 var speed = 300
 @onready var player = get_parent().get_parent().get_node("Player")
+@onready var animator = get_node("Sprite2D")
 var card_preload = preload("res://Scenes/tester_card.tscn")
 
 var movement_speed: float = 400.0
@@ -20,8 +21,10 @@ func _ready():
 func _physics_process(_delta):
 	if player.velocity != Vector2(0,0):
 		velocity = Vector2(540,0)
+		animator.play("walk")
 	else:
 		velocity = Vector2(0,0)
+		animator.play("idle")
 	move_and_slide()
 
 
@@ -34,4 +37,3 @@ func _on_area_2d_body_entered(body):
 func _on_vision_body_entered(body):
 	if body.name == "Player":
 		seen_player = true
-

@@ -11,6 +11,10 @@ func _ready():
 		position = Global.state_dictionary["init_player_pos"]
 		Global.state_dictionary.clear()
 		Global.state_dictionary["init_player_pos"]=position
+	if get_tree().current_scene.scene_file_path == "res://Scenes/cave_3.tscn":
+		Global.arena = 0
+	elif get_tree().current_scene.scene_file_path == "res://Scenes/Forest-1.tscn":
+		Global.arena = 1
 
 func _physics_process(_delta):
 	var direction = Vector2(

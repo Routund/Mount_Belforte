@@ -14,13 +14,11 @@ func load_frames():
 	scale.x = frame_paths[enemy_id][1]
 	scale.y = frame_paths[enemy_id][1]
 	offset.x=frame_paths[enemy_id][2]
-	offset.y=frame_paths[enemy_id][3]
+	offset.y=frame_paths[enemy_id][3]-3
 	connect("animation_finished",set_to_idle)
 	play("idle")
 	pass # Replace with function body.
 
-func _process(delta):
-	print(get_animation())
 
 func set_to_idle():
 	if idle_current == "idle_fast":

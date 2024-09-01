@@ -11,7 +11,7 @@ var inventory = [0,1,2,4]
 var deck = [0,1,2,4]
 signal battleStarting
 
-
+var arena = 0
 var enemy_id = 2
 var reset = true
 var inventory_open = false

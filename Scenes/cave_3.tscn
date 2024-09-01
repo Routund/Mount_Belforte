@@ -17,7 +17,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(935, -480, 842, -520, 9
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v5ap4"]
-radius = 165.946
+radius = 130.614
 
 [node name="cave_3" type="Node2D"]
 

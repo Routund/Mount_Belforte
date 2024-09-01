@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://uk07hjo5epu4"]
+[gd_scene load_steps=31 format=3 uid="uid://uk07hjo5epu4"]
 
 [ext_resource type="Texture2D" uid="uid://dtvu6cm37arkp" path="res://Sprites/CaveCombat.png" id="1_roa77"]
+[ext_resource type="Script" path="res://Scenes/BattleArenaSetter.gd" id="2_mse8x"]
 [ext_resource type="Script" path="res://Scripts/battle_manager.gd" id="2_nygms"]
 [ext_resource type="Script" path="res://Scripts/EnemyHealthBar.gd" id="3_ibbn5"]
 [ext_resource type="Script" path="res://Scripts/ConfirmPlay.gd" id="3_kbwne"]
@@ -110,6 +111,7 @@ texture_filter = 1
 offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("1_roa77")
+script = ExtResource("2_mse8x")
 
 [node name="PlayerHealthBar" type="NinePatchRect" parent="."]
 self_modulate = Color(0.160784, 0, 0.00392157, 1)
@@ -178,7 +180,7 @@ position = Vector2(1145, 533)
 scale = Vector2(7, 7)
 sprite_frames = ExtResource("5_7mwyr")
 animation = &"attack"
-offset = Vector2(-40, -40)
+offset = Vector2(-40, -43)
 script = ExtResource("5_ee1ig")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]

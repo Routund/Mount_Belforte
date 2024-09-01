@@ -1,17 +1,68 @@
-[gd_scene load_steps=4 format=3 uid="uid://cx1dxncbe6ne5"]
+[gd_scene load_steps=9 format=3 uid="uid://cx1dxncbe6ne5"]
 
 [ext_resource type="Script" path="res://Scripts/cat.gd" id="1_t4l85"]
-[ext_resource type="Texture2D" uid="uid://b5ihyqj52x60r" path="res://Sprites/icon.svg" id="2_sf61p"]
+[ext_resource type="Texture2D" uid="uid://dr5ds74jrupt8" path="res://Sprites/Cat spritesheet.png" id="2_r87xc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nh6il"]
+size = Vector2(56, 51)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3c70u"]
+radius = 29.7027
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf5st"]
+atlas = ExtResource("2_r87xc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w60eb"]
+atlas = ExtResource("2_r87xc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bya7"]
+atlas = ExtResource("2_r87xc")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_powss"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf5st")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w60eb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bya7")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="Cat" type="CharacterBody2D"]
 script = ExtResource("1_t4l85")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_sf61p")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -0.5)
 shape = SubResource("RectangleShape2D_nh6il")
 disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(2, -0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3c70u")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_powss")
+animation = &"walk"
+flip_h = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
