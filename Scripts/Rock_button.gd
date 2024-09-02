@@ -1,35 +1,32 @@
 extends Area2D
-var pressed = false
-var leave = true
+var no = false
 var count = 0
 
 func _ready():
 	$"..".button += 1
 	$AnimationPlayer.play('off')
 
+
 func _process(delta):
-	if pressed == true:
-		$AnimationPlayer.play('on')
-	elif pressed == false:
-		$AnimationPlayer.play('off')
-	
-	
+	print($"..".open)
+
+
 func _on_body_entered(body):
-	leave = false
-	if pressed == false and body.name == "Rock_bat" and body.rock == true or body.name == "Player" and pressed == false:
-		$"..".open += 1
-		print($"..".open)
-		pressed = true
+	if body.name == "Rock_bat" and body.rock == true or body.name == "Player":
+		if not no:
+			no = true
+			count += 1
+			if count <= 1:
+					$"..".open += 1
+			$AnimationPlayer.play('on')
+
 
 func _on_body_exited(body):
-	if body.name == "Rock_bat" and leave == false and body.rock == true or body.name == "Player" and leave == false:
-		leave = true
-		count+=1
-		await get_tree().create_timer(2).timeout
-		count-=1
-		if count==0 and leave:
-			$"..".open -= 1
-			print($"..".open)
-			pressed = false
-			leave=false
-			
+	if body.name == "Rock_bat" and body.rock == true or body.name == "Player":
+		if no:
+			count -= 1
+			await get_tree().create_timer(2).timeout
+			if count <= 1:
+				no = false
+				$"..".open -= 1
+				$AnimationPlayer.play('off')

@@ -6,7 +6,7 @@ var direction = Vector2.ZERO
 var seen_player = false
 var rock = false
 var speed = 300
-var rock_speed = 700
+var rock_speed = 0
 var roaming_speed = 250
 
 @onready var player = get_parent().get_parent().get_node("Player")
@@ -63,30 +63,20 @@ func _physics_process(_delta):
 		direction = Vector2.ZERO
 		if $down.is_colliding() and $down.get_collider().name == "Player":
 			direction += Vector2(0,-1)
-			$Rock_collision.disabled = true
 		elif $up.is_colliding() and $up.get_collider().name == "Player":
 			direction += Vector2(0,1)
-			$Rock_collision.disabled = true
 		elif $left.is_colliding() and $left.get_collider().name == "Player":
 			direction += Vector2(1,0)
-			$Rock_collision.disabled = true
 		elif $right.is_colliding() and $right.get_collider().name == "Player":
 			direction += Vector2(-1,0)
-			$Rock_collision.disabled = true
 		elif $bottoml.is_colliding() and $bottoml.get_collider().name == "Player":
 			direction += Vector2(1,-1)
-			$Rock_collision.disabled = true
 		elif $bottomr.is_colliding() and $bottomr.get_collider().name == "Player":
 			direction += Vector2(-1,-1)
-			$Rock_collision.disabled = true
 		elif $topl.is_colliding() and $topl.get_collider().name == "Player":
 			direction += Vector2(1,1)
-			$Rock_collision.disabled = true
 		elif $topr.is_colliding() and $topr.get_collider().name == "Player":
 			direction += Vector2(-1,1)
-			$Rock_collision.disabled = true
-		else:
-			$Rock_collision.disabled = false
 		if direction!= Vector2.ZERO:
 			$"../Label".visible=true
 			$"../Label".global_position.x=global_position.x-40
@@ -94,12 +84,10 @@ func _physics_process(_delta):
 		else:
 			$"../Label".visible=false
 		if Input.is_action_just_pressed("interact"):
-			if rock_speed == 700:
+			if rock_speed == 0:
 				rock_speed = -700
-				$Rock_collision.disabled = true
 			else:
-				rock_speed = 700
-				$Rock_collision.disabled = false
+				rock_speed = 0
 		velocity = direction * rock_speed
 	move_and_slide()
 
