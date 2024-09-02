@@ -49,10 +49,11 @@ frame = 1
 [node name="Rock_collision" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_1reh7")
+disabled = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Rock" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock"]
 position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_ytydg")
 
@@ -73,7 +74,7 @@ scale = Vector2(20, 1)
 target_position = Vector2(-0.149989, 61)
 
 [node name="right" type="RayCast2D" parent="."]
-rotation = 4.71239
+rotation = -1.5708
 scale = Vector2(20, 1)
 target_position = Vector2(0.150003, 62)
 
@@ -103,5 +104,5 @@ texture = ExtResource("3_5cwa2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
 shape = SubResource("CircleShape2D_gcmx0")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Rock" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="vision" to="." method="_on_vision_body_entered"]
