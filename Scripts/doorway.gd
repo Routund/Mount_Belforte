@@ -3,7 +3,8 @@ extends Area2D
 var doorways = [
 	["res://Scenes/Cave-1.tscn",[Vector2(1665,1838)]],
 	["res://Scenes/cave_2.tscn", [Vector2(0,0),Vector2(19,738)]],
-	["res://Scenes/cave_3.tscn", [Vector2(-981,-761)]]
+	["res://Scenes/cave_3.tscn", [Vector2(-981,-761),Vector2(173,1633)]],
+	["res://Scenes/Forest-1.tscn", [Vector2(-260,-90)]],
 ]
 var next_scene_data = [0,0]
 # Called when the node enters the scene tree for the first time.

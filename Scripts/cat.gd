@@ -7,6 +7,7 @@ var roaming_speed = 200
 var seen_player = false
 var death = false
 var speed = 300
+var vectorDirection = 1
 @onready var player = get_parent().get_parent().get_node("Player")
 @onready var animator = get_node("Sprite2D")
 var card_preload = preload("res://Scenes/tester_card.tscn")
@@ -15,12 +16,12 @@ var movement_speed: float = 400.0
 var _movement_target_position = Vector2.ZERO
 
 func _ready():
-	Global.slime += 1
-	randomize()
+	if vectorDirection == -1:
+		$Sprite2D.flip_h=false
 
 func _physics_process(_delta):
 	if player.velocity != Vector2(0,0):
-		velocity = Vector2(540,0)
+		velocity = Vector2(540*vectorDirection,0)
 		animator.play("walk")
 	else:
 		velocity = Vector2(0,0)
