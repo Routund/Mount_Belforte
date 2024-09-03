@@ -1,16 +1,16 @@
 [gd_scene load_steps=31 format=3 uid="uid://uk07hjo5epu4"]
 
-[ext_resource type="Texture2D" uid="uid://dtvu6cm37arkp" path="res://Sprites/CaveCombat.png" id="1_roa77"]
+[ext_resource type="Texture2D" uid="uid://68dml8y3tbsm" path="res://Sprites/Forest_Combat.png" id="1_x4u3t"]
 [ext_resource type="Script" path="res://Scenes/BattleArenaSetter.gd" id="2_mse8x"]
 [ext_resource type="Script" path="res://Scripts/battle_manager.gd" id="2_nygms"]
 [ext_resource type="Script" path="res://Scripts/EnemyHealthBar.gd" id="3_ibbn5"]
 [ext_resource type="Script" path="res://Scripts/ConfirmPlay.gd" id="3_kbwne"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="3_mdeto"]
 [ext_resource type="Script" path="res://Scripts/queue.gd" id="4_pefl7"]
-[ext_resource type="SpriteFrames" uid="uid://bq1w3iljtwavl" path="res://Sprites/Combat_enemies/Golem.tres" id="5_7mwyr"]
 [ext_resource type="Script" path="res://Scripts/hand.gd" id="5_cltqn"]
 [ext_resource type="Script" path="res://Scripts/EnemyAnimator.gd" id="5_ee1ig"]
 [ext_resource type="Texture2D" uid="uid://c830oy4vqf404" path="res://Sprites/Main Character full.png" id="6_4goyg"]
+[ext_resource type="SpriteFrames" uid="uid://ces1x2nat6lan" path="res://Sprites/Combat_enemies/Slime.tres" id="6_gvfrr"]
 [ext_resource type="Script" path="res://Scripts/PlayerAnimation.gd" id="6_gxu4j"]
 [ext_resource type="Script" path="res://Scripts/fakes.gd" id="6_qetmb"]
 [ext_resource type="Texture2D" uid="uid://rl5pvy46nyjv" path="res://Sprites/Main Character attack-Sheet.png" id="6_wkqp5"]
@@ -110,7 +110,7 @@ font_color = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_right = 1152.0
 offset_bottom = 648.0
-texture = ExtResource("1_roa77")
+texture = ExtResource("1_x4u3t")
 script = ExtResource("2_mse8x")
 
 [node name="PlayerHealthBar" type="NinePatchRect" parent="."]
@@ -176,11 +176,11 @@ patch_margin_bottom = 10
 
 [node name="Enemy" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1145, 533)
-scale = Vector2(7, 7)
-sprite_frames = ExtResource("5_7mwyr")
-animation = &"attack"
-offset = Vector2(-40, -43)
+position = Vector2(1140, 535)
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("6_gvfrr")
+animation = &"idle"
+offset = Vector2(-40, -32)
 script = ExtResource("5_ee1ig")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]

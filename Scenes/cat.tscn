@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cx1dxncbe6ne5"]
+[gd_scene load_steps=10 format=3 uid="uid://cx1dxncbe6ne5"]
 
 [ext_resource type="Script" path="res://Scripts/cat.gd" id="1_t4l85"]
 [ext_resource type="Texture2D" uid="uid://dr5ds74jrupt8" path="res://Sprites/Cat spritesheet.png" id="2_r87xc"]
@@ -9,34 +9,41 @@ size = Vector2(56, 51)
 [sub_resource type="CircleShape2D" id="CircleShape2D_3c70u"]
 radius = 29.7027
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yf5st"]
-atlas = ExtResource("2_r87xc")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w60eb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnjak"]
 atlas = ExtResource("2_r87xc")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2bya7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xhqj"]
 atlas = ExtResource("2_r87xc")
-region = Rect2(0, 32, 32, 32)
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqm0d"]
+atlas = ExtResource("2_r87xc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mldg"]
+atlas = ExtResource("2_r87xc")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_powss"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yf5st")
+"texture": SubResource("AtlasTexture_jnjak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xhqj")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w60eb")
+"texture": SubResource("AtlasTexture_fqm0d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2bya7")
+"texture": SubResource("AtlasTexture_0mldg")
 }],
 "loop": true,
 "name": &"walk",
@@ -62,6 +69,7 @@ texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_powss")
 animation = &"walk"
+frame_progress = 0.0986427
 flip_h = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
