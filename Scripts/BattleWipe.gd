@@ -7,6 +7,7 @@ var goDown = false
 func _ready():
 	wiper.position.y=0
 	Global.battleStarting.connect(setDown)
+	wiper.visible = true
 	pass # Replace with function body.
 
 

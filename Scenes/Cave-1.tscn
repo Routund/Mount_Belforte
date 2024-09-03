@@ -1806,6 +1806,9 @@ position = Vector2(1553, -144)
 position = Vector2(521, 0)
 
 [node name="1 0" parent="." instance=ExtResource("7_dcu0y")]
+position = Vector2(1760, 2155)
+rotation = 3.14159
+scale = Vector2(1.44, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -1

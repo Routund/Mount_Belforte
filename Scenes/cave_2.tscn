@@ -43,7 +43,7 @@ layer_0/tile_data = PackedInt32Array(-1, 2, 4, 65535, 2, 4, 131071, 65538, 4, -6
 position = Vector2(-1306, 252)
 
 [node name="Player" parent="." instance=ExtResource("2_uy0ur")]
-position = Vector2(257, -9)
+position = Vector2(0, 98)
 
 [node name="Rock_Door" parent="." instance=ExtResource("4_mjwlv")]
 position = Vector2(663, 323)
@@ -114,12 +114,15 @@ position = Vector2(-1044, -118.5)
 shape = SubResource("RectangleShape2D_8ylfk")
 
 [node name="0 0" parent="." instance=ExtResource("8_bgjtf")]
-position = Vector2(-71, -266)
+position = Vector2(-84, -183)
+scale = Vector2(1.32, 1)
 
 [node name="6 1" parent="." instance=ExtResource("9_0quyf")]
 position = Vector2(288, -160)
 
 [node name="2 0" parent="." instance=ExtResource("8_bgjtf")]
-position = Vector2(-60, 721)
+position = Vector2(93, 988)
+rotation = 3.14159
+scale = Vector2(1.36, 1)
 
 [connection signal="body_exited" from="hidden path" to="hidden path" method="_on_body_exited"]
