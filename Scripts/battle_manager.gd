@@ -38,6 +38,8 @@ var playerInfected = false
 var enemyInfected = false
 var playerOvertime = 0
 var enemyOvertime = 0
+var enemyDodging = false
+var attackFails = false
 
 @onready var HBox = get_node("Hand")
 @onready var PlayerHealthBar = get_node("../../PlayerHealthBar")
@@ -93,10 +95,13 @@ func _process(_delta):
 		elif checkWhoseDead():
 			pass
 		elif(i<len(queue)):
+			if enemyDodging and randi_range(0,3)!=0:
+				attackFails=true
 			edamaged = false
 			DialogContainer.reset(card_funcs[queue[i]].call())
 			deck.append(queue[i])
 			i+=1
+			attackFails=false
 		elif(queue!=[]):
 			queue = []
 			if(enemy_health<=0):
@@ -203,7 +208,7 @@ func basic_attack():
 	damage_player(50,true)
 	return "The %s attacks" % enemies[enemy_id][0] 
 func slimeai():
-	if enemy_health > 60 or randi_range(0,2)!=0:
+	if enemy_health > 60 or randf_range(0,2)>0.6:
 		damage_player(55,true)
 		return "The Water slime attacks!"
 	else:
@@ -242,6 +247,16 @@ func golemAi():
 		return "The Golem starts spinning faster"
 	damage_player(60,true)
 	return "The Golem attacks"
+func catai():
+	if randi_range(0,1)==1 and !enemyDodging:
+		enemyDodging = true
+		damage_player(0,true)
+		EnemyAnimator.modulate = Color8(0,0,0)
+		return "The cat leaps into the trees, you can barely see them"
+	else:
+		damage_player(40,true)
+		return "The catt attacks"
+		
 # Pick random card from deck, then add it to hand and remove from deck
 # Then instantiate a new card with that ID
 func draw():

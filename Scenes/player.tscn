@@ -294,6 +294,7 @@ script = ExtResource("4_onpyr")
 
 [node name="TextureRect" type="TextureRect" parent="WipeLayer"]
 process_mode = 3
+visible = false
 modulate = Color(0, 0, 0, 1)
 anchors_preset = -1
 anchor_right = 0.017
