@@ -11,7 +11,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if(goUp):
 		wiper.position.y-=20
 		if wiper.position.y<=-20:

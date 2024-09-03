@@ -37,6 +37,7 @@ _data = {
 radius = 418.172
 
 [node name="Rock_bat" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_q14sj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
