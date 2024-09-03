@@ -15,7 +15,7 @@ func _ready():
 	if id == 0:
 		id = int(self.name.split(" ")[1])
 
-func _process(delta):
+func _process(_delta):
 	if done and Input.is_action_just_released("click"):
 		DialogContainer.visible=false
 		get_tree().paused = false

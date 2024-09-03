@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bqlroxiiv5reg"]
+[gd_scene load_steps=37 format=3 uid="uid://bqlroxiiv5reg"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_ubegy"]
 [ext_resource type="Texture2D" uid="uid://c830oy4vqf404" path="res://Sprites/Main Character full.png" id="2_6msmn"]
@@ -246,6 +246,10 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 font_size = 50
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1gh2g"]
+radius = 32.0
+height = 156.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ubegy")
 
@@ -255,7 +259,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_6msmn")
 hframes = 6
 vframes = 6
-frame = 25
+frame = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 25)
@@ -318,3 +322,8 @@ patch_margin_bottom = 4
 layout_mode = 2
 label_settings = SubResource("LabelSettings_s842e")
 horizontal_alignment = 1
+
+[node name="Player" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_1gh2g")
