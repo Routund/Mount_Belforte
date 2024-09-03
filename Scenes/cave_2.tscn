@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="2_uy0ur"]
 [ext_resource type="PackedScene" uid="uid://dh835k1hqslwo" path="res://Scenes/rock_door.tscn" id="4_mjwlv"]
 [ext_resource type="PackedScene" uid="uid://cynbtl2rfc874" path="res://Scenes/rock_button.tscn" id="5_3tgr3"]
-[ext_resource type="PackedScene" path="res://rock_node.tscn" id="6_pexte"]
+[ext_resource type="PackedScene" uid="uid://nvrcst3a7tlc" path="res://rock_node.tscn" id="6_pexte"]
 [ext_resource type="PackedScene" uid="uid://ch40hb30w63p7" path="res://Scenes/hidden_path.tscn" id="7_6vajn"]
 [ext_resource type="PackedScene" uid="uid://m2l0feudy3o1" path="res://Scenes/doorway.tscn" id="8_bgjtf"]
 [ext_resource type="PackedScene" uid="uid://y5g78wv73dul" path="res://Scenes/tester_card.tscn" id="9_0quyf"]

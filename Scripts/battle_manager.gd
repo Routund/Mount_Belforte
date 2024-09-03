@@ -222,7 +222,7 @@ func batai():
 func golemAi():
 	enemy_blocking=false
 	if enemy_charging:
-		enemy_charging_count+=1
+		enemy_charging_count+=randi_range(1,2)
 		if enemy_charging_count>=2:
 			EnemyAnimator.play("idle_fast")
 			enemy_charging_count=0

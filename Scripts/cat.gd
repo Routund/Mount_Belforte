@@ -12,8 +12,6 @@ var vectorDirection = 1
 @onready var animator = get_node("Sprite2D")
 var card_preload = preload("res://Scenes/tester_card.tscn")
 
-var movement_speed: float = 400.0
-var _movement_target_position = Vector2.ZERO
 
 func _ready():
 	if vectorDirection == -1:
