@@ -8,6 +8,7 @@ func _ready():
 	wiper.visible=true
 	wiper.position.y=0
 	Global.battleStarting.connect(setDown)
+	wiper.visible = true
 	pass # Replace with function body.
 
 

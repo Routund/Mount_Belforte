@@ -21,7 +21,7 @@ radius = 130.614
 [node name="cave_3" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_pohdt")]
-position = Vector2(173, 1633)
+position = Vector2(-984, -652)
 
 [node name="bat 1" parent="." instance=ExtResource("2_0itcl")]
 position = Vector2(1636, -650)
@@ -53,7 +53,8 @@ layer_0/tile_data = PackedInt32Array(-917530, 2, 0, -851994, 2, 1, -786458, 2, 1
 navigation_polygon = SubResource("NavigationPolygon_tb8xi")
 
 [node name="1 1" parent="." instance=ExtResource("7_yh8rf")]
-position = Vector2(-1045, -1035)
+position = Vector2(-1090, -925)
+scale = Vector2(1.80047, 0.990481)
 
 [node name="Rock_Golem" parent="." instance=ExtResource("8_fm4ai")]
 position = Vector2(80, 1047)
@@ -66,4 +67,6 @@ position = Vector2(-1118, 395)
 shape = SubResource("CircleShape2D_v5ap4")
 
 [node name="3 0" parent="." instance=ExtResource("7_yh8rf")]
-position = Vector2(232, 1507)
+position = Vector2(383, 1575)
+rotation = 1.5708
+scale = Vector2(1.44, 1.00129)

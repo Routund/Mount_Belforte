@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dklx30s70plmd"]
+
+[ext_resource type="Texture2D" uid="uid://btpm0627eebb7" path="res://Sprites/Plant-Sheet.png" id="1_i2j4i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bqeaq"]
+radius = 52.6308
+
+[node name="Plant" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bqeaq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_i2j4i")
+hframes = 4
+vframes = 3

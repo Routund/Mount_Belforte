@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwl04xirr1hhv"]
+[gd_scene load_steps=11 format=3 uid="uid://bwl04xirr1hhv"]
 
 [ext_resource type="Script" path="res://Scripts/slime.gd" id="1_c6oyi"]
-[ext_resource type="Texture2D" uid="uid://didgd8am3dtdp" path="res://Sprites/Slime-Sheet_overworld.png" id="2_dkcvx"]
+[ext_resource type="Texture2D" uid="uid://bp2sarx85n1xp" path="res://Sprites/Slime-Sheet.png" id="2_nkbg1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdkjx"]
 
@@ -25,9 +25,21 @@ tracks/0/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_mn4yw"]
+resource_name = "Walk_up"
+
+[sub_resource type="Animation" id="Animation_jr73l"]
+resource_name = "Walk_left"
+
+[sub_resource type="Animation" id="Animation_ga6wo"]
+resource_name = "Walk_right"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w6l2m"]
 _data = {
-"Walk": SubResource("Animation_1uhff")
+"Walk": SubResource("Animation_1uhff"),
+"Walk_left": SubResource("Animation_jr73l"),
+"Walk_right": SubResource("Animation_ga6wo"),
+"Walk_up": SubResource("Animation_mn4yw")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1c0uv"]
@@ -43,7 +55,7 @@ disabled = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(2, 2)
-texture = ExtResource("2_dkcvx")
+texture = ExtResource("2_nkbg1")
 hframes = 3
 vframes = 3
 
