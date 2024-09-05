@@ -25,14 +25,14 @@ tracks/0/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_mn4yw"]
-resource_name = "Walk_up"
-
 [sub_resource type="Animation" id="Animation_jr73l"]
 resource_name = "Walk_left"
 
 [sub_resource type="Animation" id="Animation_ga6wo"]
 resource_name = "Walk_right"
+
+[sub_resource type="Animation" id="Animation_mn4yw"]
+resource_name = "Walk_up"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w6l2m"]
 _data = {

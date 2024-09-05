@@ -16,7 +16,7 @@ var enemies = [
 	["Slime",120,1,[slimeai],true],
 	["Rock bat",0,1,[batai],false],
 	["Golem",280,1,[golemAi],false],
-	["Cat", 160,1,[basic_attack], true]
+	["Cat", 160,1,[catAi], true]
 	]
 
 var go_next =false
@@ -145,6 +145,8 @@ func damage_enemy(amount,animated):
 		enemy_health-=amount
 		PlayerAnimator.play("attack")
 		edamaged=true
+		enemyDodging=false
+		EnemyAnimator.modulate.a = 1
 	else:
 		enemy_health-=amount
 		EnemyAnimator.idle_current=EnemyAnimator.get_animation()
@@ -153,8 +155,11 @@ func damage_enemy(amount,animated):
 		
 # All player card functions
 func slash():
-	damage_enemy(55,true)
-	return "You slash at the %s" % enemies[enemy_id][0] 
+	if !attackFails:
+		damage_enemy(55,true)
+		return "You slash at the %s" % enemies[enemy_id][0] 
+	else:
+		return "You swing, but miss"
 func heal():
 	# Make sure player doesnt overheal
 	damage_player(-min(35,player_max-player_health),false)
@@ -163,11 +168,14 @@ func block():
 	is_blocking=true
 	return "You raise your shield"
 func poison():
-	EnemyHealthBar.Health_Rect.modulate = Color8(142,52,154)
-	enemyInfected=true
-	enemyInfectionDone=false
-	enemyOvertime+=20
-	return "You poison the %s" % enemies[enemy_id][0] 
+	if !attackFails:
+		EnemyHealthBar.Health_Rect.modulate = Color8(142,52,154)
+		enemyInfected=true
+		enemyInfectionDone=false
+		enemyOvertime+=20
+		return "You poison the %s" % enemies[enemy_id][0] 
+	else:
+		return "You try to poison the %s, but you miss" % enemies[enemy_id]
 func water():
 	PlayerHealthBar.Health_Rect.modulate = Color8(249,41,0)
 	playerInfected=false
@@ -182,9 +190,13 @@ func run():
 	else:
 		return "You can't run away from this battle" 
 func recoil():
-	damage_enemy(90,true)
-	recoilFlag=true
-	return "You charge headfirst at the enemy"
+	if !attackFails:
+		damage_enemy(90,true)
+		recoilFlag=true
+		return "You charge headfirst at the enemy"
+	else:
+		recoilFlag=true
+		return "You charge headfirst straight into a tree"
 
 func damage_player(amount,animated):
 	if(amount<0):
@@ -247,15 +259,15 @@ func golemAi():
 		return "The Golem starts spinning faster"
 	damage_player(60,true)
 	return "The Golem attacks"
-func catai():
+func catAi():
 	if randi_range(0,1)==1 and !enemyDodging:
 		enemyDodging = true
 		damage_player(0,true)
-		EnemyAnimator.modulate = Color8(0,0,0)
-		return "The cat leaps into the trees, you can barely see them"
+		EnemyAnimator.modulate.a = 0.0125
+		return "The Cat leaps into the trees"
 	else:
-		damage_player(40,true)
-		return "The catt attacks"
+		damage_player(35,true)
+		return "The Cat attacks"
 		
 # Pick random card from deck, then add it to hand and remove from deck
 # Then instantiate a new card with that ID
