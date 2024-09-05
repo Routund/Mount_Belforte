@@ -259,7 +259,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_6msmn")
 hframes = 6
 vframes = 6
-frame = 25
+frame = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 20)
@@ -279,6 +279,9 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_riu4f")
+}
 tree_root = SubResource("AnimationNodeStateMachine_ndtvq")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/BlendSpace2D/blend_position = Vector2(0.00160003, -0.0158731)

@@ -26,7 +26,6 @@ func _ready():
 		queue_free()
 		return
 	Global.battleStarting.connect(give_coords)
-	$AnimationPlayer.play("Walk")
 	Global.slime += 1
 	navigation_agent.path_desired_distance = 4.0
 	navigation_agent.target_desired_distance = 4.0
@@ -51,10 +50,16 @@ func _physics_process(_delta):
 		velocity = new_velocity * speed
 	elif seen_player == false:
 		velocity = new_velocity * roaming_speed
-	if velocity.y < 0:
-		$AnimationPlayer.play("Walk_up")
+	if new_velocity.x > new_velocity.y:
+		if velocity.x > 0:
+			$AnimationPlayer.play("Walk_right")
+		else:
+			$AnimationPlayer.play("Walk_left")
 	else:
-		$AnimationPlayer.play("Walk")
+		if velocity.y < 0:
+			$AnimationPlayer.play("Walk_up")
+		else:
+			$AnimationPlayer.play("Walk")
 	move_and_slide()
 
 

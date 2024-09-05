@@ -114,8 +114,8 @@ position = Vector2(-1044, -118.5)
 shape = SubResource("RectangleShape2D_8ylfk")
 
 [node name="0 0" parent="." instance=ExtResource("8_bgjtf")]
-position = Vector2(-84, -183)
-scale = Vector2(1.32, 1)
+position = Vector2(-92, -179)
+scale = Vector2(1.68, 1)
 
 [node name="6 1" parent="." instance=ExtResource("9_0quyf")]
 position = Vector2(288, -160)
@@ -123,6 +123,6 @@ position = Vector2(288, -160)
 [node name="2 0" parent="." instance=ExtResource("8_bgjtf")]
 position = Vector2(93, 988)
 rotation = 3.14159
-scale = Vector2(1.36, 1)
+scale = Vector2(4.6, 1)
 
 [connection signal="body_exited" from="hidden path" to="hidden path" method="_on_body_exited"]
