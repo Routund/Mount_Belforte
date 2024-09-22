@@ -1,5 +1,5 @@
 extends Area2D
-var dialogue = ["(Press space to go to next dialogue and left click to end dialogue).
+var dialogue = ["(Press space to continue dialogue and left click to end dialogue).
 Welcome traveler to Mount Belforte, *Gargling noises*", "I know you like treasure, and I heard there was some at the 
 					end of this cave. Go get them buster.", "You picked up Poison, tab to open your inventory", "You picked up Headbutt"]
 var id = 0
