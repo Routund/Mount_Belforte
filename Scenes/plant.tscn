@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/plant.gd" id="1_pxafm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bqeaq"]
-radius = 52.6308
+radius = 14.3178
 
 [sub_resource type="Animation" id="Animation_ta1ah"]
 resource_name = "Walk"
@@ -84,10 +84,10 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sb2po"]
-radius = 540.045
+radius = 310.161
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7naa3"]
-radius = 69.3542
+radius = 51.3517
 
 [node name="Plant" type="CharacterBody2D"]
 script = ExtResource("1_pxafm")

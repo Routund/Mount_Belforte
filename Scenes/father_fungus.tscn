@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3a451qvp3jbl"]
+
+[ext_resource type="Script" path="res://father_fungus.gd" id="1_axs7g"]
+[ext_resource type="Texture2D" uid="uid://ccsstlm1vp762" path="res://Sprites/Father Fungus.png" id="2_ix1gb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q2wpr"]
+radius = 135.447
+
+[sub_resource type="Animation" id="Animation_ppk1w"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mqdx4"]
+_data = {
+"idle": SubResource("Animation_ppk1w")
+}
+
+[node name="father_fungus" type="Area2D"]
+process_mode = 3
+script = ExtResource("1_axs7g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q2wpr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_ix1gb")
+hframes = 4
+vframes = 4
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mqdx4")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

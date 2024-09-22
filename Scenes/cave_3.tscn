@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cojkgwp52hypk"]
+[gd_scene load_steps=16 format=3 uid="uid://cojkgwp52hypk"]
 
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="1_pohdt"]
 [ext_resource type="PackedScene" uid="uid://vhgkwbm8ioku" path="res://Scenes/rock_node.tscn" id="2_0itcl"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://drl44f5x3yvrs" path="res://Scenes/rock_golem.tscn" id="8_fm4ai"]
 [ext_resource type="PackedScene" uid="uid://boojurd07rf2h" path="res://Scenes/slime_spawner.tscn" id="9_i3d5c"]
 [ext_resource type="Texture2D" uid="uid://bfcade4bkd0oi" path="res://Sprites/NewerCave_tilemap (1).png" id="9_o6p4o"]
+[ext_resource type="PackedScene" uid="uid://dkouup65jg11n" path="res://Scenes/money.tscn" id="10_bbe2v"]
+[ext_resource type="PackedScene" uid="uid://chi6q777d6lc4" path="res://Scenes/dialogue.tscn" id="11_0le7y"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tb8xi"]
 vertices = PackedVector2Array(944, -487, 853, -525, 908, -745, 1677, -749, 1745, -599, 1657, -446, 1308, -389, 1179, -343, 960, -318, 899, -31, 848, -98, 702, -52, 878, 63, 797, 102, -1124, 201, -1142, -111, -788, -269, -737, -249, -737, 110, -1030, 343, -683, 348, -588, 128, -594, 406, 605, 402, -557, -56, -492, -121, 634, -118, 795, 308)
@@ -708,3 +710,9 @@ scale = Vector2(1.44, 1.00129)
 tile_set = SubResource("TileSet_t11lt")
 format = 2
 layer_0/tile_data = PackedInt32Array(31980081, 393216, 5, 31980080, 393216, 5, 23657394, 327680, 4, 32045746, 327680, 4, 36174321, 327680, 4, 27785969, 393216, 5, 23526258, 393216, 5)
+
+[node name="Money" parent="." instance=ExtResource("10_bbe2v")]
+position = Vector2(85, 1541)
+
+[node name="4 0" parent="." instance=ExtResource("11_0le7y")]
+position = Vector2(85, 1546)

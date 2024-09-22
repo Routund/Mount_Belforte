@@ -24,7 +24,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 [node name="Forest-2" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_mhrrs")]
-position = Vector2(-65, 25)
+position = Vector2(-67, -1358)
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -5

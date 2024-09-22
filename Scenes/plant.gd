@@ -7,7 +7,6 @@ var roaming_speed = 200
 var seen_player = false
 var death = false
 var speed = 300
-var water_card = false
 @onready var player = get_parent().get_parent().get_node("Player")
 var card_preload = preload("res://Scenes/tester_card.tscn")
 
@@ -17,14 +16,6 @@ var _movement_target_position = Vector2.ZERO
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
 func _ready():
-	if water_card:
-		var instance = card_preload.instantiate()
-		instance.card_id=5
-		instance.id = 2
-		get_parent().get_parent().add_child.call_deferred(instance)
-		instance.global_position = global_position
-		queue_free()
-		return
 	Global.battleStarting.connect(give_coords)
 	Global.slime += 1
 	navigation_agent.path_desired_distance = 4.0
@@ -66,13 +57,6 @@ func _physics_process(_delta):
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
-		var rng = RandomNumberGenerator.new()
-		var get_water = rng.randi_range(1,1)
-		if 5 not in Global.inventory and get_water == 1:
-			Global.state_dictionary["water"]=water_card
-			Global.slime=3
-		else:
-			Global.slime = 1
 		Global.battle(0)
 		
 func give_coords():
