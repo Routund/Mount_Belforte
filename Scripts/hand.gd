@@ -14,5 +14,9 @@ func animate():
 
 func change_spacing():
 	add_theme_constant_override("separation",-(len(get_children())*7))
+	var i=0
+	for child in get_children():
+		child.z_index=2*i
+		i+=1
 	
 

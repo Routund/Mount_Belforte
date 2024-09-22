@@ -73,7 +73,7 @@ func _on_area_2d_body_entered(body):
 			Global.slime=3
 		else:
 			Global.slime = 1
-		Global.battle(0)
+		Global.battle(4)
 		
 func give_coords():
 	Global.state_dictionary["slime_pos"]=position

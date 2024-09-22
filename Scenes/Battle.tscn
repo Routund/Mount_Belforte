@@ -1,7 +1,7 @@
 [gd_scene load_steps=31 format=3 uid="uid://uk07hjo5epu4"]
 
-[ext_resource type="Texture2D" uid="uid://68dml8y3tbsm" path="res://Sprites/Forest_Combat.png" id="1_x4u3t"]
-[ext_resource type="Script" path="res://Scenes/BattleArenaSetter.gd" id="2_mse8x"]
+[ext_resource type="Texture2D" uid="uid://dtvu6cm37arkp" path="res://Sprites/CaveCombat.png" id="1_s2fwe"]
+[ext_resource type="Script" path="res://Scripts/BattleArenaSetter.gd" id="2_mse8x"]
 [ext_resource type="Script" path="res://Scripts/battle_manager.gd" id="2_nygms"]
 [ext_resource type="Script" path="res://Scripts/EnemyHealthBar.gd" id="3_ibbn5"]
 [ext_resource type="Script" path="res://Scripts/ConfirmPlay.gd" id="3_kbwne"]
@@ -10,9 +10,9 @@
 [ext_resource type="Script" path="res://Scripts/hand.gd" id="5_cltqn"]
 [ext_resource type="Script" path="res://Scripts/EnemyAnimator.gd" id="5_ee1ig"]
 [ext_resource type="Texture2D" uid="uid://c830oy4vqf404" path="res://Sprites/Main Character full.png" id="6_4goyg"]
-[ext_resource type="SpriteFrames" uid="uid://ces1x2nat6lan" path="res://Sprites/Combat_enemies/Slime.tres" id="6_gvfrr"]
 [ext_resource type="Script" path="res://Scripts/PlayerAnimation.gd" id="6_gxu4j"]
 [ext_resource type="Script" path="res://Scripts/fakes.gd" id="6_qetmb"]
+[ext_resource type="SpriteFrames" uid="uid://crm8k2c1sd0mh" path="res://Sprites/Combat_enemies/plant.tres" id="6_vuvkb"]
 [ext_resource type="Texture2D" uid="uid://rl5pvy46nyjv" path="res://Sprites/Main Character attack-Sheet.png" id="6_wkqp5"]
 [ext_resource type="Texture2D" uid="uid://d1g4xrheo41cs" path="res://Sprites/Cards/Blank_Card.png" id="7_it2nd"]
 [ext_resource type="Script" path="res://Scripts/OverworldWipe.gd" id="9_0apxm"]
@@ -110,7 +110,7 @@ font_color = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_right = 1152.0
 offset_bottom = 648.0
-texture = ExtResource("1_x4u3t")
+texture = ExtResource("1_s2fwe")
 script = ExtResource("2_mse8x")
 
 [node name="PlayerHealthBar" type="NinePatchRect" parent="."]
@@ -177,10 +177,10 @@ patch_margin_bottom = 10
 [node name="Enemy" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1140, 535)
-scale = Vector2(3, 3)
-sprite_frames = ExtResource("6_gvfrr")
+scale = Vector2(3.5, 3.5)
+sprite_frames = ExtResource("6_vuvkb")
 animation = &"idle"
-offset = Vector2(-40, -32)
+offset = Vector2(-60, -50)
 script = ExtResource("5_ee1ig")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
@@ -215,8 +215,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -310.0
-offset_bottom = -124.0
+offset_top = -325.0
+offset_bottom = -139.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = -10
@@ -229,8 +229,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -135.0
-offset_bottom = 51.0
+offset_top = -150.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = -10
@@ -243,8 +243,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -310.0
-offset_bottom = -124.0
+offset_top = -325.0
+offset_bottom = -139.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = -10
@@ -257,8 +257,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -135.0
-offset_bottom = 51.0
+offset_top = -150.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = -10
@@ -294,6 +294,7 @@ label_settings = SubResource("LabelSettings_8p7x2")
 
 [node name="Wiper" type="TextureRect" parent="CanvasLayer"]
 modulate = Color(0, 0, 0, 1)
+z_index = 9
 anchors_preset = -1
 anchor_right = 0.017
 offset_left = -220.0

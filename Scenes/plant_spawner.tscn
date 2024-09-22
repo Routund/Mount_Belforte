@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://db4f0hiogphhq"]
 
-[ext_resource type="Script" path="res://Scenes/plant_spawner.gd" id="1_mgtd5"]
+[ext_resource type="Script" path="res://Scripts/plant_spawner.gd" id="1_mgtd5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_farx5"]
 radius = 98.1275

@@ -89,7 +89,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="hidden path"]
 offset_left = -966.0
-offset_top = -427.0
+offset_top = -440.0
 offset_right = 88.0
 offset_bottom = -194.0
 color = Color(0, 0, 0, 1)

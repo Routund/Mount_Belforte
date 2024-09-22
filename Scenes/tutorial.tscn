@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bejaaqfbcxwl5"]
+[gd_scene load_steps=3 format=3 uid="uid://d0pwb37mded6i"]
 
 [ext_resource type="PackedScene" uid="uid://ba85yfhojk0ne" path="res://Scenes/walking_talking_fish.tscn" id="1_01ble"]
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="2_oggf4"]
