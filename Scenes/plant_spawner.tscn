@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://db4f0hiogphhq"]
+[gd_scene load_steps=3 format=3 uid="uid://db4f0hiogphhq"]
 
 [ext_resource type="Script" path="res://Scenes/plant_spawner.gd" id="1_mgtd5"]
 
-[node name="plant_spawner" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_farx5"]
+radius = 98.1275
+
+[node name="plant_spawner" type="CharacterBody2D"]
 script = ExtResource("1_mgtd5")
 
 [node name="Spawn_point" type="Node2D" parent="."]
@@ -11,5 +14,8 @@ position = Vector2(95, 1)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_farx5")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

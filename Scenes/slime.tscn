@@ -91,6 +91,7 @@ _data = {
 radius = 269.833
 
 [node name="slime" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_c6oyi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
