@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://db4f0hiogphhq"]
+
+[ext_resource type="Script" path="res://Scenes/plant_spawner.gd" id="1_mgtd5"]
+[ext_resource type="Texture2D" uid="uid://ccfkfkpqfbba7" path="res://Sprites/Tree.png" id="2_brgjk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8ker"]
+size = Vector2(160, 190)
+
+[node name="plant_spawner" type="CharacterBody2D"]
+script = ExtResource("1_mgtd5")
+
+[node name="Spawn_point" type="Node2D" parent="."]
+position = Vector2(95, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_v8ker")
+
+[node name="Tree" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_brgjk")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
