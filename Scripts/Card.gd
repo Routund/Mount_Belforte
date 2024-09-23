@@ -11,6 +11,7 @@ var queue = self
 var fakeH = self
 var fakeQ = self
 @onready var text = get_node("Label")
+@onready var Glow = get_node("Glow")
 var text_to_set = "placeholder"
 var fake_preload = preload("res://Scenes/fake_card.tscn")
 var fake = self
@@ -77,12 +78,16 @@ func animate_self():
 	tween.tween_property(self, "global_position", newTransform, 0.2)
 	tween.connect("finished", on_tween_finished)
 	disabled = true
+	Glow.visible=false
+
 
 func on_tween_finished():
 	previous_pos=global_position
 	disabled = false
 	if parentSelf:
 		reparent(new_parent)
+	if !queued:
+		Glow.visible=true
 	hand.change_spacing()
 	queue.change_spacing()
 	global_position=fake.global_position

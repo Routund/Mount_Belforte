@@ -16,7 +16,8 @@ var enemies = [
 	["Slime",120,1,[slimeai],true],
 	["Rock bat",180,1,[batai],false],
 	["Golem",280,1,[golemAi],false],
-	["Cat", 160,1,[catAi], true]
+	["Cat", 160,1,[catAi], true],
+	["Plant", 160,1,[plantAi], true],
 	]
 
 var go_next =false
@@ -268,7 +269,9 @@ func catAi():
 	else:
 		damage_player(35,true)
 		return "The Cat attacks"
-		
+func plantAi():
+	damage_player(70,true)
+	return "The Plant attacks"
 # Pick random card from deck, then add it to hand and remove from deck
 # Then instantiate a new card with that ID
 func draw():

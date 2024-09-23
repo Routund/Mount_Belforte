@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dklx30s70plmd"]
 
 [ext_resource type="Texture2D" uid="uid://btpm0627eebb7" path="res://Sprites/Plant-Sheet.png" id="1_i2j4i"]
-[ext_resource type="Script" path="res://Scenes/plant.gd" id="1_pxafm"]
+[ext_resource type="Script" path="res://Scripts/plant.gd" id="1_pxafm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bqeaq"]
 radius = 14.3178

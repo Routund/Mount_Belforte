@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://drl44f5x3yvrs"]
 
-[ext_resource type="Script" path="res://Rock_Golem.gd" id="1_5327r"]
+[ext_resource type="Script" path="res://Scripts/Rock_Golem.gd" id="1_5327r"]
 [ext_resource type="Texture2D" uid="uid://b2j8abie1epee" path="res://Sprites/Golem-Sheet.png" id="2_yl8mm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b6ldh"]
