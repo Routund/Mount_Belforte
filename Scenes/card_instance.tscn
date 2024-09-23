@@ -33,7 +33,6 @@ vertical_alignment = 1
 
 [node name="Glow" type="TextureRect" parent="."]
 z_index = -1
-texture_filter = 2
 material = SubResource("ShaderMaterial_eefbn")
 layout_mode = 1
 anchors_preset = -1

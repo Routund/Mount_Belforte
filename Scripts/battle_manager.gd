@@ -96,7 +96,7 @@ func _process(_delta):
 		elif checkWhoseDead():
 			pass
 		elif(i<len(queue)):
-			if enemyDodging and randi_range(0,3)!=0:
+			if enemyDodging and randf_range(0.0,1.0)>0.5:
 				attackFails=true
 			edamaged = false
 			DialogContainer.reset(card_funcs[queue[i]].call())
@@ -261,15 +261,27 @@ func golemAi():
 	damage_player(60,true)
 	return "The Golem attacks"
 func catAi():
-	if randi_range(0,1)==1 and !enemyDodging:
+	if randi_range(0,2)!=1 and !enemyDodging:
 		enemyDodging = true
 		damage_player(0,true)
 		EnemyAnimator.modulate.a = 0.0125
 		return "The Cat leaps into the trees"
+	elif enemyDodging and randf_range(0,1)>0.5 and !enemy_charging:
+		enemy_charging = true
+		enemy_charging_count = 0 + randi_range(1,2)
+		return "The Cat climbs higher up"
+	elif enemy_charging and enemyDodging:
+		enemy_charging_count += randi_range(1,2)
+		if (enemy_charging_count>=5):
+			damage_player(90,true)
+			return "The Cat divebombs you!"
+		return "The Cat climbs even higher up"
 	else:
+		enemy_charging=false
 		damage_player(35,true)
-		return "The Cat attacks"
+		return "The Cat attacks!"
 func plantAi():
+	
 	damage_player(70,true)
 	return "The Plant attacks"
 # Pick random card from deck, then add it to hand and remove from deck

@@ -8,7 +8,6 @@ void fragment() {
 	COLOR.g = COLOR.g*2.0;
 	COLOR.r = COLOR.r*2.0;
 	COLOR.b = COLOR.b/2.0;
-	COLOR.a = 1.0;
 	// Called for every pixel the material is visible on.
 }
 
