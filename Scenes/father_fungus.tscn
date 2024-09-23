@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d3a451qvp3jbl"]
 
-[ext_resource type="Script" path="res://father_fungus.gd" id="1_axs7g"]
+[ext_resource type="Script" path="res://Scripts/father_fungus.gd" id="1_axs7g"]
 [ext_resource type="Texture2D" uid="uid://ccsstlm1vp762" path="res://Sprites/Father Fungus.png" id="2_ix1gb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2wpr"]

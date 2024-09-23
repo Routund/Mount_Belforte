@@ -13,36 +13,24 @@ visible = false
 [node name="Resume" type="Button" parent="."]
 anchors_preset = -1
 anchor_left = 0.468
-anchor_top = 0.123
-anchor_right = 0.468
-anchor_bottom = 0.123
-offset_left = -35.136
-offset_top = -15.704
-offset_right = 34.864
-offset_bottom = 15.296
-text = "Resume"
-
-[node name="Settings" type="Button" parent="."]
-anchors_preset = -1
-anchor_left = 0.475
 anchor_top = 0.209
-anchor_right = 0.475
+anchor_right = 0.468
 anchor_bottom = 0.209
-offset_left = -35.2
-offset_top = -15.432
-offset_right = 34.8
-offset_bottom = 15.568
-text = "Settings"
+offset_left = -34.136
+offset_top = -17.432
+offset_right = 35.864
+offset_bottom = 13.568
+text = "Resume"
 
 [node name="Inventor" type="Button" parent="."]
 anchors_preset = -1
-anchor_left = 0.472
+anchor_left = 0.467
 anchor_top = 0.32
-anchor_right = 0.472
+anchor_right = 0.467
 anchor_bottom = 0.32
-offset_left = -47.744
+offset_left = -41.984
 offset_top = -15.36
-offset_right = 35.256
+offset_right = 41.016
 offset_bottom = 15.64
 text = "Inventory"
 
@@ -60,3 +48,4 @@ text = "Exit"
 
 [connection signal="pressed" from="Resume" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Inventor" to="." method="_on_inventory_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

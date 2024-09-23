@@ -5,7 +5,7 @@ var doorways = [
 	["res://Scenes/cave_2.tscn", [Vector2(0,85),Vector2(19,738)]],
 	["res://Scenes/cave_3.tscn", [Vector2(-984,-652),Vector2(173,1633)]],
 	["res://Scenes/Forest-1.tscn", [Vector2(-260,-90),Vector2(486,-2015)]],
-	["res://Scenes/forest_2.tscn", [Vector2(-65,25),Vector2(-67,-2015)]],
+	["res://Scenes/forest_2.tscn", [Vector2(-65,25),Vector2(-61,-1352)]],
 	["res://Scenes/forest_3.tscn", [Vector2(0,0),Vector2(-67,-2015)]]
 ]
 var next_scene_data = [0,0]
