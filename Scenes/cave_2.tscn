@@ -30,7 +30,6 @@ size = Vector2(240, 131)
 
 [node name="Cave-2" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_7od57")
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -1

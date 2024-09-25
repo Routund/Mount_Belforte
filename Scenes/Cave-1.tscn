@@ -1785,7 +1785,6 @@ sources/0 = SubResource("TileSetAtlasSource_y8hly")
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_xitel")
 
 [node name="Player" parent="." instance=ExtResource("1_6edlc")]
 y_sort_enabled = true

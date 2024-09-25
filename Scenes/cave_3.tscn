@@ -656,7 +656,6 @@ sources/0 = SubResource("TileSetAtlasSource_wecgi")
 
 [node name="cave_3" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_lc53q")
 
 [node name="Player" parent="." instance=ExtResource("1_pohdt")]
 y_sort_enabled = true

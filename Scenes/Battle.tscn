@@ -179,7 +179,7 @@ texture_filter = 1
 position = Vector2(1140, 535)
 scale = Vector2(3.5, 3.5)
 sprite_frames = ExtResource("6_vuvkb")
-animation = &"idle"
+animation = &"attack"
 offset = Vector2(-60, -50)
 script = ExtResource("5_ee1ig")
 
