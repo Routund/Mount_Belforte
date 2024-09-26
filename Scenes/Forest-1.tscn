@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bdiyckmcwgi8b"]
+[gd_scene load_steps=12 format=3 uid="uid://bdiyckmcwgi8b"]
 
 [ext_resource type="PackedScene" uid="uid://m2l0feudy3o1" path="res://Scenes/doorway.tscn" id="1_8jv0c"]
 [ext_resource type="TileSet" uid="uid://o1skee5d3xg" path="res://ForestFloor.tres" id="1_bjkn4"]
@@ -8,6 +8,7 @@
 [ext_resource type="TileSet" uid="uid://cpp6bk0tnqo2a" path="res://Forest-1-hidden.tres" id="3_341tr"]
 [ext_resource type="PackedScene" uid="uid://gulqgj7sh07c" path="res://Scenes/cat_spawner.tscn" id="3_ep4dr"]
 [ext_resource type="TileSet" uid="uid://bbo7o2m7nmyl4" path="res://ForestWalls.tres" id="4_5k6v2"]
+[ext_resource type="AudioStream" uid="uid://8o6kmdq3r184" path="res://cam forest.wav" id="4_7ohcn"]
 [ext_resource type="Texture2D" uid="uid://d0isf5vpc5vsx" path="res://Sprites/BushSprites.png.png" id="5_adkat"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7w2wn"]
@@ -15,6 +16,7 @@ size = Vector2(74.2324, 504)
 
 [node name="Forest-1" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_pd2fn")
 
 [node name="2 1" parent="." instance=ExtResource("1_8jv0c")]
 y_sort_enabled = true
@@ -25,6 +27,9 @@ rotation = 4.71239
 z_index = 1
 y_sort_enabled = true
 position = Vector2(-215, -90)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("4_7ohcn")
 
 [node name="Hidden_path" parent="." instance=ExtResource("2_5ldfo")]
 z_index = 1

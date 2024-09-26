@@ -1,7 +1,7 @@
 extends Area2D
 var dialogue = ["(Press space or left click to continue dialogue).
-Welcome traveler to Mount Belforte, *Gargling noises*", "I know you like treasure, and I heard there was some at the 
-					end of this cave. Go get them buster.", "You picked up Poison, tab to open your inventory", "You picked up Headbutt", "You earned Gold"]
+Welcome traveler to Mount Belforte", "*Gargling noises*", "You picked up Poison, tab to open your inventory", "You picked up Headbutt", 
+ "Be not afraid my child", "Comest forward and face divine judgement."]
 var id = 0
 var fin = 3
 var funny = 0
