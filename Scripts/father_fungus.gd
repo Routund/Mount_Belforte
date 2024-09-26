@@ -8,4 +8,4 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.name == "Player":
-		pass
+		Global.battle(5)

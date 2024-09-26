@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dos1tgroc2jdf"]
+[gd_scene load_steps=12 format=3 uid="uid://dos1tgroc2jdf"]
 
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="1_6edlc"]
+[ext_resource type="AudioStream" uid="uid://dq76stxih8tv7" path="res://cam cave.mp3" id="2_ct32q"]
 [ext_resource type="Texture2D" uid="uid://c2kfxbu7tm5mc" path="res://Sprites/NewerCave_tilemap.png" id="2_myhv0"]
 [ext_resource type="PackedScene" uid="uid://boojurd07rf2h" path="res://Scenes/slime_spawner.tscn" id="4_l2p68"]
 [ext_resource type="PackedScene" uid="uid://y5g78wv73dul" path="res://Scenes/tester_card.tscn" id="5_dw7wp"]
@@ -1788,6 +1789,11 @@ y_sort_enabled = true
 [node name="Player" parent="." instance=ExtResource("1_6edlc")]
 y_sort_enabled = true
 position = Vector2(-122, -16)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(122, 16)
+stream = ExtResource("2_ct32q")
+autoplay = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 y_sort_enabled = true

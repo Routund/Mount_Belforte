@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://Scripts/PlayerAnimation.gd" id="6_gxu4j"]
 [ext_resource type="Script" path="res://Scripts/fakes.gd" id="6_qetmb"]
 [ext_resource type="Texture2D" uid="uid://rl5pvy46nyjv" path="res://Sprites/Main Character attack-Sheet.png" id="6_wkqp5"]
-[ext_resource type="SpriteFrames" uid="uid://bxsdno8dn14i3" path="res://Sprites/Combat_enemies/Mushroom.tres" id="6_xvi5t"]
+[ext_resource type="SpriteFrames" uid="uid://d2e81jghe424h" path="res://Sprites/Combat_enemies/Mushroom.tres" id="6_xvi5t"]
 [ext_resource type="Texture2D" uid="uid://d1g4xrheo41cs" path="res://Sprites/Cards/Blank_Card.png" id="7_it2nd"]
 [ext_resource type="Script" path="res://Scripts/OverworldWipe.gd" id="9_0apxm"]
 [ext_resource type="Script" path="res://Scripts/CombatDialog.gd" id="13_5h2wc"]

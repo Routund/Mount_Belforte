@@ -7,11 +7,10 @@
 [node name="Rock_bat" parent="." instance=ExtResource("1_0uqbq")]
 
 [node name="Label" type="Label" parent="."]
-visible = false
-offset_left = -43.0
-offset_top = -141.0
-offset_right = 46.0
-offset_bottom = -40.0
+offset_left = -44.0
+offset_top = -163.0
+offset_right = 45.0
+offset_bottom = -62.0
 text = "Press
 Space
 to Pick

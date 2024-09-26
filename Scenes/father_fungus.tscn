@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ccsstlm1vp762" path="res://Sprites/Father Fungus.png" id="2_ix1gb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2wpr"]
-radius = 135.447
+radius = 212.002
 
 [sub_resource type="Animation" id="Animation_ppk1w"]
 resource_name = "idle"
@@ -38,7 +38,7 @@ shape = SubResource("CircleShape2D_q2wpr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(3, 3)
+scale = Vector2(5, 5)
 texture = ExtResource("2_ix1gb")
 hframes = 4
 vframes = 4
