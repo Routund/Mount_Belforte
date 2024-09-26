@@ -1,6 +1,5 @@
-[gd_scene load_steps=17 format=3 uid="uid://cojkgwp52hypk"]
+[gd_scene load_steps=16 format=3 uid="uid://cojkgwp52hypk"]
 
-[ext_resource type="Script" path="res://Scripts/cave_3.gd" id="1_lc53q"]
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="1_pohdt"]
 [ext_resource type="PackedScene" uid="uid://vhgkwbm8ioku" path="res://Scenes/rock_node.tscn" id="2_0itcl"]
 [ext_resource type="PackedScene" uid="uid://dh835k1hqslwo" path="res://Scenes/rock_door.tscn" id="3_ly0h5"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://m2l0feudy3o1" path="res://Scenes/doorway.tscn" id="1_8jv0c"]
 [ext_resource type="TileSet" uid="uid://o1skee5d3xg" path="res://ForestFloor.tres" id="1_bjkn4"]
-[ext_resource type="Script" path="res://Scripts/Forest-1.gd" id="1_pd2fn"]
+[ext_resource type="Script" path="res://Scripts/Forest-1.gd" id="1_wm7kp"]
 [ext_resource type="PackedScene" uid="uid://ch40hb30w63p7" path="res://Scenes/hidden_path.tscn" id="2_5ldfo"]
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="2_u4dtm"]
 [ext_resource type="TileSet" uid="uid://cpp6bk0tnqo2a" path="res://Forest-1-hidden.tres" id="3_341tr"]
@@ -15,6 +15,7 @@ size = Vector2(74.2324, 504)
 
 [node name="Forest-1" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_wm7kp")
 
 [node name="2 1" parent="." instance=ExtResource("1_8jv0c")]
 y_sort_enabled = true

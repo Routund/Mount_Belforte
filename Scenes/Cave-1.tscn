@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://dos1tgroc2jdf"]
+[gd_scene load_steps=11 format=3 uid="uid://dos1tgroc2jdf"]
 
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="1_6edlc"]
-[ext_resource type="Script" path="res://Scripts/Cave-1.gd" id="1_xitel"]
 [ext_resource type="Texture2D" uid="uid://c2kfxbu7tm5mc" path="res://Sprites/NewerCave_tilemap.png" id="2_myhv0"]
 [ext_resource type="PackedScene" uid="uid://boojurd07rf2h" path="res://Scenes/slime_spawner.tscn" id="4_l2p68"]
 [ext_resource type="PackedScene" uid="uid://y5g78wv73dul" path="res://Scenes/tester_card.tscn" id="5_dw7wp"]

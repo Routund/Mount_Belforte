@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://db4f0hiogphhq"]
 
-[ext_resource type="Script" path="res://Scenes/plant_spawner.gd" id="1_mgtd5"]
+[ext_resource type="Script" path="res://Scripts/plant_spawner.gd" id="1_mgtd5"]
 [ext_resource type="Texture2D" uid="uid://ccfkfkpqfbba7" path="res://Sprites/Tree.png" id="2_brgjk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8ker"]
