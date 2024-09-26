@@ -125,11 +125,11 @@ script = ExtResource("6_gxu4j")
 
 [node name="Enemy" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1457, 661)
+position = Vector2(1147, 525)
 scale = Vector2(8.5, 8.5)
 sprite_frames = ExtResource("6_xvi5t")
-animation = &"look"
-offset = Vector2(-60, -50)
+animation = &"attack"
+offset = Vector2(-30, -35)
 script = ExtResource("5_ee1ig")
 
 [node name="PlayerHealthBar" type="NinePatchRect" parent="."]

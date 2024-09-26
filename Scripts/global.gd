@@ -8,7 +8,7 @@ extends Node
 #6 is recoil
 var inventory = [0,1,2,4] 
 
-var deck = [0]
+var deck = [0,1,2,4]
 signal battleStarting
 var level = 0
 

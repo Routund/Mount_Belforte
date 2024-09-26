@@ -1837,7 +1837,7 @@ layer_0/tile_data = PackedInt32Array(-65545, 327680, 4, -9, 327680, 4, 65527, 32
 [node name="0 2" parent="." instance=ExtResource("8_e18tj")]
 y_sort_enabled = true
 position = Vector2(368, 23)
-scale = Vector2(1, 2.44)
+scale = Vector2(1, 4.68)
 
 [node name="2 1" parent="." instance=ExtResource("8_e18tj")]
 y_sort_enabled = true
