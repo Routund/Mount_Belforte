@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnpnfrnfldj72"]
+[gd_scene load_steps=7 format=3 uid="uid://cnpnfrnfldj72"]
 
 [ext_resource type="Script" path="res://Scripts/Titlescreen.gd" id="1_ra0vn"]
 [ext_resource type="Texture2D" uid="uid://cgksn2vcw27c2" path="res://Sprites/Copy of Main Menu Background 160x90.png" id="2_2xq2a"]
 [ext_resource type="Texture2D" uid="uid://bm0rjrh0j5c58" path="res://Sprites/Play.png" id="2_gtyyq"]
 [ext_resource type="Texture2D" uid="uid://ce5ppshptjc1o" path="res://Sprites/Playpressed.png" id="3_cwt6d"]
 [ext_resource type="Texture2D" uid="uid://cd40lb1qckn7y" path="res://Sprites/Playhover.png" id="4_umk0q"]
+[ext_resource type="AudioStream" uid="uid://bex66rpv873qy" path="res://1. Title.wav" id="6_0dgah"]
 
 [node name="Titlescreen" type="CanvasLayer"]
 script = ExtResource("1_ra0vn")
@@ -30,5 +31,9 @@ texture_filter = 1
 position = Vector2(576, 322.5)
 scale = Vector2(7.2, 7.16667)
 texture = ExtResource("2_2xq2a")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0dgah")
+autoplay = true
 
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]

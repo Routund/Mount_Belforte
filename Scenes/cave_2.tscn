@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://dbjldvnx313py" path="res://CaveFloor.tres" id="1_xqjvy"]
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="2_uy0ur"]
-[ext_resource type="AudioStream" uid="uid://dq76stxih8tv7" path="res://cam cave.mp3" id="4_cf303"]
+[ext_resource type="AudioStream" uid="uid://qyqtiodjb638" path="res://Sprites/2. the cave.wav" id="4_iwirv"]
 [ext_resource type="PackedScene" uid="uid://dh835k1hqslwo" path="res://Scenes/rock_door.tscn" id="4_mjwlv"]
 [ext_resource type="PackedScene" uid="uid://cynbtl2rfc874" path="res://Scenes/rock_button.tscn" id="5_3tgr3"]
 [ext_resource type="PackedScene" uid="uid://ch40hb30w63p7" path="res://Scenes/hidden_path.tscn" id="7_6vajn"]
@@ -51,8 +51,9 @@ y_sort_enabled = true
 position = Vector2(0, 98)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+process_mode = 3
 position = Vector2(122, 16)
-stream = ExtResource("4_cf303")
+stream = ExtResource("4_iwirv")
 autoplay = true
 
 [node name="Rock_Door" parent="." instance=ExtResource("4_mjwlv")]
