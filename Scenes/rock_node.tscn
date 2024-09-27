@@ -8,10 +8,10 @@
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = -43.0
-offset_top = -141.0
-offset_right = 46.0
-offset_bottom = -40.0
+offset_left = -44.0
+offset_top = -156.0
+offset_right = 45.0
+offset_bottom = -55.0
 text = "Press
 Space
 to Pick

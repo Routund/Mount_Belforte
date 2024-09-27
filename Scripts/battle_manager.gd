@@ -54,7 +54,7 @@ var attackFails = false
 var card_preload = preload("res://Scenes/card_instance.tscn")
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready(): 
 	randomize()
 	deck = Global.deck.duplicate()
 	draw()
@@ -64,6 +64,13 @@ func _ready():
 	EnemyAnimator.load_frames()
 	enemy_health=enemies[enemy_id][1]
 	enemy_max=enemy_health
+	if enemy_health == enemies[2][1]:
+		$"../../golem".play()
+	elif enemy_health == enemies[0][1]: # make 5 when father fungus is added
+		$"../../father".play()
+	else:
+		$"../../enemy".play()
+		
 	pass # Replace with function body.
 
 func checkWhoseDead():

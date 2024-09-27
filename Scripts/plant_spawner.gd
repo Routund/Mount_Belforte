@@ -12,7 +12,10 @@ func _ready():
 	else:
 		Global.slime=1
 
-
+func _process(delta):
+	print(Global.slime)
+	
+	
 func _on_timer_timeout():
 	if Global.slime == 1:
 		var spawn_slime = slime.instantiate()
