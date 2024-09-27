@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://drfdyx2vjfd76"
+path="res://.godot/imported/5. rock boss.mp3-c05ba9ccc41db00fa4be714425dc72fe.mp3str"
+
+[deps]
+
+source_file="res://sounds/5. rock boss.mp3"
+dest_files=["res://.godot/imported/5. rock boss.mp3-c05ba9ccc41db00fa4be714425dc72fe.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bwl04xirr1hhv"]
 
 [ext_resource type="Script" path="res://Scripts/slime.gd" id="1_c6oyi"]
-[ext_resource type="Texture2D" uid="uid://bp2sarx85n1xp" path="res://Sprites/Slime-Sheet.png" id="2_nkbg1"]
+[ext_resource type="Texture2D" uid="uid://didgd8am3dtdp" path="res://Sprites/Slime-Sheet_overworld.png" id="2_bcfvu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdkjx"]
 
@@ -74,7 +74,8 @@ _data = {
 radius = 269.833
 
 [node name="slime" type="CharacterBody2D"]
-z_index = 1
+z_index = 3
+y_sort_enabled = true
 script = ExtResource("1_c6oyi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -82,12 +83,12 @@ shape = SubResource("RectangleShape2D_wdkjx")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture_filter = 1
 scale = Vector2(2, 2)
-texture = ExtResource("2_nkbg1")
+texture = ExtResource("2_bcfvu")
 hframes = 3
 vframes = 3
-frame = 6
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dtnjmxprk7k00"
+path="res://.godot/imported/6. fungi boss.mp3-eba12f3ca1102721b6f29562e9ca05f2.mp3str"
+
+[deps]
+
+source_file="res://sounds/6. fungi boss.mp3"
+dest_files=["res://.godot/imported/6. fungi boss.mp3-eba12f3ca1102721b6f29562e9ca05f2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

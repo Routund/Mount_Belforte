@@ -6,6 +6,7 @@
 size = Vector2(112, 224)
 
 [node name="Slime spawner" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_vlr0d")
 
 [node name="Spawn_point" type="Node2D" parent="."]

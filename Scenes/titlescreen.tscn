@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bm0rjrh0j5c58" path="res://Sprites/Play.png" id="2_gtyyq"]
 [ext_resource type="Texture2D" uid="uid://ce5ppshptjc1o" path="res://Sprites/Playpressed.png" id="3_cwt6d"]
 [ext_resource type="Texture2D" uid="uid://cd40lb1qckn7y" path="res://Sprites/Playhover.png" id="4_umk0q"]
-[ext_resource type="AudioStream" uid="uid://bex66rpv873qy" path="res://1. Title.wav" id="6_0dgah"]
+[ext_resource type="AudioStream" uid="uid://b31gr8t508q6w" path="res://sounds/1. Title.mp3" id="6_kekp3"]
 
 [node name="Titlescreen" type="CanvasLayer"]
 script = ExtResource("1_ra0vn")
@@ -33,7 +33,7 @@ scale = Vector2(7.2, 7.16667)
 texture = ExtResource("2_2xq2a")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_0dgah")
+stream = ExtResource("6_kekp3")
 autoplay = true
 
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]

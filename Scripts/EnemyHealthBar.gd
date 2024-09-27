@@ -18,6 +18,6 @@ func TweenTo(enemy_health,enemy_max):
 	tween.connect("finished", on_tween_finished)
 
 func on_tween_finished():
-	if(health<0):
+	if(health<=0):
 		Health_Rect.visible=false
 	enemyHealthBarFinished.emit()

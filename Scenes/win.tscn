@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://hfi4sifr777g" path="res://Quit.png" id="2_851vb"]
 [ext_resource type="Texture2D" uid="uid://by5kyifglvaiy" path="res://Quithover.png" id="3_367cc"]
 [ext_resource type="Texture2D" uid="uid://bo2xsw77i25ml" path="res://Quitpressed.png" id="4_k586c"]
-[ext_resource type="AudioStream" uid="uid://bex66rpv873qy" path="res://1. Title.wav" id="6_se47x"]
+[ext_resource type="AudioStream" uid="uid://b31gr8t508q6w" path="res://sounds/1. Title.mp3" id="6_8mknc"]
 
 [node name="win" type="CanvasLayer"]
 script = ExtResource("1_dvv6r")
@@ -31,7 +31,7 @@ texture_pressed = ExtResource("3_367cc")
 texture_hover = ExtResource("4_k586c")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_se47x")
+stream = ExtResource("6_8mknc")
 autoplay = true
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

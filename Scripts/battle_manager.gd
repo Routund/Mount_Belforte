@@ -193,6 +193,7 @@ func water():
 	playerInfected=false
 	playerInfectionDone=true
 	playerOvertime=0
+	player_power=1
 	return "You cleanse yourself"
 func run():
 	if enemies[enemy_id][4]:
@@ -218,10 +219,10 @@ func sacrifice():
 	deck += queue.slice(i,len(queue))
 	var num = len(queue.slice(i,len(queue)))-1
 	i = 10
-	if is_blocking:
+	if attackFails:
 		return "You sacrifice your cards, but fail to hit"
 	else:
-		damage_enemy(15+30*(num),true)
+		damage_enemy(player_power*(15+30*(num)),true)
 		return "You sacrifice %d cards, and violently slash at the %s" % [num, enemies[enemy_id][0]]
 
 func damage_player(amount,animated):
@@ -246,19 +247,19 @@ func basic_attack():
 	damage_player(50,true)
 	return "The %s attacks" % enemies[enemy_id][0] 
 func slimeai():
-	if enemy_health > 60 or randf_range(0,2)>0.6:
+	if enemy_health > 60 or randf_range(0,2)>1.21:
 		damage_player(55,true)
 		return "The Water slime attacks!"
 	else:
 		damage_enemy(-50,false)
 		return "The Water slime soaks up water to heal itself"
 func batai():
-	if !playerInfected and randi_range(0,1)!=0:
+	if !playerInfected and randf_range(0,1)>0.65:
 		PlayerHealthBar.Health_Rect.modulate = Color8(124,173,19)
 		damage_player(20,true)
 		playerInfected=true
 		playerInfectionDone=false
-		playerOvertime+=30
+		playerOvertime+=25
 		return "The Rock bat sinks it's fangs into your neck"
 	else:
 		damage_player(45,true)
@@ -323,7 +324,6 @@ func plantAi():
 	damage_player(40*power,true)
 	return "The Plant attacks"
 func mushroomAi():
-	player_power=1
 	if enemy_charging_count<=0 and randf_range(0,1)>0.60:
 		EnemyAnimator.play("look")
 		power = 1.5 + (320 - enemy_health)/320
@@ -336,6 +336,7 @@ func mushroomAi():
 		return "Father Fungus attacks!"
 	else:
 		player_power=0.5
+		PlayerHealthBar.Health_Rect.modulate = Color8(249,219,18)
 		return "Father Fungus weakens your resolve"
 # Pick random card from deck, then add it to hand and remove from deck
 # Then instantiate a new card with that ID
@@ -389,5 +390,8 @@ func _on_player_animation_finished():
 		edamaged=false
 
 func _on_dialog_container_dialog_finished():
-	continuable=true
+	if DialogContainer.text == DialogContainer.label.text:
+		continuable=true
+	else:
+		go_next=true
 	pass # Replace with function body.

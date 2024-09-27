@@ -19,9 +19,9 @@
 [ext_resource type="Script" path="res://Scripts/CombatDialog.gd" id="13_5h2wc"]
 [ext_resource type="Texture2D" uid="uid://ci84vqroi8n4r" path="res://Sprites/DIALOGUE.png" id="15_s5xkn"]
 [ext_resource type="Texture2D" uid="uid://cospfanlf6c68" path="res://Sprites/Button.png" id="18_uukb5"]
-[ext_resource type="AudioStream" uid="uid://b2348mm5hcf8k" path="res://4. fighting.wav" id="20_67xqi"]
-[ext_resource type="AudioStream" uid="uid://bec4p7n6lv58k" path="res://6. fungi boss.wav" id="21_ryiob"]
-[ext_resource type="AudioStream" uid="uid://dcn0oimcjuc4c" path="res://5. rock boss.wav" id="22_ikhy2"]
+[ext_resource type="AudioStream" uid="uid://bmdp7iwe52mq8" path="res://sounds/4. fighting.mp3" id="20_wvgei"]
+[ext_resource type="AudioStream" uid="uid://dtnjmxprk7k00" path="res://sounds/6. fungi boss.mp3" id="21_tdhax"]
+[ext_resource type="AudioStream" uid="uid://drfdyx2vjfd76" path="res://sounds/5. rock boss.mp3" id="22_04tyt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t5los"]
 atlas = ExtResource("6_wkqp5")
@@ -308,13 +308,13 @@ offset_bottom = 2400.0
 texture = ExtResource("18_uukb5")
 
 [node name="enemy" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("20_67xqi")
+stream = ExtResource("20_wvgei")
 
 [node name="father" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("21_ryiob")
+stream = ExtResource("21_tdhax")
 
 [node name="golem" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("22_ikhy2")
+stream = ExtResource("22_04tyt")
 
 [connection signal="animation_finished" from="Player" to="CanvasLayer/CardManager" method="_on_player_animation_finished"]
 [connection signal="animation_finished" from="Enemy" to="CanvasLayer/CardManager" method="_on_enemy_animation_finished"]

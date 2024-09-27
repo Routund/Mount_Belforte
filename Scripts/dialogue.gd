@@ -16,17 +16,18 @@ func _ready():
 
 
 func _process(_delta):
-	if done and Input.is_action_just_released("interact") or done and Input.is_action_just_released("click"):
-		id += 1
-		funny += 1
-		done=false
-		if funny >= fin:
-			DialogContainer.dialogFinished.disconnect(setDone)
-			DialogContainer.visible=false
-			get_tree().paused = false
-			queue_free()
-		else:
-			DialogContainer.reset(dialogue[id])
+	if Input.is_action_just_released("interact") or Input.is_action_just_released("click"):
+		if DialogContainer.text!="":
+			id += 1
+			funny += 1
+			done=false
+			if funny >= fin:
+				DialogContainer.dialogFinished.disconnect(setDone)
+				DialogContainer.visible=false
+				get_tree().paused = false
+				queue_free()
+			else:
+				DialogContainer.reset(dialogue[id])
 
 
 func _on_body_entered(body):
