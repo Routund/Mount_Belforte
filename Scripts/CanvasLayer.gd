@@ -18,6 +18,10 @@ func _ready():
 		$Deck/Water.hide()
 	if 6 not in Global.deck:
 		$Deck/Headbutt.hide()
+	if 7 not in Global.deck:
+		$Deck/Regroup.hide()
+	if 8 not in Global.deck:
+		$Deck/Sacrifice.hide()
 
 func _process(_delta):
 	if 3 in Global.inventory:
@@ -32,7 +36,14 @@ func _process(_delta):
 		$ScrollContainer/VBoxContainer/Headbutt.show()
 	else:
 		$ScrollContainer/VBoxContainer/Headbutt.hide()
-	
+	if 7 in Global.inventory:
+		$ScrollContainer/VBoxContainer/Regroup.show()
+	else:
+		$ScrollContainer/VBoxContainer/Regroup.hide()
+	if 8 in Global.inventory:
+		$ScrollContainer/VBoxContainer/Sacrifice.show()
+	else:
+		$ScrollContainer/VBoxContainer/Sacrifice.hide()
 	
 
 func _on_block_pressed():
@@ -112,5 +123,29 @@ func _on_headbutt_pressed():
 	elif deck <= 8 and 6 in Global.inventory:
 		Global.deck.append(6)
 		$Deck/Headbutt.show()
+		deck += 1
+	pass # Replace with function body.
+
+
+func _on_regroup_pressed():
+	if 7 in Global.deck:
+		Global.deck.pop_at(Global.deck.find(7))
+		$Deck/Regroup.hide()
+		deck -= 1
+	elif deck <= 8 and 7 in Global.inventory:
+		Global.deck.append(7)
+		$Deck/Regroup.show()
+		deck += 1
+	pass # Replace with function body.
+
+
+func _on_sacrifice_pressed():
+	if 8 in Global.deck:
+		Global.deck.pop_at(Global.deck.find(8))
+		$Deck/Sacrifice.hide()
+		deck -= 1
+	elif deck <= 8 and 8 in Global.inventory:
+		Global.deck.append(8)
+		$Deck/Sacrifice.show()
 		deck += 1
 	pass # Replace with function body.

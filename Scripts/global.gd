@@ -12,7 +12,7 @@ var deck = [0,1,2,4]
 signal battleStarting
 var level = 0
 
-var arena = 1
+var arena = 0
 var enemy_id = 5
 var reset = true
 var inventory_open = false

@@ -52,11 +52,19 @@ text = "Poison"
 
 [node name="Water" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "Bottled Water"
+text = "Cleanse"
 
 [node name="Headbutt" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Headbutt"
+
+[node name="Regroup" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Regroup"
+
+[node name="Sacrifice" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sacrifice"
 
 [node name="go_back" type="Button" parent="."]
 anchors_preset = -1
@@ -101,11 +109,19 @@ text = "Poison"
 
 [node name="Water" type="Button" parent="Deck"]
 layout_mode = 2
-text = "Bottled Water"
+text = "Cleanse"
 
 [node name="Headbutt" type="Button" parent="Deck"]
 layout_mode = 2
 text = "Headbutt"
+
+[node name="Regroup" type="Button" parent="Deck"]
+layout_mode = 2
+text = "Regroup"
+
+[node name="Sacrifice" type="Button" parent="Deck"]
+layout_mode = 2
+text = "Sacrifice"
 
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Block" to="." method="_on_block_pressed"]
@@ -114,6 +130,9 @@ text = "Headbutt"
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Poison" to="." method="_on_poison_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Water" to="." method="_on_water_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Headbutt" to="." method="_on_headbutt_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Regroup" to="." method="_on_headbutt_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Regroup" to="." method="_on_regroup_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Sacrifice" to="." method="_on_sacrifice_pressed"]
 [connection signal="pressed" from="go_back" to="." method="_on_go_back_pressed"]
 [connection signal="pressed" from="Deck/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Deck/Block" to="." method="_on_block_pressed"]
@@ -122,3 +141,5 @@ text = "Headbutt"
 [connection signal="pressed" from="Deck/Poison" to="." method="_on_poison_pressed"]
 [connection signal="pressed" from="Deck/Water" to="." method="_on_water_pressed"]
 [connection signal="pressed" from="Deck/Headbutt" to="." method="_on_headbutt_pressed"]
+[connection signal="pressed" from="Deck/Regroup" to="." method="_on_regroup_pressed"]
+[connection signal="pressed" from="Deck/Sacrifice" to="." method="_on_sacrifice_pressed"]

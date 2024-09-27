@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdxnps7aqwpda"]
+[gd_scene load_steps=13 format=3 uid="uid://cdxnps7aqwpda"]
 
 [ext_resource type="Script" path="res://Scripts/forest_2.gd" id="1_gk3uc"]
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="1_mhrrs"]

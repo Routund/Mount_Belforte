@@ -33,4 +33,4 @@ func _process(_delta):
 func setDown():
 	goDown=true
 	goUp=false
-	wiper.position.y=-831
+	wiper.position.y=-1200

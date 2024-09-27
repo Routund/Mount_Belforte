@@ -7,12 +7,13 @@ var enemy_max = 1000
 var enemy_id = 0
 var i = 0
 var power = 1
+var player_power = 1
 
 var deck = [0,1,2,3]
 var hand = []
 var queue = []
-var card_funcs = [slash,heal,block,poison,run,water,recoil]
-const card_descs = ["Slash Attack","Heal","Block","Poison Enemy","Run away","Vial of water","Headbutt"]
+var card_funcs = [slash,heal,block,poison,run,water,recoil,regroup,sacrifice]
+const card_descs = ["Slash Attack","Heal","Block","Poison Enemy","Run away","Cleansing Water","Headbutt","Regroup","Sacrifice"]
 var enemies = [
 	["Slime",120,1,[slimeai],true],
 	["Rock bat",180,1,[batai],false],
@@ -66,7 +67,7 @@ func _ready():
 	enemy_max=enemy_health
 	if enemy_health == enemies[2][1]:
 		$"../../golem".play()
-	elif enemy_health == enemies[0][1]: # make 5 when father fungus is added
+	elif enemy_health == enemies[5][1]: # make 5 when father fungus is added
 		$"../../father".play()
 	else:
 		$"../../enemy".play()
@@ -109,7 +110,8 @@ func _process(_delta):
 				attackFails=true
 			edamaged = false
 			DialogContainer.reset(card_funcs[queue[i]].call())
-			deck.append(queue[i])
+			if i!=10:
+				deck.append(queue[i])
 			i+=1
 			attackFails=false
 		elif(queue!=[]):
@@ -172,7 +174,7 @@ func slash():
 		return "You swing, but miss"
 func heal():
 	# Make sure player doesnt overheal
-	damage_player(-min(35,player_max-player_health),false)
+	damage_player(-min(35*player_power,player_max-player_health),false)
 	return "You heal some damage off" 
 func block():
 	is_blocking=true
@@ -182,10 +184,10 @@ func poison():
 		EnemyHealthBar.Health_Rect.modulate = Color8(142,52,154)
 		enemyInfected=true
 		enemyInfectionDone=false
-		enemyOvertime+=20
+		enemyOvertime+=20*player_power
 		return "You poison the %s" % enemies[enemy_id][0] 
 	else:
-		return "You try to poison the %s, but you miss" % enemies[enemy_id]
+		return "You try to poison the %s, but you miss" % enemies[enemy_id][0]
 func water():
 	PlayerHealthBar.Health_Rect.modulate = Color8(249,41,0)
 	playerInfected=false
@@ -201,12 +203,26 @@ func run():
 		return "You can't run away from this battle" 
 func recoil():
 	if !attackFails:
-		damage_enemy(90,true)
+		damage_enemy(90*player_power,true)
 		recoilFlag=true
 		return "You charge headfirst at the enemy"
 	else:
 		recoilFlag=true
 		return "You charge headfirst straight into a tree"
+func regroup():
+	var num = 2*player_power
+	for n in range(num):
+		draw()
+	return "You take a moment and bide your time"
+func sacrifice():
+	deck += queue.slice(i,len(queue))
+	var num = len(queue.slice(i,len(queue)))-1
+	i = 10
+	if is_blocking:
+		return "You sacrifice your cards, but fail to hit"
+	else:
+		damage_enemy(15+30*(num),true)
+		return "You sacrifice %d cards, and violently slash at the %s" % [num, enemies[enemy_id][0]]
 
 func damage_player(amount,animated):
 	if(amount<0):
@@ -307,16 +323,20 @@ func plantAi():
 	damage_player(40*power,true)
 	return "The Plant attacks"
 func mushroomAi():
+	player_power=1
 	if enemy_charging_count<=0 and randf_range(0,1)>0.60:
 		EnemyAnimator.play("look")
 		power = 1.5 + (320 - enemy_health)/320
 		enemy_charging_count=3
 		return "Father Fungus looks at your sins"
-	else:
+	elif randf_range(0,1)<0.6:
 		enemy_charging_count-=randi_range(1,2)
 		damage_player(60*power, true)
 		power=1
 		return "Father Fungus attacks!"
+	else:
+		player_power=0.5
+		return "Father Fungus weakens your resolve"
 # Pick random card from deck, then add it to hand and remove from deck
 # Then instantiate a new card with that ID
 func draw():

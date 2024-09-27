@@ -1,7 +1,7 @@
 extends Area2D
 var card_id = 0
 var id = 0
-var dialogue = ["You picked up Poison, tab to open pause menu", "You picked up Headbutt", "You picked up Water Bottle"]
+var dialogue = ["You picked up Poison, tab to open pause menu", "You picked up Headbutt", "You picked up Cleansing Water", "You picked up Sacrifice", "You picked up Regroup"]
 @onready var DialogContainer = get_parent().get_node("Player").get_node("dialogue Container")
 @onready var player = get_parent().get_node("Player")
 var done = false

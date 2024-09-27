@@ -302,8 +302,9 @@ z_index = 9
 anchors_preset = -1
 anchor_right = 0.017
 offset_left = -220.0
-offset_top = -831.0
+offset_top = 1200.0
 offset_right = 1190.42
+offset_bottom = 2400.0
 texture = ExtResource("18_uukb5")
 
 [node name="enemy" type="AudioStreamPlayer2D" parent="."]
