@@ -25,10 +25,12 @@ func _physics_process(_delta):
 	
 	if direction == Vector2.ZERO:
 		tree.get("parameters/playback").travel("Idle")
+		$walk.stop()
 	else:
 		tree.get("parameters/playback").travel("Walk")
 		tree.set("parameters/Idle/BlendSpace2D/blend_position", direction)
 		tree.set("parameters/Walk/BlendSpace2D/blend_position", direction)
+		$walk.play()
 	
 	move_and_slide()
 

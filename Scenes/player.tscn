@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bqlroxiiv5reg"]
+[gd_scene load_steps=38 format=3 uid="uid://bqlroxiiv5reg"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_ubegy"]
 [ext_resource type="Texture2D" uid="uid://c830oy4vqf404" path="res://Sprites/Main Character full.png" id="2_6msmn"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cospfanlf6c68" path="res://Sprites/Button.png" id="5_qp8pn"]
 [ext_resource type="Script" path="res://Scripts/dialogue Container.gd" id="6_po838"]
 [ext_resource type="Texture2D" uid="uid://ci84vqroi8n4r" path="res://Sprites/DIALOGUE.png" id="7_vpg7y"]
+[ext_resource type="AudioStream" uid="uid://j2grsrp476ev" path="res://walking-on-a-road-with-gravel-01-30100.mp3" id="8_j1glu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ble7"]
 radius = 33.0
@@ -259,7 +260,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_6msmn")
 hframes = 6
 vframes = 6
-frame = 25
+frame = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 20)
@@ -279,9 +280,6 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 process_mode = 3
-libraries = {
-"": SubResource("AnimationLibrary_riu4f")
-}
 tree_root = SubResource("AnimationNodeStateMachine_ndtvq")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/BlendSpace2D/blend_position = Vector2(0.00160003, -0.0158731)
@@ -331,3 +329,7 @@ horizontal_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CapsuleShape2D_1gh2g")
+
+[node name="walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_j1glu")
+volume_db = 24.0
