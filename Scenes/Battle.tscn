@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://Scripts/PlayerAnimation.gd" id="6_gxu4j"]
 [ext_resource type="Script" path="res://Scripts/fakes.gd" id="6_qetmb"]
 [ext_resource type="Texture2D" uid="uid://rl5pvy46nyjv" path="res://Sprites/Main Character attack-Sheet.png" id="6_wkqp5"]
-[ext_resource type="SpriteFrames" uid="uid://bxsdno8dn14i3" path="res://Sprites/Combat_enemies/Mushroom.tres" id="6_xvi5t"]
+[ext_resource type="SpriteFrames" uid="uid://d2e81jghe424h" path="res://Sprites/Combat_enemies/Mushroom.tres" id="6_xvi5t"]
 [ext_resource type="Texture2D" uid="uid://d1g4xrheo41cs" path="res://Sprites/Cards/Blank_Card.png" id="7_it2nd"]
 [ext_resource type="Script" path="res://Scripts/OverworldWipe.gd" id="9_0apxm"]
 [ext_resource type="Script" path="res://Scripts/CombatDialog.gd" id="13_5h2wc"]
@@ -128,11 +128,11 @@ script = ExtResource("6_gxu4j")
 
 [node name="Enemy" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1457, 661)
+position = Vector2(1147, 525)
 scale = Vector2(8.5, 8.5)
 sprite_frames = ExtResource("6_xvi5t")
-animation = &"look"
-offset = Vector2(-60, -50)
+animation = &"attack"
+offset = Vector2(-30, -35)
 script = ExtResource("5_ee1ig")
 
 [node name="PlayerHealthBar" type="NinePatchRect" parent="."]

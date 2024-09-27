@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bdiyckmcwgi8b"]
+[gd_scene load_steps=11 format=3 uid="uid://bdiyckmcwgi8b"]
 
 [ext_resource type="PackedScene" uid="uid://m2l0feudy3o1" path="res://Scenes/doorway.tscn" id="1_8jv0c"]
 [ext_resource type="TileSet" uid="uid://o1skee5d3xg" path="res://ForestFloor.tres" id="1_bjkn4"]

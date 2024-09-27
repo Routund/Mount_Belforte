@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dos1tgroc2jdf"]
+[gd_scene load_steps=12 format=3 uid="uid://dos1tgroc2jdf"]
 
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="1_6edlc"]
-[ext_resource type="AudioStream" uid="uid://qyqtiodjb638" path="res://Sprites/2. the cave.wav" id="2_eg8e1"]
+[ext_resource type="AudioStream" uid="uid://bd0uhruvxdbwb" path="res://2. the cave.wav" id="2_eg8e1"]
 [ext_resource type="Texture2D" uid="uid://c2kfxbu7tm5mc" path="res://Sprites/NewerCave_tilemap.png" id="2_myhv0"]
 [ext_resource type="PackedScene" uid="uid://boojurd07rf2h" path="res://Scenes/slime_spawner.tscn" id="4_l2p68"]
 [ext_resource type="PackedScene" uid="uid://y5g78wv73dul" path="res://Scenes/tester_card.tscn" id="5_dw7wp"]
@@ -1838,7 +1838,7 @@ layer_0/tile_data = PackedInt32Array(-65545, 327680, 4, -9, 327680, 4, 65527, 32
 [node name="0 2" parent="." instance=ExtResource("8_e18tj")]
 y_sort_enabled = true
 position = Vector2(368, 23)
-scale = Vector2(1, 2.44)
+scale = Vector2(1, 4.68)
 
 [node name="2 1" parent="." instance=ExtResource("8_e18tj")]
 y_sort_enabled = true

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="1_pohdt"]
 [ext_resource type="PackedScene" uid="uid://vhgkwbm8ioku" path="res://Scenes/rock_node.tscn" id="2_0itcl"]
-[ext_resource type="AudioStream" uid="uid://qyqtiodjb638" path="res://Sprites/2. the cave.wav" id="2_ubmk5"]
+[ext_resource type="AudioStream" uid="uid://bd0uhruvxdbwb" path="res://2. the cave.wav" id="2_ubmk5"]
 [ext_resource type="PackedScene" uid="uid://dh835k1hqslwo" path="res://Scenes/rock_door.tscn" id="3_ly0h5"]
 [ext_resource type="PackedScene" uid="uid://cynbtl2rfc874" path="res://Scenes/rock_button.tscn" id="4_ge8m2"]
 [ext_resource type="TileSet" uid="uid://dbjldvnx313py" path="res://CaveFloor.tres" id="5_8ig84"]
@@ -657,7 +657,7 @@ y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_pohdt")]
 y_sort_enabled = true
-position = Vector2(-984, -652)
+position = Vector2(177, 3473)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
 process_mode = 3
@@ -721,7 +721,7 @@ shape = SubResource("CircleShape2D_v5ap4")
 
 [node name="3 0" parent="." instance=ExtResource("7_yh8rf")]
 y_sort_enabled = true
-position = Vector2(383, 1575)
+position = Vector2(427, 1578)
 rotation = 1.5708
 scale = Vector2(1.44, 1.00129)
 

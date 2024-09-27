@@ -4,9 +4,9 @@ const frame_paths = [
 	["res://Sprites/Combat_enemies/Slime.tres",3,-40,-32],
 	["res://Sprites/Combat_enemies/rockbat.tres",1.25,-80,-100],
 	["res://Sprites/Combat_enemies/Golem.tres",7,-40,-40],
-	["res://Sprites/Combat_enemies/cat.tres",5,-16,-16],
+	["res://Sprites/Combat_enemies/cat.tres",5,-16,-12],
 	["res://Sprites/Combat_enemies/plant.tres",3.5,-60,-50],
-	["res://Sprites/Combat_enemies/Mushroom.tres",8.5,-60,-50],
+	["res://Sprites/Combat_enemies/Mushroom.tres",8.5,-30,-35],
 ]
 var idle_current = "idle"
 var enemy_id = 0

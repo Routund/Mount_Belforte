@@ -19,7 +19,7 @@ var enemies = [
 	["Golem",280,1,[golemAi],false],
 	["Cat", 160,1,[catAi], true],
 	["Plant", 160,1,[plantAi], true],
-	["Mushroom", 340, 1, [mushroomAi], false]
+	["Holy Father", 340, 1, [mushroomAi], false]
 	]
 
 var go_next =false
@@ -307,12 +307,15 @@ func plantAi():
 	damage_player(40*power,true)
 	return "The Plant attacks"
 func mushroomAi():
-	if enemy_charging_count==0 and randf_range(0,1)>0.60:
+	if enemy_charging_count<=0 and randf_range(0,1)>0.60:
 		EnemyAnimator.play("look")
-		power = 1 + (320 - enemy_health)/320
+		power = 1.5 + (320 - enemy_health)/320
+		enemy_charging_count=3
 		return "Father Fungus looks at your sins"
 	else:
+		enemy_charging_count-=randi_range(1,2)
 		damage_player(60*power, true)
+		power=1
 		return "Father Fungus attacks!"
 # Pick random card from deck, then add it to hand and remove from deck
 # Then instantiate a new card with that ID

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0y1fiprrwrv8"]
+[gd_scene load_steps=15 format=3 uid="uid://b0y1fiprrwrv8"]
 
 [ext_resource type="TileSet" uid="uid://dbjldvnx313py" path="res://CaveFloor.tres" id="1_xqjvy"]
 [ext_resource type="PackedScene" uid="uid://bqlroxiiv5reg" path="res://Scenes/player.tscn" id="2_uy0ur"]
